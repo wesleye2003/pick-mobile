@@ -30,7 +30,7 @@ angular.module('starter')
 
   // Perform the login action when the user submits the login form
   $scope.doLogin = function() {
-    
+    SC.connect();
   };
 })
 ;

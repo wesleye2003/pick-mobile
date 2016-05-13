@@ -25,27 +25,16 @@
     <!-- your app's js -->
     <script src="https://connect.soundcloud.com/sdk/sdk-3.0.0.js"></script>
     <script>
-      SC.initialize({
-        client_id: '50e414afb9a9f00311445bd1b9990164',
-        redirect_uri: 'https://floating-tor-67033.herokuapp.com/'
-      });
-      SC.get('/users/website').then(function(site){
-        alert(site)
-      })
-    
+        SC.initialize({
+          client_id: '50e414afb9a9f00311445bd1b9990164',
+          redirect_uri: 'https://floating-tor-67033.herokuapp.com/callback'
+        });
     </script>
-    
     <script src="js/app.js"></script>
     <script src="js/controllers.js"></script>
     <script src="views/people/people.js"></script>
     <script src="views/profile/profile.js"></script>
     <script src="views/settings/settings.js"></script>
-    
-
-
-
-
-    
 
   </head>
 
