@@ -30,7 +30,16 @@ angular.module('starter', ['ionic', 'ionic.contrib.ui.tinderCards'])
     url: '/home',
     templateUrl: 'templates/home.html',
     controller: 'homeCtrl'
-  });
+  })
+  .state('app.profile', {
+    url: '/profile',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/Profile.html',
+        //
+      }
+    }
+  })
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/home');
 });
