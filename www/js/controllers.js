@@ -34,23 +34,55 @@ angular.module('starter')
   };
 })//
 
-.controller('picksCtrl', function($scope) {
+.controller('homeCtrl', function($scope) {
+  $scope.options = {
+    loop: false,
+    effect: 'fade',
+    speed: 500,
+  }
 
+  $scope.$on("$ionicSlides.sliderInitialized", function(event, data){
+    // data.slider is the instance of Swiper
+    $scope.slider = data.slider;
+  });
+
+  $scope.$on("$ionicSlides.slideChangeStart", function(event, data){
+    console.log('Slide change is beginning');
+  });
+
+  $scope.$on("$ionicSlides.slideChangeEnd", function(event, data){
+    // note: the indexes are 0-based
+    $scope.activeIndex = data.activeIndex;
+    $scope.previousIndex = data.previousIndex;
+  });
 })//
 
-
-.controller('startPickingCtrl', function($scope) {
+.controller('registerCtrl', function($scope) {
 
 })//
 
 .controller('profileCtrl', function($scope, $ionicModal, $timeout) {
 
-
-
 })//
 
 
 .controller('editProfileCtrl', function($scope) {
+
+})//
+
+.controller('editMyRolesCtrl', function($scope) {
+
+})//
+
+.controller('editSearchRolesCtrl', function($scope) {
+
+})
+
+.controller('startPickingCtrl', function($scope) {
+
+})//
+
+.controller('picksCtrl', function($scope) {
 
 })//
 
