@@ -9,24 +9,24 @@ angular.module('starter')
   //});
 
   // Form data for the login modal
-  $scope.loginData = {};
+  // $scope.loginData = {};
 
-  // Create the login modal that we will use later
-  $ionicModal.fromTemplateUrl('views/profile/profile.html', {
-    scope: $scope
-  }).then(function(modal) {
-    $scope.modal = modal;
-  });
+  // // Create the login modal that we will use later
+  // $ionicModal.fromTemplateUrl('templates/profile.html', {
+  //   scope: $scope
+  // }).then(function(modal) {
+  //   $scope.modal = modal;
+  // });
 
-  // Triggered in the login modal to close it
-  $scope.closeLogin = function() {
-    $scope.modal.hide();
-  };
+  // // Triggered in the login modal to close it
+  // $scope.closeLogin = function() {
+  //   $scope.modal.hide();
+  // };
 
-  // Open the login modal
-  $scope.login = function() {
-    $scope.modal.show();
-  };
+  // // Open the login modal
+  // $scope.login = function() {
+  //   $scope.modal.show();
+  // };
 
   // Perform the login action when the user submits the login form
   $scope.doLogin = function() {
@@ -35,11 +35,10 @@ angular.module('starter')
 })//
 
 .controller('homeCtrl', function($scope) {
-  $scope.options = {
-    loop: false,
-    effect: 'fade',
-    speed: 500,
-  }
+
+})
+
+.controller('picksCtrl', function($scope) {
 
   $scope.$on("$ionicSlides.sliderInitialized", function(event, data){
     // data.slider is the instance of Swiper
@@ -142,5 +141,9 @@ angular.module('starter')
     console.log('RIGHT SWIPE');
     $scope.addCard();
   };
-});
+})//
 
+.controller('editProfileCtrl', function($scope, $ionicModal, $timeout) {
+
+
+});
