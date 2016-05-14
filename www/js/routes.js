@@ -55,7 +55,7 @@ angular.module('starter', ['ionic', 'ionic.contrib.ui.tinderCards'])
     views: {
       'menuContent': {
         templateUrl: 'templates/startPicking.html',
-        controller: 'startPickingCtrl'
+        controller: 'startPickingCtrl',
       }
     }
   })
