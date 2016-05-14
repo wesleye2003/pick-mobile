@@ -35,11 +35,10 @@ angular.module('starter')
 })//
 
 .controller('homeCtrl', function($scope) {
-  $scope.options = {
-    loop: false,
-    effect: 'fade',
-    speed: 500,
-  }
+
+})
+
+.controller('picksCtrl', function($scope) {
 
   $scope.$on("$ionicSlides.sliderInitialized", function(event, data){
     // data.slider is the instance of Swiper
@@ -55,25 +54,34 @@ angular.module('starter')
     $scope.activeIndex = data.activeIndex;
     $scope.previousIndex = data.previousIndex;
   });
-})
-
-.controller('picksCtrl', function($scope) {
-
 })//
 
-
-.controller('startPickingCtrl', function($scope) {
+.controller('registerCtrl', function($scope) {
 
 })//
 
 .controller('profileCtrl', function($scope, $ionicModal, $timeout) {
 
-
-
 })//
 
 
 .controller('editProfileCtrl', function($scope) {
+
+})//
+
+.controller('editMyRolesCtrl', function($scope) {
+
+})//
+
+.controller('editSearchRolesCtrl', function($scope) {
+
+})
+
+.controller('startPickingCtrl', function($scope) {
+
+})//
+
+.controller('picksCtrl', function($scope) {
 
 })//
 
