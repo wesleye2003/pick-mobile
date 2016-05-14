@@ -12,7 +12,7 @@ angular.module('starter')
   $scope.loginData = {};
 
   // Create the login modal that we will use later
-  $ionicModal.fromTemplateUrl('views/profile/profile.html', {
+  $ionicModal.fromTemplateUrl('templates/profile.html', {
     scope: $scope
   }).then(function(modal) {
     $scope.modal = modal;
@@ -110,5 +110,9 @@ angular.module('starter')
     console.log('RIGHT SWIPE');
     $scope.addCard();
   };
-});
+})//
 
+.controller('editProfileCtrl', function($scope, $ionicModal, $timeout) {
+
+
+});

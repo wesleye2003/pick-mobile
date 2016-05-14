@@ -17,15 +17,15 @@ angular.module('starter', ['ionic', 'ionic.contrib.ui.tinderCards'])
         }
       }
     })
-  .state('app.settings', {
-        url: '/settings',
+  .state('app.edit-profile', {
+        url: '/edit-profile',
         views: {
           'menuContent': {
-            templateUrl: 'views/settings/settings.html',
-            controller: 'settingsCtrl'
+            templateUrl: 'templates/editProfile.html',
+            controller: 'editProfileCtrl'
           }
         }
       });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/people');
+  $urlRouterProvider.otherwise('/app/start-picking');
 });
