@@ -1,5 +1,5 @@
-angular.module('starter', ['ionic', 'ionic.contrib.ui.tinderCards'])
-.config(function($stateProvider, $urlRouterProvider) {
+angular.module('starter.routes', [])
+.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
   $stateProvider
 
   // home page and register
