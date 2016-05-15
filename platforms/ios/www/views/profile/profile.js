@@ -1,6 +1,1 @@
-angular.module('starter')
-.controller('profileCtrl', function($scope, $ionicModal, $timeout) {
-	
-
-
-});
+//moved to controller.js

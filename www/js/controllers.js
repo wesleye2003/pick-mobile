@@ -8,34 +8,52 @@ angular.module('starter.controllers',[])
   //$scope.$on('$ionicView.enter', function(e) {
   //});
 
-  // Form data for the login modal
-  // $scope.loginData = {};
-
-  // // Create the login modal that we will use later
-  // $ionicModal.fromTemplateUrl('templates/profile.html', {
-  //   scope: $scope
-  // }).then(function(modal) {
-  //   $scope.modal = modal;
-  // });
-
-  // // Triggered in the login modal to close it
-  // $scope.closeLogin = function() {
-  //   $scope.modal.hide();
-  // };
-
-  // // Open the login modal
-  // $scope.login = function() {
-  //   $scope.modal.show();
-  // };
-
-  // Perform the login action when the user submits the login form
-  $scope.doLogin = function() {
-    SC.connect();
-  };
+  
 })//
 
-.controller('homeCtrl', function($scope) {
+.controller('homeCtrl', function($scope, $ionicModal, $http, $state) {
+  // Form data for the login modal
+  $scope.registerData = {};
 
+  // Create the login modal that we will use later
+  $ionicModal.fromTemplateUrl('templates/register.html', {
+    scope: $scope
+  }).then(function(modal) {
+    $scope.modal = modal;
+  });
+
+  // Triggered in the login modal to close it
+  $scope.closeRegister = function() {
+    $scope.modal.hide();
+  };
+
+  // Open the login modal
+  $scope.register = function() {
+    $scope.modal.show();
+  };
+
+  // Perform the login action when the user submits the login form
+  $scope.doRegister = function(form){
+    var data = { username: form.username.$modelValue, password: form.password.$modelValue}
+    console.log(data);
+
+    $http({url:"http://floating-tor-67033.herokuapp.com/users", 
+           method: 'POST',
+           data: { username: form.username.$modelValue, password: form.password.$modelValue}}).then(function(response){
+      window.localStorage['id'] = response.id;
+      console.log(response);
+      $state.go('app.profile');
+    }, function(errorData){
+      console.log(errorData);
+    })
+    // window.localStorage['user_id'] = "1"
+    // alert('an attempt was made.')
+    // $http.get(`http://localhost:3000/users/${window.localStorage['user_id']}`).then(function(response){
+    //   console.log(response.data.id)
+    // })
+  }
+   
+  
 })
 
 .controller('picksCtrl', function($scope) {
