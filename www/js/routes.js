@@ -2,7 +2,6 @@ angular.module('starter', ['ionic', 'ionic.contrib.ui.tinderCards'])
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
 
-
   // home page and register
   .state('home', {
     url: '/home',
@@ -111,3 +110,4 @@ angular.module('starter', ['ionic', 'ionic.contrib.ui.tinderCards'])
   $urlRouterProvider.otherwise('/home');
 
 });
+
