@@ -8,7 +8,7 @@ angular.module('starter.controllers',[])
   //$scope.$on('$ionicView.enter', function(e) {
   //});
 
-  
+
 })//
 
 .controller('homeCtrl', function($scope, $ionicModal, $http, $state) {
@@ -33,11 +33,11 @@ angular.module('starter.controllers',[])
   };
 
   // Perform the login action when the user submits the login form
-  $scope.doRegister = function(form){
+  $scope.doRegister = function(form, $state){
     var data = { username: form.username.$modelValue, password: form.password.$modelValue}
     console.log(data);
 
-    $http({url:"http://floating-tor-67033.herokuapp.com/users", 
+    $http({url:"http://floating-tor-67033.herokuapp.com/users",
            method: 'POST',
            data: { username: form.username.$modelValue, password: form.password.$modelValue}}).then(function(response){
       window.localStorage['id'] = response.id;
@@ -52,8 +52,8 @@ angular.module('starter.controllers',[])
     //   console.log(response.data.id)
     // })
   }
-   
-  
+
+
 })
 
 .controller('picksCtrl', function($scope) {
@@ -78,16 +78,12 @@ angular.module('starter.controllers',[])
 
 })//
 
-.controller('profileCtrl', function($scope, $http, Role) {
-
-  var query = Role.query();
-  console.log(query);
-
-  // query.$promise.then(function(response){
-
-  // })
-
+.controller('profileCtrl', function($scope, $http, Role, Genre, User, LoggedInUser, localStorage) {
+  //TO DO: Put in correct variables to get user data from form
+  $scope.user = User.get({id: window.localStorage['id']});
+  console.log($scope.user);
   $scope.roles = Role.query();
+  $scope.genres = Genre.query();
   console.log($scope.roles);
 
 })//
