@@ -1,4 +1,4 @@
-angular.module('starter')
+angular.module('starter', [])
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
 
   // With the new view caching in Ionic, Controllers are only called
@@ -69,6 +69,7 @@ angular.module('starter')
 
 })//
 
+
 .controller('editMyRolesCtrl', function($scope) {
 
 })//
@@ -85,8 +86,14 @@ angular.module('starter')
 
 })//
 
-.controller('rolesCtrl', function($scope) {
-
+//factory example using resources
+.controller('rolesCtrl', function($scope, Role) {
+  //get all roles
+  $scope.roles = Role.query();
+  console.log($scope.roles);
+  //get one roll
+  $scope.role = Role.query({role: 1});
+  console.log($scope.role);
 })//
 
 //Cards Controller - Start Picking
@@ -141,9 +148,5 @@ angular.module('starter')
     console.log('RIGHT SWIPE');
     $scope.addCard();
   };
-})//
+});//
 
-.controller('editProfileCtrl', function($scope, $ionicModal, $timeout) {
-
-
-});
