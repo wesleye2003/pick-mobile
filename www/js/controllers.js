@@ -33,7 +33,7 @@ angular.module('starter.controllers',[])
   };
 
   // Perform the login action when the user submits the login form
-  $scope.doRegister = function(form){
+  $scope.doRegister = function(form, $state){
     var data = { username: form.username.$modelValue, password: form.password.$modelValue}
     console.log(data);
 
@@ -78,7 +78,7 @@ angular.module('starter.controllers',[])
 
 })//
 
-.controller('profileCtrl', function($scope, $http, Role, Genre, User, LoggedInUser) {
+.controller('profileCtrl', function($scope, $http, Role, Genre, User, LoggedInUser, localStorage) {
   //TO DO: Put in correct variables to get user data from form
   $scope.user = User.get({id: window.localStorage['id']});
   console.log($scope.user);
