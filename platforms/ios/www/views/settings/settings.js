@@ -1,6 +1,1 @@
-angular.module('starter')
-.controller('settingsCtrl', function($scope, $ionicModal, $timeout) {
-
-
-})
-;
+//moved to controllers
