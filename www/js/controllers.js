@@ -8,7 +8,7 @@ angular.module('starter.controllers',[])
   //$scope.$on('$ionicView.enter', function(e) {
   //});
 
-  
+
 })//
 
 .controller('homeCtrl', function($scope, $ionicModal, $http, $state) {
@@ -37,7 +37,7 @@ angular.module('starter.controllers',[])
     var data = { username: form.username.$modelValue, password: form.password.$modelValue}
     console.log(data);
 
-    $http({url:"http://floating-tor-67033.herokuapp.com/users", 
+    $http({url:"http://floating-tor-67033.herokuapp.com/users",
            method: 'POST',
            data: { username: form.username.$modelValue, password: form.password.$modelValue}}).then(function(response){
       window.localStorage['id'] = response.id;
@@ -52,8 +52,8 @@ angular.module('starter.controllers',[])
     //   console.log(response.data.id)
     // })
   }
-   
-  
+
+
 })
 
 .controller('picksCtrl', function($scope) {
@@ -80,8 +80,8 @@ angular.module('starter.controllers',[])
 
 .controller('profileCtrl', function($scope, $http, Role, Genre, User, LoggedInUser) {
   //TO DO: Put in correct variables to get user data from form
-  // $scope.user = LoggedInUser.save({username: "Wesley El-Amin", password: "password"});
-  // console.log($scope.user);
+  $scope.user = User.get({id: window.localStorage['id']});
+  console.log($scope.user);
   $scope.roles = Role.query();
   $scope.genres = Genre.query();
   console.log($scope.roles);
