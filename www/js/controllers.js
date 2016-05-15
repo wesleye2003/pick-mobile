@@ -60,16 +60,12 @@ angular.module('starter.controllers',[])
 
 })//
 
-.controller('profileCtrl', function($scope, $http, Role) {
-
-  var query = Role.query();
-  console.log(query);
-
-  // query.$promise.then(function(response){
-
-  // })
-
+.controller('profileCtrl', function($scope, $http, Role, Genre, User, LoggedInUser) {
+  //TO DO: Put in correct variables to get user data from form
+  // $scope.user = LoggedInUser.save({username: "Wesley El-Amin", password: "password"});
+  // console.log($scope.user);
   $scope.roles = Role.query();
+  $scope.genres = Genre.query();
   console.log($scope.roles);
 
 })//

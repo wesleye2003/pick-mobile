@@ -20,9 +20,14 @@
   <div id="content">
     <div id="profile-info">
       <img id="profile-image" src="">
-      <h3 id="profile-name">Singer213</h3>
-      <span id="profile-description">
+      <h3 id="profile-name">{{user.zipcode}}</h3>
+      <span id="profile-description" >
+        <div id="profile-roles" style="color:blue;">
         <h3 ng-repeat="role in roles">{{role.name}}</h3></span>
+        </div>
+        <div id="profile-genres">
+        <h3 ng-repeat="genre in genres">{{genre.name}}</h3></span>
+        </div>
     </div>
   </div>
 
