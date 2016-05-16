@@ -1,5 +1,7 @@
 angular.module('starter.routes', [])
 .config(function($stateProvider, $urlRouterProvider, $httpProvider) {
+  $httpProvider.defaults.useXDomain = true;
+  delete $httpProvider.defaults.headers.common['X-Requested-With'];
   $stateProvider
 
   // home page and register
