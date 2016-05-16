@@ -20,10 +20,10 @@
       <span class="input-label">About Me</span>
       <textarea type="text" placeholder="{{user.description}}"></textarea>
     </label>
-
-    <button id="edit-my-role-btn" class="edit-btn button button-block button-positive" type="submit">Edit My Instruments</button>
-    <button id="edit-search-role-btn" class="button button-block button-positive" type="submit">Edit Roles I'm Searching For</button>
-
+    <!-- Edit My Roles Button -->
+    <button id="edit-my-role-btn" class="edit-btn button button-block button-positive" ng-click="getEditMyRolesForm()">Edit My Instruments</button>
+    <!-- Edit Searched Roles Button -->
+    <button id="edit-search-role-btn" class="button button-block button-positive" ng-click="getEditSearchedRolesForm()">Edit Roles I'm Searching For</button>
     <!-- Connect to SoundCloud Button -->
     <button class="button-energized edit-btn button button-block button-positive" type="submit">Connect To Sound Cloud</button>
     <!--  -->

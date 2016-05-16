@@ -121,15 +121,27 @@ angular.module('starter.controllers',[])
 })//
 
 
-.controller('editProfileCtrl', function($scope, $http, Role, Genre, User, LoggedInUser) {
+.controller('editProfileCtrl', function($state, $scope, $http, Role, Genre, User, LoggedInUser) {
   $scope.$on('$ionicView.enter', function(e){
     var userId = window.localStorage['id'];
     $scope.user = User.get({id: userId});
     // console.log($scope.user);
     $scope.roles = Role.query();
     $scope.genres = Genre.query();
-    // console.log($scope.roles);
-  });
+
+
+    //When "edit my role" or "edit my searched roles" is clicked
+    //route to those forms
+    $scope.getEditMyRolesForm = function(){
+      // window.localStorage['id'] = response.id;
+      $state.go('app.edit-my-roles');
+    };//edit
+
+    $scope.getEditSearchedRolesForm = function(){
+      // window.localStorage['id'] = response.id;
+      $state.go('app.edit-search-roles');
+    };//edit searched
+  });//scope.on
 })//
 
 
