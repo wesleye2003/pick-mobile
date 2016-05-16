@@ -1,35 +1,38 @@
-<!-- <ion-modal-view>
-  <ion-header-bar>
-    <h1 class="title">Login</h1>
-    <div class="buttons">
-      <button class="button button-clear" ng-click="closeLogin()">Close</button>
-    </div>
-  </ion-header-bar>
-  <ion-content>
-    <form ng-submit="doLogin()">
-      <div class="list">
-          <button class="button button-block button-positive" type="submit">Log in</button>
-      </div>
-    </form>
-  </ion-content>
-</ion-modal-view> -->
-
 <ion-view title="Profile" id="profile">
   <ion-content padding="false" class=" manual-remove-top-padding has-header" scroll="false">
+  <ion-item class="button-clear">
+    <button class="button button-clear button-block button-energized" ng-click="doConnect()">Connect with SoundCloud</button>
+  </ion-item>
+  <div id="profile-bg">
 
-  <div id="content">
-    <div id="profile-info">
-      <img id="profile-image" src="">
-      <h3 id="profile-name">Welcome, {{user.username}}</h3>
-      <span id="profile-description" >
-        <div id="profile-roles" style="color:blue;">
-        <h3 ng-repeat="role in roles">{{role.name}}</h3></span>
+    <div id="content">
+      <div id="profile-info">
+        <img id="profile-image" ng-src="{{user.avatar_url}}">
+        <h3 id="profile-name">{{user.username}}</h3>
+        <p id="profile-location">{{user.zipcode}}</p>
+        <div id="profile-roles-container">
+          <!-- <h2 id="profile-roles-text-header">ROLES</h3> -->
+          <h3 id="profile-roles-text" ng-repeat="role in roles | limitTo:2">{{role.name}}</h3>
         </div>
-        <div id="profile-genres">
-        <h3 ng-repeat="genre in genres">{{genre.name}}</h3></span>
-        </div>
-    </div>
-  </div>
 
+        <div id="profile-genres-container">
+          <!-- <h2 id="profile-genres-text-header">GENRES</h3> -->
+          <h3 id="profile-genres-text" ng-repeat="genre in genres | limitTo:2">{{genre.name}}</h3></span>
+        </div>
+      </div> <!-- end profile info -->
+    </div> <!-- end content -->
+     <div id="profile-about">
+      <h3 id="profile-about-header">About Me:</h3>
+      <p>Location: {{user.zipcode}}</p>
+      <p>{{user.description}}</p>
+     </div>
+      <div id="profile-soundcloud-container">
+        <div id="profile-soundcloud-player" >
+          
+            <button class="button button-energized" ng-click='doOpen(user.permalink)'>Soundcloud</button>
+          
+        </div>
+      </div>
+  </div> <!-- end profile-bg -->
   </ion-content>
 </ion-view>

@@ -108,16 +108,25 @@ angular.module('starter.controllers',[])
 
 })//
 
-.controller('profileCtrl', function($scope, $http, Role, Genre, User, LoggedInUser) {
+.controller('profileCtrl', function($scope, $resource, $http, ArtistRole, Genre, User, LoggedInUser) {
   //TO DO: Put in correct variables to get user data from form
   $scope.$on('$ionicView.enter', function(e){
     var userId = window.localStorage['id'];
     $scope.user = User.get({id: userId});
-    // console.log($scope.user);
-    $scope.roles = Role.query();
+    console.log($scope.user);
+    $scope.roles = ArtistRole.query({id: userId});
     $scope.genres = Genre.query();
     // console.log($scope.roles);
   });
+
+  $scope.doConnect = function() {
+    var userId = window.localStorage['id'];
+    window.open(`https://floating-tor-67033.herokuapp.com/soundcloud/connect/${userId}`)
+  };
+
+  $scope.doOpen = function(linkUrl) {
+    window.open(linkUrl)
+  };
 })//
 
 
@@ -220,23 +229,24 @@ angular.module('starter.controllers',[])
 })//
 
 //Cards Controller - Start Picking
-.controller('CardsCtrl', function ($scope, $http, $ionicLoading, $ionicSideMenuDelegate, TDCardDelegate) {
+.controller('CardsCtrl', function ($scope, $http, $ionicLoading, $ionicSideMenuDelegate, TDCardDelegate, SearchedRole) {
   console.log('CARDS CTRL');
   $ionicSideMenuDelegate.canDragContent(false);
-  var cardTypes = [];
-  $ionicLoading.show();
-  $http.get('https://randomuser.me/api/?results=5').success(function (response) {
-      angular.forEach(response.results, function (famous) {
-        cardTypes.push(famous);
-        //console.log(JSON.stringify(famous));
-      });
-      $ionicLoading.hide();
-    }).error(function (err) {
-      console.log(err);
-    });
+  // var cardTypes = [];
+  // $http.get('https://randomuser.me/api/?results=5').success(function (response) {
+  //     angular.forEach(response.results, function (famous) {
+  //       cardTypes.push(famous);
+  //       console.log(JSON.stringify(famous));
+  //     });
+  //     $ionicLoading.hide();
+  //   }).error(function (err) {
+  //     console.log(err);
+  //   });
 
   //$scope.cards = Array.prototype.slice.call(cardTypes, 0);
-  $scope.cards = cardTypes;
+  var userId = window.localStorage['id'];
+  $scope.cards = SearchedRole.query({id: userId});
+  console.log($scope.cards)
   $scope.cardDestroyed = function(index) {
     $scope.cards.splice(index, 1);
   };
@@ -272,4 +282,3 @@ angular.module('starter.controllers',[])
     $scope.addCard();
   };
 })//
-

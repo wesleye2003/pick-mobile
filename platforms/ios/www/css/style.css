@@ -12,7 +12,7 @@ td-card {
     left: 50%;
     margin: 80px 0 40px -150px;
     width: 300px;
-    height: 300px;
+    height: 500px;
     border: 1px solid #999;
     box-shadow: 0px 1px 3px rgba(0,0,0,0.2);
     border-radius: 10px;
@@ -129,6 +129,7 @@ td-card .buttondesc button{
     width: 375px;
 }
 
+/* Profile */
 #profile-bg {
     position: fixed;
     left: 0;
@@ -144,11 +145,13 @@ td-card .buttondesc button{
     }
 
     #content {
-    position: relative;
-    margin-top: 150px;
-    background-color: white;
-    box-shadow: 0px -1px 10px rgba(0,0,0,0.4);
-    padding-top: 200px;
+        position: relative;
+        margin-top: 150px;
+        background-color: white;
+        box-shadow: 0px -1px 10px rgba(0,0,0,0.4);
+        padding-top: 200px;
+        height: 210px;
+        /*border: red solid 2px;*/
     }
 
     #profile-info {
@@ -179,3 +182,70 @@ td-card .buttondesc button{
     margin: 30px auto 0;
     box-shadow: 0px 0px 4px rgba(0,0,0,0.7);
     }
+    #pick-image {
+        display: inline;
+        border-radius: 100px;
+        border: 1px solid #fff;
+        width: 64px;
+        height: 64px;
+        margin: 30px 20px 0;
+        box-shadow: 0px 0px 4px rgba(0,0,0,0.7);
+    }
+    #picks-info {
+        text-align: right;
+        position: relative;
+        right: 20px;
+        bottom: 55px;
+    }
+
+#profile-roles-text{
+    font-size: 14px;
+}
+
+#profile-genres-text{
+    font-size: 14px;
+}
+#profile-roles-container{
+    width: 50%;
+    float: left;
+    /*height: 80px;*/
+    border: gray 2px solid;
+}
+
+#profile-genres-container{
+    width: 50%;
+    float: left;
+    /*height: 80px;*/
+    border: gray 2px solid;
+}
+
+#profile-roles-container h2{
+    font-size: 14px;
+}
+
+#profile-genres-container h2{
+    font-size: 14px;
+}
+
+#profile-location{
+    font-size: 18px;
+}
+
+#profile-about{
+    /*height: 250px;*/
+    padding: 15px;
+    border: gray solid 2px;
+    clear:both;
+}
+
+#profile-about-header{
+    font-size: 14px;
+}
+
+#profile-soundcloud-container{
+    /*height: 250px;*/
+    border: solid gray 2px;
+    /*clear:both;*/
+    height: 110px;
+}
+
