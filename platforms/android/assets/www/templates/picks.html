@@ -1,0 +1,17 @@
+<ion-view title="Picks" id="picks">
+  <ion-content padding="false" class=" manual-remove-top-padding has-header" scroll="false">
+
+  <div id="content">
+    <img ng-repeat="pick in picks" id="pick-image" ng-src='{{pick.avatar_url}}'>
+    <div id="picks-info">
+      <div id="picks-names">
+        <span ng-repeat="pick in picks">{{pick.username}}</span></span>
+      </div>
+      <div id="picks-zipcode">
+        <span ng-repeat="pick in picks">{{pick.zipcode}}</span></span>
+      </div>
+    </div>
+  </div>
+
+  </ion-content>
+</ion-view>

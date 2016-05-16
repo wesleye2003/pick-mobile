@@ -1,7 +1,7 @@
 <ion-view title="Profile" id="profile">
   <ion-content padding="false" class=" manual-remove-top-padding has-header" scroll="false">
   <ion-item class="button-clear">
-    <button class="button button-block button-positive" ng-click="doConnect()">Connect with SoundCloud</button>
+    <button class="button button-clear button-block button-energized" ng-click="doConnect()">Connect with SoundCloud</button>
   </ion-item>
   <div id="profile-bg">
 
@@ -24,9 +24,14 @@
      <div id="profile-about">
       <h3 id="profile-about-header">About Me:</h3>
       <p>Location: {{user.zipcode}}</p>
+      <p>{{user.description}}</p>
      </div>
       <div id="profile-soundcloud-container">
-        <div id="profile-soundcloud-player" ></div>
+        <div id="profile-soundcloud-player" >
+          
+            <button class="button button-energized" ng-click='doOpen(user.permalink)'>Soundcloud</button>
+          
+        </div>
       </div>
   </div> <!-- end profile-bg -->
   </ion-content>

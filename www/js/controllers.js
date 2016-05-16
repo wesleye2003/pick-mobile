@@ -123,6 +123,10 @@ angular.module('starter.controllers',[])
     var userId = window.localStorage['id'];
     window.open(`https://floating-tor-67033.herokuapp.com/soundcloud/connect/${userId}`)
   };
+
+  $scope.doOpen = function(linkUrl) {
+    window.open(linkUrl)
+  };
 })//
 
 
