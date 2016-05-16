@@ -93,22 +93,11 @@ angular.module('starter.controllers',[])
 
 })
 
-.controller('picksCtrl', function($scope) {
-
-  $scope.$on("$ionicSlides.sliderInitialized", function(event, data){
-    // data.slider is the instance of Swiper
-    $scope.slider = data.slider;
-  });
-
-  $scope.$on("$ionicSlides.slideChangeStart", function(event, data){
-    console.log('Slide change is beginning');
-  });
-
-  $scope.$on("$ionicSlides.slideChangeEnd", function(event, data){
-    // note: the indexes are 0-based
-    $scope.activeIndex = data.activeIndex;
-    $scope.previousIndex = data.previousIndex;
-  });
+.controller('picksCtrl', function($scope, $http, User, Pick) {
+  // $scope.$on('$ionicView.enter', function(e){
+  //   var userId = window.localStorage['id'];
+  //   $scope.picks = Pick.get({id: userId});
+  // }
 })//
 
 .controller('registerCtrl', function($scope, $ionicModal, $http, $state) {
@@ -145,11 +134,20 @@ angular.module('starter.controllers',[])
 })
 
 .controller('startPickingCtrl', function($scope) {
+  $scope.$on("$ionicSlides.sliderInitialized", function(event, data){
+    // data.slider is the instance of Swiper
+    $scope.slider = data.slider;
+  });
 
-})//
+  $scope.$on("$ionicSlides.slideChangeStart", function(event, data){
+    console.log('Slide change is beginning');
+  });
 
-.controller('picksCtrl', function($scope) {
-
+  $scope.$on("$ionicSlides.slideChangeEnd", function(event, data){
+    // note: the indexes are 0-based
+    $scope.activeIndex = data.activeIndex;
+    $scope.previousIndex = data.previousIndex;
+  });
 })//
 
 //factory example using resources
