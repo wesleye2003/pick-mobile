@@ -19,17 +19,17 @@ angular.module('starter.controllers',[])
   $ionicModal.fromTemplateUrl('templates/register.html', {
     scope: $scope
   }).then(function(modal) {
-    $scope.modal = modal;
+    $scope.modalOne = modal;
   });
 
   // Triggered in the login modal to close it
   $scope.closeRegister = function() {
-    $scope.modal.hide();
+    $scope.modalOne.hide();
   };
 
   // Open the login modal
   $scope.register = function() {
-    $scope.modal.show();
+    $scope.modalOne.show();
   };
 
   // Perform the login action when the user submits the login form
@@ -111,7 +111,11 @@ angular.module('starter.controllers',[])
   });
 })//
 
-.controller('registerCtrl', function($scope) {
+.controller('registerCtrl', function($scope, $ionicModal, $http, $state) {
+
+})//
+
+.controller('loginCtrl', function($scope, $ionicModal, $http, $state) {
 
 })//
 
