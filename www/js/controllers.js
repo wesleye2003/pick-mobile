@@ -113,7 +113,7 @@ angular.module('starter.controllers',[])
   $scope.$on('$ionicView.enter', function(e){
     var userId = window.localStorage['id'];
     $scope.user = User.get({id: userId});
-    // console.log($scope.user);
+    console.log($scope.user);
     $scope.roles = Role.query();
     $scope.genres = Genre.query();
     // console.log($scope.roles);
