@@ -126,17 +126,71 @@ angular.module('starter.controllers',[])
 })//
 
 
-.controller('editMyRolesCtrl', function($scope, Role, User, ArtistRole) {
+.controller('editMyRolesCtrl', function($state, $scope, Role, ArtistRole) { //, filterFilter) {
+
+  // $scope.compare = function(role) {
+  //   if (filterFilter($scope.myRoles, {
+  //     id: role.id
+  //   }).length > 0 ) {
+  //     return true;
+  //   }
+  // }
+
   var userId = window.localStorage['id'];
-  // var user = User.get({id: userId});
-  // $scope.user = user;
-  $scope.roles = ArtistRole.query({id: userId});
-  // $scope.roles = Role.query();
+  $scope.myRoles = ArtistRole.query({id: userId});
+  $scope.roles = Role.query();
+
+  $scope.cancelMyRoles = function() {
+    $state.go('app.edit-profile');
+  }
+
+  $scope.saveMyRoles = function(form) {
+    saveData = {};
+    for (var role of $scope.roles) {
+      if (role.checked === true) {
+        saveData[role.name] = role.id;
+      }
+    }
+    saveData["id"] = userId;
+    // console.log(saveData);
+
+    $http({url:`http://floating-tor-67033.herokuapp.com/users/${userId}/roles`,
+           method: 'PUT',
+           data: saveData
+         }).success(function(response){
+      $state.go('app.edit-profile');
+      // $scope.closeRegister();
+    }).error(function(errorData){
+      console.log(errorData);
+    })
+  }
 })//
 
-.controller('editSearchRolesCtrl', function($scope, Role) {
+.controller('editSearchRolesCtrl', function($scope, Role, SearchRole) { //, filterFilter) {
+
+  // $scope.compare = function(role) {
+  //   if (filterFilter($scope.searchRoles, {
+  //     id: role.id
+  //   }).length > 0 ) {
+  //     return true
+  //   }
+  // }
+
+  var userId = window.localStorage['id'];
+  $scope.searchRoles = SearchRole.query({id: userId});
   $scope.roles = Role.query();
-})
+
+    // $http({url:"http://floating-tor-67033.herokuapp.com/login",
+    //        method: 'POST',
+    //        data: { username: form.username.$modelValue, password: form.password.$modelValue}}).success(function(response){
+    //   window.localStorage['id'] = response.id;
+    //   $state.go('app.profile');
+    //   $scope.closeLogin();
+    // }).error(function(errorData){
+    //   console.log(errorData);
+    // })
+
+})//
 
 .controller('startPickingCtrl', function($scope) {
   $scope.$on("$ionicSlides.sliderInitialized", function(event, data){
