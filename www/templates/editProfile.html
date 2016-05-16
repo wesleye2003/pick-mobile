@@ -1,35 +1,39 @@
 <ion-view title="Edit Profile" id="edit-profile">
   <ion-content padding="false" class=" manual-remove-top-padding has-header" scroll="false">
 
-  <div class="list">
+  <form name="editProfileForm" class="list" ng-submit="doEditProfile(editProfileForm)" novalidate>
     <img id="profile-image" ng-src="img/profile_placeholder.jpg">
 
     <label class="item item-input">
       <span class="input-label">Username</span>
-      <input type="text" placeholder="{{user.username}}">
+      <input type="text" placeholder="{{user.username}}" ng-model="username" name="username" required>
     </label>
+
     <label class="item item-input">
       <span class="input-label">Location</span>
       <input type="text" placeholder="{{user.zipcode}}">
     </label>
+
      <label class="item item-input">
       <span class="input-label">Genres</span>
       <input type="text" placeholder="{{user.genres}}">
     </label>
+
     <label class="item item-input">
       <span class="input-label">About Me</span>
       <textarea type="text" placeholder="{{user.description}}"></textarea>
     </label>
+
+
     <!-- Edit My Roles Button -->
     <button id="edit-my-role-btn" class="edit-btn button button-block button-positive" ng-click="getEditMyRolesForm()">Edit My Instruments</button>
     <!-- Edit Searched Roles Button -->
     <button id="edit-search-role-btn" class="button button-block button-positive" ng-click="getEditSearchedRolesForm()">Edit Roles I'm Searching For</button>
-    <!-- Connect to SoundCloud Button -->
-    <button class="button-energized edit-btn button button-block button-positive" type="submit">Connect To Sound Cloud</button>
-    <!--  -->
-      <button class="edit-btn button button-block button-positive" type="submit">Update Profile</button>
-  </div> <!--  END list -->
 
+    <button class="edit-btn button button-block button-positive" type="submit">Save Changes</button>
+  </form> <!--  END form -->
+
+  <div id="edit-success-error">{{responseMsg}}</div>
 
  </ion-content>
 </ion-view>

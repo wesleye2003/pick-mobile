@@ -239,3 +239,6 @@ td-card .buttondesc button{
     margin: 0 auto;
 }
 
+#edit-success-error{
+    text-align: center;
+}

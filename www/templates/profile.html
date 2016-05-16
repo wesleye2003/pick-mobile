@@ -8,7 +8,7 @@
 
         <img id="profile-image" ng-src="img/profile_placeholder.jpg">
         <h3 id="profile-name">{{user.username}}</h3>
-         <p id="profile-location">Chicago, IL</p>
+         <p id="profile-location">{{user.zipcode}}</p>
 
           <div id="profile-roles-container">
             <!-- <h2 id="profile-roles-text-header">ROLES</h3> -->
@@ -24,8 +24,7 @@
     </div> <!-- end content -->
      <div id="profile-about">
       <h3 id="profile-about-header">About Me:</h3>
-      <p>"Every drummer that had a name, had a name because of his individual playing. He didn't sound like anybody else, So everybody that I ever listened to, in some form, influenced my taste." -Buddy Rich
-      </p>
+      <p>{{user.description}}</p>
      </div>
       <div id="profile-soundcloud-container">
         <div id="profile-soundcloud-player" ></div>
