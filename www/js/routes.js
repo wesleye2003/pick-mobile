@@ -1,5 +1,7 @@
 angular.module('starter.routes', [])
 .config(function($stateProvider, $urlRouterProvider, $httpProvider) {
+  $httpProvider.defaults.useXDomain = true;
+  delete $httpProvider.defaults.headers.common['X-Requested-With'];
   $stateProvider
 
   // home page and register
@@ -11,13 +13,13 @@ angular.module('starter.routes', [])
   .state('register', {
     url: '/register',
     templateUrl: 'templates/register.html',
-    controller: 'registerCtrl'
+    controller: 'homeCtrl'
   })
 
   .state('login', {
     url: '/login',
     templateUrl: 'templates/login.html',
-    controller: 'loginCtrl'
+    controller: 'homeCtrl'
   })
 
   // start of app after login/register
