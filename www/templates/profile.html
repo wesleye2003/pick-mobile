@@ -1,17 +1,35 @@
 <ion-view title="Profile" id="profile">
   <ion-content padding="false" class=" manual-remove-top-padding has-header" scroll="false">
+
+   <div id="profile-bg">
+
     <div id="content">
       <div id="profile-info">
-        <img id="profile-image" src="">
-        <h3 id="profile-name">Welcome, {{user.username}}</h3>
-        <span id="profile-description" >
-          <div id="profile-roles" style="color:blue;">
-          <h3 ng-repeat="role in roles">{{role.name}}</h3></span>
+
+        <img id="profile-image" ng-src="img/profile_placeholder.jpg">
+        <h3 id="profile-name">{{user.username}}</h3>
+         <p id="profile-location">Chicago, IL</p>
+
+          <div id="profile-roles-container">
+            <!-- <h2 id="profile-roles-text-header">ROLES</h3> -->
+            <h3 id="profile-roles-text" ng-repeat="role in roles | limitTo:2">{{role.name}}</h3>
           </div>
-          <div id="profile-genres">
-          <h3 ng-repeat="genre in genres">{{genre.name}}</h3></span>
+
+          <div id="profile-genres-container">
+            <!-- <h2 id="profile-genres-text-header">GENRES</h3> -->
+            <h3 id="profile-genres-text" ng-repeat="genre in genres | limitTo:2">{{genre.name}}</h3></span>
           </div>
+
+      </div> <!-- end profile info -->
+    </div> <!-- end content -->
+     <div id="profile-about">
+      <h3 id="profile-about-header">About Me:</h3>
+      <p>"Every drummer that had a name, had a name because of his individual playing. He didn't sound like anybody else, So everybody that I ever listened to, in some form, influenced my taste." -Buddy Rich
+      </p>
+     </div>
+      <div id="profile-soundcloud-container">
+        <div id="profile-soundcloud-player" ></div>
       </div>
-    </div>
+  </div> <!-- end profile-bg -->
   </ion-content>
 </ion-view>
