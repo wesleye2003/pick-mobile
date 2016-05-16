@@ -132,12 +132,16 @@ angular.module('starter.controllers',[])
 })//
 
 
-.controller('editMyRolesCtrl', function($scope) {
-
+.controller('editMyRolesCtrl', function($scope, Role, User) {
+  // var userId = window.localStorage['id'];
+  var user = User.get({id: 1});
+  $scope.user = user;
+  // $scope.roles = User.roles.get({user_id: userId})
+  $scope.roles = Role.query();
 })//
 
-.controller('editSearchRolesCtrl', function($scope) {
-
+.controller('editSearchRolesCtrl', function($scope, Role) {
+  $scope.roles = Role.query();
 })
 
 .controller('startPickingCtrl', function($scope) {
