@@ -3,13 +3,29 @@
     <div class="padding">
       <img height="30px" src="img/icon.png">
     </div>
-    </ion-nav-title>
-<ion-pane ng-controller="CardsCtrl"  >
-  <td-cards>
-    <td-card id="td-card" ng-repeat="card in cards" on-destroy="cardDestroyed($index)"
-          on-swipe-left="cardSwipedLeft($index)" on-swipe-right="cardSwipedRight($index)"
-          on-partial-swipe="cardPartialSwipe(amt)">
-    </td-card>
-  </td-cards>
-</ion-pane>
+  </ion-nav-title>
+  <ion-pane ng-controller="CardsCtrl">
+    <td-cards>
+      <td-card id="td-card" ng-repeat="card in cards" on-destroy="cardDestroyed($index)"
+            on-swipe-left="cardSwipedLeft($index)" on-swipe-right="cardSwipedRight($index)"
+            on-partial-swipe="cardPartialSwipe(amt)">
+        <div id="content">
+          <div id="profile-info">
+            <img id="profile-image" ng-src="{{user.avatar_url}}">
+            <h3 id="profile-name">{{user.username}}</h3>
+            <p id="profile-location">{{user.zipcode}}</p>
+              <div id="profile-roles-container">
+                <!-- <h2 id="profile-roles-text-header">ROLES</h3> -->
+                <h3 id="profile-roles-text" ng-repeat="role in roles | limitTo:2">{{role.name}}</h3>
+              </div>
+
+              <div id="profile-genres-container">
+                <!-- <h2 id="profile-genres-text-header">GENRES</h3> -->
+                <h3 id="profile-genres-text" ng-repeat="genre in genres | limitTo:2">{{genre.name}}</h3></span>
+              </div>
+          </div> <!-- end profile info -->
+        </div>
+      </td-card>
+    </td-cards>
+  </ion-pane>
 </ion-view>
