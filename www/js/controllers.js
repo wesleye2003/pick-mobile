@@ -84,6 +84,7 @@ angular.module('starter.controllers',[])
 .controller('profileCtrl', function($scope, $http, Role, Genre, User, LoggedInUser) {
    //set scope properties so the variables can be accessed in the templates associated with
   //this controller in the state, see routes.js
+  var userId = window.localStorage['id'];		
   $scope.user = User.get({id: userId});
   // console.log($scope.user);
   $scope.roles = Role.query();
