@@ -34,9 +34,12 @@ angular.module('starter.controllers',[])
 
   // Perform the login action when the user submits the login form
   $scope.doRegister = function(form){
+
     var data = { username: form.username.$modelValue, password: form.password.$modelValue}
     console.log(data);
-
+    //post new user to /users path
+    //this http request accesses the /users directly, rather than using the factory in services.js
+    //user object is returned as response in json format
     $http({url:"http://floating-tor-67033.herokuapp.com/users",
            method: 'POST',
            data: { username: form.username.$modelValue, password: form.password.$modelValue}}).success(function(response){
@@ -115,15 +118,17 @@ angular.module('starter.controllers',[])
 
 })//
 
+//pass needed factories, scope, and localStorage as arguments to be accessed in the controller  var userId = window.localStorage['id'];
 .controller('profileCtrl', function($scope, $http, Role, Genre, User, LoggedInUser) {
-  //TO DO: Put in correct variables to get user data from form
-  var userId = window.localStorage['id'];
+   //set scope properties so the variables can be accessed in the templates associated with
+  //this controller in the state, see routes.js
+  var userId = window.localStorage['id'];		
   $scope.user = User.get({id: userId});
   // console.log($scope.user);
   $scope.roles = Role.query();
   $scope.genres = Genre.query();
   // console.log($scope.roles);
-
+  //now user, roles and genres can be accessed in profile.html
 })//
 
 
