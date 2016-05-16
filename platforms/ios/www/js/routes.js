@@ -14,6 +14,12 @@ angular.module('starter.routes', [])
     controller: 'registerCtrl'
   })
 
+  .state('login', {
+    url: '/login',
+    templateUrl: 'templates/login.html',
+    controller: 'loginCtrl'
+  })
+
   // start of app after login/register
   .state('app', {
     url: '/app',
