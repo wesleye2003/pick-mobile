@@ -129,6 +129,7 @@ td-card .buttondesc button{
     width: 375px;
 }
 
+/* Profile */
 #profile-bg {
     position: fixed;
     left: 0;
@@ -144,11 +145,12 @@ td-card .buttondesc button{
     }
 
     #content {
-    position: relative;
-    margin-top: 150px;
-    background-color: white;
-    box-shadow: 0px -1px 10px rgba(0,0,0,0.4);
-    padding-top: 200px;
+        position: relative;
+        margin-top: 150px;
+        background-color: white;
+        box-shadow: 0px -1px 10px rgba(0,0,0,0.4);
+        padding-top: 200px;
+        border: red solid 2px;
     }
 
     #profile-info {
@@ -179,3 +181,55 @@ td-card .buttondesc button{
     margin: 30px auto 0;
     box-shadow: 0px 0px 4px rgba(0,0,0,0.7);
     }
+
+#profile-roles-text{
+    font-size: 14px;
+}
+
+#profile-genres-text{
+    font-size: 14px;
+}
+#profile-roles-container{
+    width: 50%;
+    float: left;
+    /*height: 80px;*/
+    border: green 2px solid;
+}
+
+#profile-genres-container{
+    width: 50%;
+    float: left;
+    /*height: 80px;*/
+    border: blue 2px solid;
+}
+
+#profile-roles-container h2{
+    font-size: 12px;
+}
+
+#profile-genres-container h2{
+    font-size: 12px;
+}
+
+#profile-location{
+    font-size: 18px;
+}
+
+#profile-about{
+    /*height: 250px;*/
+    padding: 5px;
+    border: purple solid 2px;
+    clear:both;
+}
+
+#profile-about-header{
+    font-size: 14px;
+}
+
+#profile-soundcloud-container{
+    /*height: 250px;*/
+    border: solid yellow 2px;
+    /*clear:both;*/
+    height: 120px;
+}
+
