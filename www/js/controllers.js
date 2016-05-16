@@ -135,7 +135,7 @@ angular.module('starter.controllers',[])
 })//
 
 
-.controller('editMyRolesCtrl', function($state, $scope, Role, ArtistRole) { //, filterFilter) {
+.controller('editMyRolesCtrl', function($state, $scope, $http, Role, ArtistRole) { //, filterFilter) {
 
   // $scope.compare = function(role) {
   //   if (filterFilter($scope.myRoles, {
@@ -160,10 +160,10 @@ angular.module('starter.controllers',[])
         saveData[role.name] = role.id;
       }
     }
-    saveData["id"] = userId;
+    saveData["id"] = 20;
     // console.log(saveData);
 
-    $http({url:`http://floating-tor-67033.herokuapp.com/users/${userId}/roles`,
+    $http({url:`http://floating-tor-67033.herokuapp.com/users/20/roles`,
            method: 'PUT',
            data: saveData
          }).success(function(response){
