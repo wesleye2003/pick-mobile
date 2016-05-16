@@ -33,25 +33,24 @@ angular.module('starter.controllers',[])
   };
 
   // Perform the login action when the user submits the login form
-  $scope.doRegister = function(form, $state){
+  $scope.doRegister = function(form){
     var data = { username: form.username.$modelValue, password: form.password.$modelValue}
     console.log(data);
 
     $http({url:"http://floating-tor-67033.herokuapp.com/users",
            method: 'POST',
-           data: { username: form.username.$modelValue, password: form.password.$modelValue}}).then(function(response){
+           data: { username: form.username.$modelValue, password: form.password.$modelValue}}).success(function(response){
       window.localStorage['id'] = response.id;
-      console.log(response);
       $state.go('app.profile');
-    }, function(errorData){
+    }).error(function(errorData){
       console.log(errorData);
     })
     // window.localStorage['user_id'] = "1"
-    // alert('an attempt was made.')
+    // console.log('an attempt was made.')
     // $http.get(`http://localhost:3000/users/${window.localStorage['user_id']}`).then(function(response){
     //   console.log(response.data.id)
     // })
-  }
+  };
 
 
 })
@@ -78,13 +77,14 @@ angular.module('starter.controllers',[])
 
 })//
 
-.controller('profileCtrl', function($scope, $http, Role, Genre, User, LoggedInUser, localStorage) {
+.controller('profileCtrl', function($scope, $http, Role, Genre, User, LoggedInUser) {
   //TO DO: Put in correct variables to get user data from form
-  $scope.user = User.get({id: window.localStorage['id']});
-  console.log($scope.user);
+  var userId = window.localStorage['id'];
+  $scope.user = User.get({id: userId});
+  // console.log($scope.user);
   $scope.roles = Role.query();
   $scope.genres = Genre.query();
-  console.log($scope.roles);
+  // console.log($scope.roles);
 
 })//
 
