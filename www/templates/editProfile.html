@@ -1,0 +1,35 @@
+<ion-view title="Edit Profile" id="edit-profile">
+  <ion-content padding="false" class=" manual-remove-top-padding has-header" scroll="false">
+
+  <div class="list">
+    <img id="profile-image" ng-src="img/profile_placeholder.jpg">
+
+    <label class="item item-input">
+      <span class="input-label">Username</span>
+      <input type="text" placeholder="{{user.username}}">
+    </label>
+    <label class="item item-input">
+      <span class="input-label">Location</span>
+      <input type="text" placeholder="{{user.zipcode}}">
+    </label>
+     <label class="item item-input">
+      <span class="input-label">Genres</span>
+      <input type="text" placeholder="{{user.genres}}">
+    </label>
+    <label class="item item-input">
+      <span class="input-label">About Me</span>
+      <textarea type="text" placeholder="{{user.description}}"></textarea>
+    </label>
+
+    <button id="edit-my-role-btn" class="edit-btn button button-block button-positive" type="submit">Edit My Instruments</button>
+    <button id="edit-search-role-btn" class="button button-block button-positive" type="submit">Edit Roles I'm Searching For</button>
+
+    <!-- Connect to SoundCloud Button -->
+    <button class="button-energized edit-btn button button-block button-positive" type="submit">Connect To Sound Cloud</button>
+    <!--  -->
+      <button class="edit-btn button button-block button-positive" type="submit">Update Profile</button>
+  </div> <!--  END list -->
+
+
+ </ion-content>
+</ion-view>

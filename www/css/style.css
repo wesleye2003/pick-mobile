@@ -144,7 +144,7 @@ td-card .buttondesc button{
     text-align: center;
     }
 
-    #content {
+    #profile-content {
         position: relative;
         margin-top: 150px;
         background-color: white;
@@ -232,5 +232,10 @@ td-card .buttondesc button{
     border: solid gray 2px;
     /*clear:both;*/
     height: 110px;
+}
+
+.edit-btn {
+    width: 30px;
+    margin: 0 auto;
 }
 
