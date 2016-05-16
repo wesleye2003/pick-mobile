@@ -10,7 +10,7 @@ angular.module('starter.services',['ngResource'])
 })
 
 .factory('Pick', function($resource, $http) {
-   return $resource('http://floating-tor-67033.herokuapp.com/user/:id/pickings', {id: "@id"});
+   return $resource('http://floating-tor-67033.herokuapp.com/users/:id/pickings', {id: "@id"});
 })
 
 .factory('Role', function($resource, $http) {
@@ -20,6 +20,15 @@ angular.module('starter.services',['ngResource'])
 .factory('Genre', function($resource, $http){
   return $resource('http://floating-tor-67033.herokuapp.com/genres/:id', {id: "@id"});
 })
+
+.factory('ArtistRole', function($resource, $http) {
+  return $resource('http://floating-tor-67033.herokuapp.com/users/:id/roles', {id: "@id"});
+})
+
+.factory('SearchedRole', function($resource, $http) {
+  return $resource('http://floating-tor-67033.herokuapp.com/users/:id/searched_roles', {id: "@id"});
+})
+
 
 .service('BlankService', [function(){
 }]);

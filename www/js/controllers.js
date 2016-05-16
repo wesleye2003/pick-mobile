@@ -108,16 +108,21 @@ angular.module('starter.controllers',[])
 
 })//
 
-.controller('profileCtrl', function($scope, $http, Role, Genre, User, LoggedInUser) {
+.controller('profileCtrl', function($scope, $resource, $http, ArtistRole, Genre, User, LoggedInUser) {
   //TO DO: Put in correct variables to get user data from form
   $scope.$on('$ionicView.enter', function(e){
     var userId = window.localStorage['id'];
     $scope.user = User.get({id: userId});
     console.log($scope.user);
-    $scope.roles = Role.query();
+    $scope.roles = ArtistRole.query({id: userId});
     $scope.genres = Genre.query();
     // console.log($scope.roles);
   });
+
+  $scope.doConnect = function() {
+    var userId = window.localStorage['id'];
+    window.open(`https://floating-tor-67033.herokuapp.com/soundcloud/connect/${userId}`)
+  };
 })//
 
 
@@ -219,4 +224,3 @@ angular.module('starter.controllers',[])
     $scope.addCard();
   };
 })//
-
