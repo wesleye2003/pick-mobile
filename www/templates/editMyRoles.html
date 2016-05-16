@@ -2,10 +2,10 @@
   <ion-content padding="false" class=" manual-remove-top-padding has-header" scroll="true">
     <div id="profile-roles" style="color:blue;">
       <ion-checkbox ng-repeat="role in roles" ng-model="role.checked" ng-checked="role.checked">{{role.name}}</ion-checkbox>
-<!--  <p>{{user}}</p>
+      <!-- <p>{{user}}</p> -->
       <div class="item">
         <pre ng-bind="roles | json"></pre>
-      </div> -->
+      </div>
     </div>
   </ion-content>
 </ion-view>
