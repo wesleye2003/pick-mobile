@@ -33,8 +33,8 @@ angular.module('starter.controllers',[])
   };
 
   // Perform the login action when the user submits the login form
-  $scope.doRegister = function(form, $state){
-    //get values from register form input
+  $scope.doRegister = function(form){
+
     var data = { username: form.username.$modelValue, password: form.password.$modelValue}
     console.log(data);
     //post new user to /users path
@@ -42,21 +42,18 @@ angular.module('starter.controllers',[])
     //user object is returned as response in json format
     $http({url:"http://floating-tor-67033.herokuapp.com/users",
            method: 'POST',
-           data: { username: form.username.$modelValue, password: form.password.$modelValue}}).then(function(response){
-      //get user id and store in window.localStorage, which can be accessed in other controllers
+           data: { username: form.username.$modelValue, password: form.password.$modelValue}}).success(function(response){
       window.localStorage['id'] = response.id;
-      console.log(response);
-      //after response received, initiate the profile state, which renders the profile template
       $state.go('app.profile');
-    }, function(errorData){
+    }).error(function(errorData){
       console.log(errorData);
     })
     // window.localStorage['user_id'] = "1"
-    // alert('an attempt was made.')
+    // console.log('an attempt was made.')
     // $http.get(`http://localhost:3000/users/${window.localStorage['user_id']}`).then(function(response){
     //   console.log(response.data.id)
     // })
-  }
+  };
 
 
 })
@@ -83,15 +80,15 @@ angular.module('starter.controllers',[])
 
 })//
 
-//pass needed factories, scope, and localStorage as arguments to be accessed in the controller
-.controller('profileCtrl', function($scope, $http, Role, Genre, User, LoggedInUser, localStorage) {
-  //set scope properties so the variables can be accessed in the templates associated with
+//pass needed factories, scope, and localStorage as arguments to be accessed in the controller  var userId = window.localStorage['id'];
+.controller('profileCtrl', function($scope, $http, Role, Genre, User, LoggedInUser) {
+   //set scope properties so the variables can be accessed in the templates associated with
   //this controller in the state, see routes.js
-  $scope.user = User.get({id: window.localStorage['id']});
-  console.log($scope.user);
+  $scope.user = User.get({id: userId});
+  // console.log($scope.user);
   $scope.roles = Role.query();
   $scope.genres = Genre.query();
-  console.log($scope.roles);
+  // console.log($scope.roles);
   //now user, roles and genres can be accessed in profile.html
 })//
 

@@ -8,7 +8,7 @@ angular.module('starter.controllers',[])
   //$scope.$on('$ionicView.enter', function(e) {
   //});
 
-  
+
 })//
 
 .controller('homeCtrl', function($scope, $ionicModal, $http, $state) {
@@ -37,23 +37,22 @@ angular.module('starter.controllers',[])
     var data = { username: form.username.$modelValue, password: form.password.$modelValue}
     console.log(data);
 
-    $http({url:"http://floating-tor-67033.herokuapp.com/users", 
+    $http({url:"http://floating-tor-67033.herokuapp.com/users",
            method: 'POST',
-           data: { username: form.username.$modelValue, password: form.password.$modelValue}}).then(function(response){
+           data: { username: form.username.$modelValue, password: form.password.$modelValue}}).success(function(response){
       window.localStorage['id'] = response.id;
-      console.log(response);
       $state.go('app.profile');
-    }, function(errorData){
+    }).error(function(errorData){
       console.log(errorData);
     })
     // window.localStorage['user_id'] = "1"
-    // alert('an attempt was made.')
+    // console.log('an attempt was made.')
     // $http.get(`http://localhost:3000/users/${window.localStorage['user_id']}`).then(function(response){
     //   console.log(response.data.id)
     // })
-  }
-   
-  
+  };
+
+
 })
 
 .controller('picksCtrl', function($scope) {
@@ -78,17 +77,14 @@ angular.module('starter.controllers',[])
 
 })//
 
-.controller('profileCtrl', function($scope, $http, Role) {
-
-  var query = Role.query();
-  console.log(query);
-
-  // query.$promise.then(function(response){
-
-  // })
-
+.controller('profileCtrl', function($scope, $http, Role, Genre, User, LoggedInUser) {
+  //TO DO: Put in correct variables to get user data from form
+  var userId = window.localStorage['id'];
+  $scope.user = User.get({id: userId});
+  // console.log($scope.user);
   $scope.roles = Role.query();
-  console.log($scope.roles);
+  $scope.genres = Genre.query();
+  // console.log($scope.roles);
 
 })//
 
