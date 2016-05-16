@@ -11,13 +11,13 @@ angular.module('starter.routes', [])
   .state('register', {
     url: '/register',
     templateUrl: 'templates/register.html',
-    controller: 'registerCtrl'
+    controller: 'homeCtrl'
   })
 
   .state('login', {
     url: '/login',
     templateUrl: 'templates/login.html',
-    controller: 'loginCtrl'
+    controller: 'homeCtrl'
   })
 
   // start of app after login/register

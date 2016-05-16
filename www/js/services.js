@@ -9,6 +9,10 @@ angular.module('starter.services',['ngResource'])
    return $resource('http://floating-tor-67033.herokuapp.com/login/:id', {id: "@id"});
 })
 
+.factory('Pick', function($resource, $http) {
+   return $resource('http://floating-tor-67033.herokuapp.com/users/:id/pickings', {id: "@id"});
+})
+
 .factory('Role', function($resource, $http) {
     return $resource('http://floating-tor-67033.herokuapp.com/roles/:id', {id: "@id"});
 })
