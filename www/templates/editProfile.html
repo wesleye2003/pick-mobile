@@ -2,7 +2,7 @@
   <ion-content padding="false" class=" manual-remove-top-padding has-header" scroll="false">
 
   <form name="editProfileForm" class="list" ng-submit="doEditProfile(editProfileForm)" novalidate>
-    <img id="profile-image" ng-src="img/profile_placeholder.jpg">
+    <img id="profile-image" ng-src="{{user.avatar_url}}">
 
     <label class="item item-input">
       <span class="input-label">Username</span>
@@ -11,17 +11,17 @@
 
     <label class="item item-input">
       <span class="input-label">Location</span>
-      <input type="text" placeholder="{{user.zipcode}}">
+      <input type="text" placeholder="{{user.zipcode}}" ng-model="zipcode" name="zipcode">
     </label>
 
      <label class="item item-input">
       <span class="input-label">Genres</span>
-      <input type="text" placeholder="{{user.genres}}">
+      <input type="text" placeholder="{{user.genres}}" ng-model="genres" name="genres">
     </label>
 
     <label class="item item-input">
       <span class="input-label">About Me</span>
-      <textarea type="text" placeholder="{{user.description}}"></textarea>
+      <textarea type="text" placeholder="{{user.description}}" ng-model="description" name="description"></textarea>
     </label>
 
 
@@ -30,7 +30,7 @@
     <!-- Edit Searched Roles Button -->
     <button id="edit-search-role-btn" class="button button-block button-positive" ng-click="getEditSearchedRolesForm()">Edit Roles I'm Searching For</button>
 
-    <button class="edit-btn button button-block button-positive" type="submit">Save Changes</button>
+    <button class="edit-btn button button-block button-positive" type="submit" >Save Changes</button>
   </form> <!--  END form -->
 
   <div id="edit-success-error">{{responseMsg}}</div>

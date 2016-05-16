@@ -132,6 +132,7 @@ angular.module('starter.controllers',[])
 
 .controller('editProfileCtrl', function($state, $scope, $http, Role, Genre, User, LoggedInUser) {
   $scope.$on('$ionicView.enter', function(e){
+    $scope.responseMsg = "";
     var userId = window.localStorage['id'];
     $scope.user = User.get({id: userId});
     // console.log($scope.user);
@@ -151,23 +152,26 @@ angular.module('starter.controllers',[])
     };//edit searched
 
     $scope.doEditProfile = function(form){
-      // var edits = $.param({ username: form.username.$modelValue});
-      // console.log(edits);
+      var edits = { username: form.username.$modelValue, zipcode: form.zipcode.$modelValue, description: form.description.$modelValue}
+      console.log(edits);
 
       var userId = window.localStorage['id'];
-      // console.log("http://floating-tor-67033.herokuapp.com/users/" + userId + "?" + edits);
 
-     User.update({id: userId}, {username: form.username.$modelValue})
+     User.update({id: userId}, edits)
         .$promise.then(function(response){
           // console.log(response.status);
           $scope.responseMsg = response.status;
         }, function(error){
             $scope.responseMsg = error;
         });
-        // .error(function(errorData){
-        //   console.log(errorData);
-        // })//error
 
+      //when user leaves edit-profile view, reset form
+      //  $scope.$on("$destroy", function(){
+      //   // $state.go("app.edit-profile", {}, {reload:true});
+      //   $ionicHistory.clearCache();
+      //   $scope.responseMsg = "";
+      //   // .then(function(){ $state.go('app.fooState') });
+      // });
     };//doEditProfile()
   });//scope.on
 })//
