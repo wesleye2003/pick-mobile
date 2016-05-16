@@ -150,7 +150,8 @@ td-card .buttondesc button{
         background-color: white;
         box-shadow: 0px -1px 10px rgba(0,0,0,0.4);
         padding-top: 200px;
-        border: red solid 2px;
+        height: 210px;
+        /*border: red solid 2px;*/
     }
 
     #profile-info {
@@ -193,22 +194,22 @@ td-card .buttondesc button{
     width: 50%;
     float: left;
     /*height: 80px;*/
-    border: green 2px solid;
+    border: gray 2px solid;
 }
 
 #profile-genres-container{
     width: 50%;
     float: left;
     /*height: 80px;*/
-    border: blue 2px solid;
+    border: gray 2px solid;
 }
 
 #profile-roles-container h2{
-    font-size: 12px;
+    font-size: 14px;
 }
 
 #profile-genres-container h2{
-    font-size: 12px;
+    font-size: 14px;
 }
 
 #profile-location{
@@ -217,8 +218,8 @@ td-card .buttondesc button{
 
 #profile-about{
     /*height: 250px;*/
-    padding: 5px;
-    border: purple solid 2px;
+    padding: 15px;
+    border: gray solid 2px;
     clear:both;
 }
 
@@ -228,8 +229,8 @@ td-card .buttondesc button{
 
 #profile-soundcloud-container{
     /*height: 250px;*/
-    border: solid yellow 2px;
+    border: solid gray 2px;
     /*clear:both;*/
-    height: 120px;
+    height: 110px;
 }
 
