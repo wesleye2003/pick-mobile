@@ -42,6 +42,7 @@ angular.module('starter.controllers',[])
            data: { username: form.username.$modelValue, password: form.password.$modelValue}}).success(function(response){
       window.localStorage['id'] = response.id;
       $state.go('app.profile');
+      $scope.closeRegister();
     }).error(function(errorData){
       console.log(errorData);
     })
@@ -52,6 +53,43 @@ angular.module('starter.controllers',[])
     // })
   };
 
+   // Create the login modal that we will use later
+  $ionicModal.fromTemplateUrl('templates/login.html', {
+    scope: $scope
+  }).then(function(modal) {
+    $scope.modal = modal;
+  });
+
+  // Triggered in the login modal to close it
+  $scope.closeLogin = function() {
+    $scope.modal.hide();
+  };
+
+  // Open the login modal
+  $scope.login = function() {
+    $scope.modal.show();
+  };
+
+  // Perform the login action when the user submits the login form
+  $scope.doLogin = function(form){
+    var data = { username: form.username.$modelValue, password: form.password.$modelValue}
+    console.log(data);
+
+    $http({url:"http://floating-tor-67033.herokuapp.com/login",
+           method: 'POST',
+           data: { username: form.username.$modelValue, password: form.password.$modelValue}}).success(function(response){
+      window.localStorage['id'] = response.id;
+      $state.go('app.profile');
+      $scope.closeLogin();
+    }).error(function(errorData){
+      console.log(errorData);
+    })
+    // window.localStorage['user_id'] = "1"
+    // console.log('an attempt was made.')
+    // $http.get(`http://localhost:3000/users/${window.localStorage['user_id']}`).then(function(response){
+    //   console.log(response.data.id)
+    // })
+  };
 
 })
 
