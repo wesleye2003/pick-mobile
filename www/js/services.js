@@ -17,5 +17,9 @@ angular.module('starter.services',['ngResource'])
   return $resource('http://floating-tor-67033.herokuapp.com/genres/:id', {id: "@id"});
 })
 
+.factory('ArtistRole', function($resource, $http) {
+  return $resource('http://floating-tor-67033.herokuapp.com/users/:id/roles', {id: "@id"});
+})
+
 .service('BlankService', [function(){
 }]);
