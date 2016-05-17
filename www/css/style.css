@@ -253,7 +253,7 @@ td-card .buttondesc button{
 }
 
 #profile-about{
-    /*height: 250px;*/
+    height: 150px;
     padding: 15px;
     border: gray solid 2px;
     clear:both;
@@ -264,7 +264,7 @@ td-card .buttondesc button{
 }
 
 #profile-soundcloud-container{
-    /*height: 250px;*/
+    height: 250px;
     border: solid gray 2px;
     /*clear:both;*/
     height: 110px;
