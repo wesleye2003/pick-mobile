@@ -9,18 +9,20 @@
       <td-card id="td-card" ng-repeat="card in cards" on-destroy="cardDestroyed($index)"
             on-swipe-left="cardSwipedLeft($index)" on-swipe-right="cardSwipedRight($index)"
             on-partial-swipe="cardPartialSwipe(amt)">
-       
-          
+
+
             <img ng-src="{{card.avatar_url}}">
             <h3>{{card.username}}</h3>
             <p>{{card.zipcode}}</p>
+
+
               <!-- <div id="profile-roles-container"> -->
                 <!-- <h3 id="profile-roles-text" ng-repeat="role in roles | limitTo:2">{{role.name}}</h3> -->
               <!-- </div> -->
               <!-- <div id="profile-genres-container"> -->
                 <!-- <h3 id="profile-genres-text" ng-repeat="genre in genres | limitTo:2">{{genre.name}}</h3></span> -->
               <!-- </div> -->
-          
+
 
       </td-card>
     </td-cards>

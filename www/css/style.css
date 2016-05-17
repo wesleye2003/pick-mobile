@@ -431,3 +431,12 @@ font-family: 'Rock Salt', cursive;
     margin: 0 auto;
     background-color: #e84a5f;
 }
+/* edit profile*/
+#edit-my-role-btn{
+    border-color: #fd8f35;
+    background-color:#fd9d4e;
+}
+#edit-search-role-btn{
+    border-color: #fd8f35;
+    background-color:#fd9d4e;
+}
