@@ -101,11 +101,11 @@ angular.module('starter.controllers',[])
     }).error(function(errorData){
       console.log(errorData);
     })
-    window.localStorage['user_id'] = "1"
-    console.log('an attempt was made.')
-    $http.get(`http://floating-tor-67033.herokuapp.com/users/${window.localStorage['user_id']}`).then(function(response){
-      console.log(response.data.id)
-    })
+  //   window.localStorage['user_id'] = 
+  //   console.log('an attempt was made.')
+  //   $http.get(`http://floating-tor-67033.herokuapp.com/users/${window.localStorage['user_id']}`).then(function(response){
+  //     console.log(response.data.id)
+  //   })
   };
 
 })
@@ -120,6 +120,7 @@ angular.module('starter.controllers',[])
 .controller('profileCtrl', function($scope, $resource, $http, ArtistRole, GenreSelection, User, LoggedInUser) {
   //TO DO: Put in correct variables to get user data from form
   $scope.$on('$ionicView.enter', function(e){
+    console.log(window.localStorage['id'])
     var userId = window.localStorage['id'];
     $scope.user = User.get({id: userId});
     $scope.roles = ArtistRole.query({id: userId});
