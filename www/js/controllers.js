@@ -12,6 +12,10 @@ angular.module('starter.controllers',[])
 })//
 
 .controller('homeCtrl', function($scope, $ionicModal, $http, $state) {
+
+  $scope.$on('$ionicView.enter', function(e){
+    window.localStorage['id'] = ""
+  });
   // Form data for the login modal
   $scope.registerData = {};
 
@@ -34,12 +38,15 @@ angular.module('starter.controllers',[])
 
   // Perform the login action when the user submits the login form
   $scope.doRegister = function(form){
-    var data = { username: form.username.$modelValue, password: form.password.$modelValue}
+
+    var data = { zipcode: form.zip.$modelValue, username: form.username.$modelValue, password: form.password.$modelValue}
+
     console.log(data);
 
     $http({url:"http://localhost:3000/users",
            method: 'POST',
-           data: { username: form.username.$modelValue, password: form.password.$modelValue}}).success(function(response){
+           data: { zipcode: form.zip.$modelValue, username: form.username.$modelValue, password: form.password.$modelValue}}).success(function(response){
+
       window.localStorage['id'] = response.id;
       $state.go('app.profile');
       $scope.closeRegister();
@@ -393,7 +400,13 @@ angular.module('starter.controllers',[])
 
 
     $scope.cards = SearchRole.query({id: userId});
-    console.log($scope.cards)
+    console.log($scope.cards);
+    // console.log($scope.cards["0"].username);
+    // //get the 1st role for the user on the card
+    // $scope.roles = ArtistRole.query({id: userId});
+    // //get the users genres
+    // $scope.genres = GenreSelection.query({id: userId});
+
 
     $scope.cardDestroyed = function(index) {
       $scope.cards.splice(index, 1);
