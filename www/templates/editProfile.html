@@ -1,5 +1,5 @@
 <ion-view title="Edit Profile" id="edit-profile">
-  <ion-content padding="false" class=" manual-remove-top-padding has-header" scroll="false">
+  <ion-content padding="false" class=" manual-remove-top-padding has-header" scroll="true">
 
   <form name="editProfileForm" class="list" ng-submit="doEditProfile(editProfileForm)" novalidate>
     <img id="profile-image" ng-src="{{user.avatar_url}}">
@@ -24,16 +24,21 @@
       <textarea type="text" placeholder="{{user.description}}" ng-model="description" name="description"></textarea>
     </label>
 
-    <!-- Edit My Roles Button -->
-      <ion-item class="">
+    <ion-item class="">
+      <!-- Edit My Roles Button -->
+      <button id="edit-my-role-btn" class="edit-btn button button-block button-positive button-energized" ng-click="getEditMyRolesForm()" type="button">Edit My Roles</button>
 
-    <button id="edit-my-role-btn" class="edit-btn button button-block button-positive button-energized" ng-click="getEditMyRolesForm()" type="button">Edit My Roles</button>
+      <!-- Edit Searched Roles Button -->
+      <button id="edit-search-role-btn" class="button button-block button-positive button-energized" ng-click="getEditSearchedRolesForm()" type="button">Edit Roles I'm Searching For</button>
 
-    <!-- Edit Searched Roles Button -->
-    <button id="edit-search-role-btn" class="button button-block button-positive button-energized" ng-click="getEditSearchedRolesForm()" type="button">Edit Roles I'm Searching For</button>
+      <!-- Edit My Genres Button -->
+      <button id="edit-my-genre-btn" class="edit-btn button button-block button-positive button-energized" ng-click="getEditMyGenresForm()" type="button">Edit My Genres</button>
 
-    <button class="edit-btn button button-block button-positive button-assertive" type="submit" >Save Profile Changes</button>
-      </ion-item>
+      <!-- Edit Searched Genres Button -->
+      <button id="edit-search-genre-btn" class="button button-block button-positive button-energized" ng-click="getEditSearchedGenresForm()" type="button">Edit Genres I'm Searching For</button>
+
+      <button class="edit-btn button button-block button-positive button-assertive" type="submit" >Save Profile Changes</button>
+    </ion-item>
 
   </form> <!--  END form -->
 

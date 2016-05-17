@@ -142,6 +142,18 @@ angular.module('starter.controllers',[])
       $state.go('app.edit-search-roles');
     };//edit searched
 
+    //When "edit my genres" or "edit search genres" is clicked
+    //route to those forms
+    $scope.getEditMyGenresForm = function(){
+      // window.localStorage['id'] = response.id;
+      $state.go('app.edit-my-genres');
+    };//edit
+
+    $scope.getEditSearchedGenresForm = function(){
+      // window.localStorage['id'] = response.id;
+      $state.go('app.edit-search-genres');
+    };//edit searched
+
     $scope.doEditProfile = function(form){
       var edits = { username: form.username.$modelValue, zipcode: form.zipcode.$modelValue, description: form.description.$modelValue}
       console.log(edits);
@@ -296,11 +308,11 @@ angular.module('starter.controllers',[])
     $scope.searchGenres = SearchGenre.query({id: userId});
     $scope.genres = Genre.query();
 
-    $scope.cancelSearchGenres = function() {
+    $scope.cancelSearchedGenres = function() {
       $state.go('app.edit-profile');
     }
 
-    $scope.saveSearchGenres = function(form) {
+    $scope.saveSearchedGenres = function(form) {
       $http({url:`http://floating-tor-67033.herokuapp.com/users/${userId}/genres`,
                method: 'delete'
              })
@@ -341,7 +353,7 @@ angular.module('starter.controllers',[])
     console.log('CARDS CTRL');
     $ionicSideMenuDelegate.canDragContent(false);
 
-    
+
     $scope.cards = SearchRole.query({id: userId});
     console.log($scope.cards)
 
