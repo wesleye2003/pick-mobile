@@ -100,7 +100,7 @@ angular.module('starter.controllers',[])
   });
 })//
 
-.controller('profileCtrl', function($scope, $resource, $http, ArtistRole, Genre, User, LoggedInUser) {
+.controller('profileCtrl', function($scope, $resource, $http, ArtistRole, GenreSelection, User, LoggedInUser) {
   //TO DO: Put in correct variables to get user data from form
   $scope.$on('$ionicView.enter', function(e){
     var userId = window.localStorage['id'];
