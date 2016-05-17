@@ -134,7 +134,7 @@ angular.module('starter.controllers',[])
   $scope.$on('$ionicView.enter', function(e){
     var userId = window.localStorage['id'];
     $scope.user = User.get({id: userId});
-    // console.log($scope.user);
+    console.log($scope.user);
     $scope.roles = Role.query();
     $scope.genres = Genre.query();
 
@@ -182,35 +182,39 @@ angular.module('starter.controllers',[])
   //     return true;
   //   }
   // }
+  $scope.$on('$ionicView.enter', function(e){
+    var userId = window.localStorage['id'];
+    $scope.myRoles = ArtistRole.query({id: userId});
+    // console.log($scope.myRoles);
+    $scope.roles = Role.query();
 
-  var userId = window.localStorage['id'];
-  $scope.myRoles = ArtistRole.query({id: userId});
-  $scope.roles = Role.query();
+    $scope.cancelMyRoles = function() {
+      $state.go('app.edit-profile');
+    }
 
-  $scope.cancelMyRoles = function() {
-    $state.go('app.edit-profile');
-  }
+    $scope.saveMyRoles = function(form) {
+      $http({url:`http://floating-tor-67033.herokuapp.com/users/${userId}/roles`,
+               method: 'delete'
+             })
+      var saveData = {};
+      for (var role of $scope.roles) {
+        if (role.checked === true) {
+          saveData['id'] = role.id;
+        
+          console.log(saveData['id']);
 
-  $scope.saveMyRoles = function(form) {
-    saveData = {};
-    for (var role of $scope.roles) {
-      if (role.checked === true) {
-        saveData[role.name] = role.id;
+          $http({url:`http://floating-tor-67033.herokuapp.com/users/${userId}/roles/${saveData['id']}`,
+                 method: 'PUT'
+               }).success(function(response){
+            // $state.go('app.edit-profile');
+            // $scope.closeRegister();
+          }).error(function(errorData){
+            // console.log(errorData);
+          })
+        }
       }
     }
-    saveData["id"] = 20;
-    // console.log(saveData);
-
-    $http({url:`http://floating-tor-67033.herokuapp.com/users/20/roles`,
-           method: 'PUT',
-           data: saveData
-         }).success(function(response){
-      $state.go('app.edit-profile');
-      // $scope.closeRegister();
-    }).error(function(errorData){
-      console.log(errorData);
-    })
-  }
+  })
 })//
 
 .controller('editSearchRolesCtrl', function($scope, Role, SearchRole) { //, filterFilter) {
@@ -269,7 +273,6 @@ angular.module('starter.controllers',[])
 //Cards Controller - Start Picking
 .controller('CardsCtrl', function ($scope, $http, $ionicLoading, $ionicSideMenuDelegate, TDCardDelegate, SearchRole) {
   $scope.$on('$ionicView.enter', function(e){
-    debugger;
     console.log('CARDS CTRL');
     $ionicSideMenuDelegate.canDragContent(false);
     // var cardTypes = [];

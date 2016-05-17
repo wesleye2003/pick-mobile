@@ -24,14 +24,13 @@
       <textarea type="text" placeholder="{{user.description}}"></textarea>
     </label>
 
+    <button class="edit-btn button button-block button-positive" type="submit">Save Changes</button>
+  </form> <!--  END form -->
 
     <!-- Edit My Roles Button -->
     <button id="edit-my-role-btn" class="edit-btn button button-block button-positive" ng-click="getEditMyRolesForm()">Edit My Instruments</button>
     <!-- Edit Searched Roles Button -->
     <button id="edit-search-role-btn" class="button button-block button-positive" ng-click="getEditSearchedRolesForm()">Edit Roles I'm Searching For</button>
-
-    <button class="edit-btn button button-block button-positive" type="submit">Save Changes</button>
-  </form> <!--  END form -->
 
   <div id="edit-success-error">{{responseMsg}}</div>
 
