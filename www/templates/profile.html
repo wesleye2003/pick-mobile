@@ -16,7 +16,7 @@
         <img id="profile-image" ng-src="{{user.avatar_url}}">
         <h3 id="profile-name">{{user.username}}</h3>
          <h3 id="profile-roles-text-head" ng-repeat="role in roles | limitTo:1">{{role.name}}</h3>
-         <p id="profile-location">Chicago, IL</p>
+         <p id="profile-location">{{user.city}}</p>
 
 
          <ion-item id="scplayer-cont" class="">

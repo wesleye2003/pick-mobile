@@ -38,12 +38,15 @@ angular.module('starter.controllers',[])
 
   // Perform the login action when the user submits the login form
   $scope.doRegister = function(form){
+
     var data = { zipcode: form.zip.$modelValue, username: form.username.$modelValue, password: form.password.$modelValue}
+
     console.log(data);
 
     $http({url:"http://floating-tor-67033.herokuapp.com/users",
            method: 'POST',
            data: { zipcode: form.zip.$modelValue, username: form.username.$modelValue, password: form.password.$modelValue}}).success(function(response){
+
       window.localStorage['id'] = response.id;
       $state.go('app.profile');
       $scope.closeRegister();
