@@ -103,17 +103,17 @@ angular.module('starter.routes', [])
       }
   })
 
-  // app settings page
-  // .state('app.settings', {
-  //   url: '/settings',
+  /// logout
+  // .state('app.logout', {
+  //   // url: '/profile/:userId/edit/search-roles',
+  //   url: '/logout',
   //   views: {
-  //     'menuContent': {
-  //       templateUrl: 'views/settings/settings.html',
-  //       controller: 'settingsCtrl'
+  //       'menuContent': {
+  //         templateUrl: '',
+  //         controller: ''
+  //       }
   //     }
-  //   }
   // })
-
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/home');
 

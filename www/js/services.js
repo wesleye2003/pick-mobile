@@ -1,7 +1,12 @@
 angular.module('starter.services',['ngResource'])
 //factory example using resources
 .factory('User', function($resource, $http) {
-   return $resource('http://floating-tor-67033.herokuapp.com/users/:id', {id: "@id"});
+   var data = $resource('http://floating-tor-67033.herokuapp.com/users/:id', {id: "@id"},{
+    update: {
+      method: "PUT"
+    }
+   });
+   return data;
 })
 
 //send post to login route, which will return a user object
