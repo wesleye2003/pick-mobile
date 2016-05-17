@@ -8,6 +8,11 @@
   <ion-content>
     <form name="registerForm" ng-submit="doRegister(registerForm)" novalidate>
       <div class="list">
+        <label class="item item-input">
+          <span class="input-label">Zipcode</span>
+          <input type='text' ng-model="zip" name="zip" required>
+        </label>
+
      		<label class="item item-input">
 				  <span class="input-label">Username</span>
 				  <input type='text' ng-model="username" name="username" required>
@@ -18,7 +23,9 @@
 				  <input type='password' ng-model="password" name="password" required>
 				</label>
 
-        <button class="button button-block button-positive" type="submit">Register</button>
+
+        <button class="button button-block button-positive button-energized" type="submit">Register</button>
+
       </div>
     </form>
   </ion-content>
