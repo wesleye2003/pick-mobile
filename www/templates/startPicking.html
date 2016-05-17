@@ -1,9 +1,4 @@
 <ion-view view-title="Pick">
-  <ion-nav-title>
-    <div class="padding">
-      <img height="30px" src="img/icon.png">
-    </div>
-  </ion-nav-title>
   <ion-pane ng-controller="CardsCtrl">
     <td-cards>
       <td-card id="td-card" ng-repeat="card in cards" on-destroy="cardDestroyed($index)"
