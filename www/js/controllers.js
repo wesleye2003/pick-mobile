@@ -204,7 +204,7 @@ angular.module('starter.controllers',[])
       for (var role of $scope.roles) {
         if (role.checked === true) {
           saveData['id'] = role.id;
-        
+
           console.log(saveData['id']);
 
           $http({url:`http://floating-tor-67033.herokuapp.com/users/${userId}/roles/${saveData['id']}`,
@@ -275,51 +275,6 @@ angular.module('starter.controllers',[])
 })//
 
 //Cards Controller - Start Picking
-<<<<<<< HEAD
-.controller('CardsCtrl', function ($scope, $http, $ionicLoading, $ionicSideMenuDelegate, TDCardDelegate, SearchedRole) {
-  console.log('CARDS CTRL');
-  $ionicSideMenuDelegate.canDragContent(false);
-
-  var cardTypes = [];
-  $http.get('https://randomuser.me/api/?results=5').success(function (response) {
-      angular.forEach(response.results, function (famous) {
-        cardTypes.push(famous);
-        console.log(JSON.stringify(famous));
-      });
-      $ionicLoading.hide();
-    }).error(function (err) {
-      console.log(err);
-    });
-
-  $scope.cards = cardTypes;
-
-  var userId = window.localStorage['id'];
-  $scope.cards = SearchedRole.query({id: userId});
-  console.log($scope.cards);
-
-  $scope.cardDestroyed = function(index) {
-    $scope.cards.splice(index, 1);
-  };
-
-  $scope.addCard = function() {
-    var newCard = cardTypes[Math.floor(Math.random() * cardTypes.length)];
-    newCard.id = Math.random();
-    $scope.cards.push(angular.extend({}, newCard));
-  }
-
-  $scope.yesCard = function() {
-    console.log('YES');
-    $scope.addCard();
-  };
-
-  $scope.noCard = function() {
-    console.log('NO');
-    $scope.addCard();
-  };
-  $scope.toggleLeft = function() {
-  $ionicSideMenuDelegate.toggleLeft();
-  };
-=======
 .controller('CardsCtrl', function ($scope, $http, $ionicLoading, $ionicSideMenuDelegate, TDCardDelegate, SearchRole) {
   $scope.$on('$ionicView.enter', function(e){
     console.log('CARDS CTRL');
@@ -362,7 +317,6 @@ angular.module('starter.controllers',[])
     $ionicSideMenuDelegate.toggleLeft();
     };
   })
->>>>>>> master
 })//
 
 
