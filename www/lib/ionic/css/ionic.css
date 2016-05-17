@@ -2587,8 +2587,8 @@ body.grade-b, body.grade-c {
   margin-bottom: -1px;
   width: auto;
   height: auto;
-  background-color: #2a363b;
-  /*background: url("../../../img/background-texture-green-blue.jpg");*/
+  /*background-color: #2a363b;*/
+  background: url("../../../img/subtle-black-geo.png");
   /*background-repeat: no-repeat;*/
    }
 
