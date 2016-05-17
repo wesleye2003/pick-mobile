@@ -86,7 +86,7 @@ angular.module('starter.routes', [])
     views: {
       'menuContent': {
         templateUrl: 'templates/startPicking.html',
-        controller: 'startPickingCtrl'
+        controller: 'CardsCtrl'
       }
     }
   })
@@ -103,17 +103,17 @@ angular.module('starter.routes', [])
       }
   })
 
-  /// logout
-  // .state('app.logout', {
-  //   // url: '/profile/:userId/edit/search-roles',
-  //   url: '/logout',
+  // app settings page
+  // .state('app.settings', {
+  //   url: '/settings',
   //   views: {
-  //       'menuContent': {
-  //         templateUrl: '',
-  //         controller: ''
-  //       }
+  //     'menuContent': {
+  //       templateUrl: 'views/settings/settings.html',
+  //       controller: 'settingsCtrl'
   //     }
+  //   }
   // })
+
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/home');
 

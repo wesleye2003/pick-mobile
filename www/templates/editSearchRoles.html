@@ -3,10 +3,14 @@
   <ion-content padding="false" class=" manual-remove-top-padding has-header" scroll="false">
     <div id="profile-roles" style="color:blue;">
       <!-- <form -->
-      <ion-checkbox ng-repeat="role in roles" ng-model="role.checked" ng-checked="role.checked">{{role.name}}</ion-checkbox>
-      <!-- <div class="item">
-        <pre ng-bind="roles | json"></pre>
-      </div> -->
+      <ion-checkbox ng-repeat="role in roles"
+        ng-model="role.checked"
+        ng-checked="role.checked" >{{role.name}}
+      </ion-checkbox>
+
+      <button id="save-search-roles" class="button" type="submit">Save Search</button>
+      </form>
     </div>
+    <button id="cancel-search-roles" class="button" ng-click="">Cancel</button>
   </ion-content>
 </ion-view>
