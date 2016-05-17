@@ -394,13 +394,22 @@ angular.module('starter.controllers',[])
 })//
 
 //Cards Controller - Start Picking
-.controller('CardsCtrl', function (SearchRole, $scope, $http, $ionicLoading, $ionicSideMenuDelegate, TDCardDelegate, SearchRole) {
+.controller('CardsCtrl', function (SearchedRole, $scope, $http, $ionicLoading, $ionicSideMenuDelegate, TDCardDelegate, SearchRole) {
   var userId = window.localStorage['id'];
   $scope.$on('$ionicView.enter', function(e){
     console.log('CARDS CTRL');
     $ionicSideMenuDelegate.canDragContent(false);
     $ionicLoading.show();
-    $scope.cards = SearchRole.query({id: userId});
+    $scope.searchedRoles = SearchedRole.query({id: userId}).then(function(response){
+      $scope     
+    }, function(response) {
+      $scope.message1 = response
+    });
+    $scope.cards = SearchRole.query({id: userId}).then(function(response){     
+    }, function(response) {
+      $scope.message2 = response
+    });
+
     setTimeout(function(){
       $ionicLoading.hide();
     }, 2000)
