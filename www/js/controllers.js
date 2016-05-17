@@ -302,7 +302,7 @@ angular.module('starter.controllers',[])
       var newCard = cardTypes[Math.floor(Math.random() * cardTypes.length)];
       newCard.id = Math.random();
       $scope.cards.push(angular.extend({}, newCard));
-    }
+    };
 
     $scope.yesCard = function() {
       console.log('YES');
