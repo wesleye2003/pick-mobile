@@ -115,7 +115,8 @@ angular.module('starter.controllers',[])
     $scope.user = User.get({id: userId});
     console.log($scope.user);
     $scope.roles = ArtistRole.query({id: userId});
-    $scope.genres = Genre.query();
+    //in following line, changed to GenreSelection and added user id
+    $scope.genres = GenreSelection.query({id: userId});
     // console.log($scope.roles);
   });
 
@@ -200,7 +201,7 @@ angular.module('starter.controllers',[])
       for (var role of $scope.roles) {
         if (role.checked === true) {
           saveData['id'] = role.id;
-        
+
           console.log(saveData['id']);
 
           $http({url:`http://floating-tor-67033.herokuapp.com/users/${userId}/roles/${saveData['id']}`,
