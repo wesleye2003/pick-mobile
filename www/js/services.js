@@ -29,6 +29,10 @@ angular.module('starter.services',['ngResource'])
 .factory('ArtistRole', function($resource, $http) {
   return $resource('http://floating-tor-67033.herokuapp.com/users/:id/roles', {id: "@id"});
 })
+//added this code to match ArtistRole, we will need it for profile
+.factory('GenreSelection', function($resource, $http) {
+  return $resource('http://floating-tor-67033.herokuapp.com/users/:id/genres', {id: "@id"});
+})
 
 .factory('SearchRole', function($resource, $http) {
   return $resource('http://floating-tor-67033.herokuapp.com/users/:id/searched_roles', {id: "@id"});
