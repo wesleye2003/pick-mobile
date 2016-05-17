@@ -131,7 +131,7 @@ angular.module('starter.controllers',[])
 
   $scope.doConnect = function() {
     var userId = window.localStorage['id'];
-    window.open(`hhttp://floating-tor-67033.herokuapp.com/soundcloud/connect/${userId}`, '_system')
+    window.open(`http://floating-tor-67033.herokuapp.com/soundcloud/connect/${userId}`, '_system')
   };
 
   $scope.doOpen = function(linkUrl) {
@@ -406,15 +406,14 @@ angular.module('starter.controllers',[])
 
     SearchedRole.query({id: userId}).$promise.then(function(response){
       $scope.searchedRoles = response
-      console.log(response)
     }, function(response) {
-      $scope.message1 = response.status
+      $scope.message1 = response
     });
 
     SearchRole.query({id: userId}).$promise.then(function(response){
       $scope.cards = response
     }, function(response) {
-      $scope.message2 = response.status
+      $scope.message2 = response
     });
 
     setTimeout(function(){
