@@ -326,85 +326,50 @@ angular.module('starter.controllers',[])
 })//
 
 .controller('startPickingCtrl', function($scope) {
-  $scope.$on("$ionicSlides.sliderInitialized", function(event, data){
-    // data.slider is the instance of Swiper
-    $scope.slider = data.slider;
-  });
 
-  $scope.$on("$ionicSlides.slideChangeStart", function(event, data){
-    console.log('Slide change is beginning');
-  });
-
-  $scope.$on("$ionicSlides.slideChangeEnd", function(event, data){
-    // note: the indexes are 0-based
-    $scope.activeIndex = data.activeIndex;
-    $scope.previousIndex = data.previousIndex;
-  });
 })//
 
 //factory example using resources
 .controller('rolesCtrl', function($scope, Role) {
-  //get all roles
-  // $scope.roles = Role.query();
-  // console.log($scope.roles);
-  // //get one roll
-  // $scope.role = Role.query({id: 1});
-  // console.log($scope.role);
+
 })//
 
 //Cards Controller - Start Picking
 .controller('CardsCtrl', function ($scope, $http, $ionicLoading, $ionicSideMenuDelegate, TDCardDelegate, SearchRole) {
+  var userId = window.localStorage['id'];
   $scope.$on('$ionicView.enter', function(e){
     console.log('CARDS CTRL');
     $ionicSideMenuDelegate.canDragContent(false);
-    // var cardTypes = [];
-    // $http.get('https://randomuser.me/api/?results=5').success(function (response) {
-    //     angular.forEach(response.results, function (famous) {
-    //       cardTypes.push(famous);
-    //       console.log(JSON.stringify(famous));
-    //     });
-    //     $ionicLoading.hide();
-    //   }).error(function (err) {
-    //     console.log(err);
-    //   });
 
-    //$scope.cards = Array.prototype.slice.call(cardTypes, 0);
-    var userId = window.localStorage['id'];
+    
     $scope.cards = SearchRole.query({id: userId});
     console.log($scope.cards)
+
     $scope.cardDestroyed = function(index) {
       $scope.cards.splice(index, 1);
     };
 
-    $scope.addCard = function() {
-      var newCard = cardTypes[Math.floor(Math.random() * cardTypes.length)];
-      newCard.id = Math.random();
-      $scope.cards.push(angular.extend({}, newCard));
-    };
-
-    $scope.yesCard = function() {
-      console.log('YES');
-      $scope.addCard();
-    };
-
-    $scope.noCard = function() {
-      console.log('NO');
-      $scope.addCard();
-    };
     $scope.toggleLeft = function() {
     $ionicSideMenuDelegate.toggleLeft();
     };
-  })
+
+    })
+    $scope.cardSwipedLeft = function(index) {
+      console.log('LEFT SWIPE');
+      console.log(index)
+      console.log(userId)
+    };
+    $scope.cardSwipedRight = function(index) {
+      console.log('RIGHT SWIPE');
+      console.log(index)
+      console.log(userId)
+      $http({url:`http://floating-tor-67033.herokuapp.com/users/${userId}/pickings/${index}`,
+         method: 'post'
+       });
+    };
 })//
 
 
 .controller('CardCtrl', function($scope, TDCardDelegate) {
-  $scope.cardSwipedLeft = function(index) {
-    console.log('LEFT SWIPE');
-    $scope.addCard();
-  };
-  $scope.cardSwipedRight = function(index) {
-    console.log('RIGHT SWIPE');
-    $scope.addCard();
-  };
+
 })//
