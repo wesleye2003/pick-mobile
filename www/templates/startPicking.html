@@ -10,59 +10,52 @@
             on-swipe-left="cardSwipedLeft(card.id)" on-swipe-right="cardSwipedRight(card.id)"
             on-partial-swipe="cardPartialSwipe(amt)">
 
-            <img ng-src="{{card.avatar_url}}">
+       <!--      <img ng-src="{{card.avatar_url}}">
             <h3>{{card.username}}</h3>
             <h3>{{card.zipcode}}</h3>
             <h3>{{card.description}}</h3>
-            <a ng-href="{{card.permalink}}" ng-click="window.open(this.href, '_system')">SoundCloud</a>
+            <a ng-href="{{card.permalink}}" ng-click="window.open(this.href, '_system')">SoundCloud</a> -->
 
 
-      <!-- <div class="profile-bg">
-      <div class="transparent-bg">
+      <div class="profile-bg">
+        <div class="transparent-bg">
+          <div class='profile-text'>
 
-      <div class='profile-text'>
+            <div class="profile-content">
 
-      <div class="profile-content">
+              <div class="profile-info">
+                <img class="profile-image" ng-src="{{card.avatar_url}}">
+                <h3 class="profile-name">{{card.username}}</h3>
+                 <h3 class="profile-roles-text-head" ng-repeat="role in roles | limitTo:1">{{role.name}}</h3>
+                 <h3 class="profile-location">Chicago, IL</h3>
 
-      <div class="profile-info">
-        <img class="profile-image" ng-src="{{card.avatar_url}}">
-        <h3 class="profile-name">{{card.username}}</h3>
-         <h3 class="profile-roles-text-head" ng-repeat="role in roles | limitTo:1">{{role.name}}</h3>
-         <h3 class="profile-location">Chicago, IL</h3>
- -->
+                <ion-item class="scplayer-cont" class="">
+                    <button class="scplayerbtn"class="button button-block button-assertive" ng-click='doOpen(card.permalink)'>
+                    Hear Me On SoundCloud<img class="scplayicon" ng-src="img/scw (1).png"></button>
+                </ion-item>
 
-         <!-- <ion-item class="scplayer-cont" class="">
-            <button class="scplayerbtn"class="button button-block button-assertive" ng-click='doOpen(card.permalink)'>
-            Hear Me On SoundCloud<img class="scplayicon" ng-src="img/scw (1).png"></button>
-        </ion-item>
+                <div class="profile-roles-container">
+                  <span class="span-head">Other Roles: </span>
+                  <span class="profile-roles-text" ng-repeat="role in roles | limitTo:3" ng-if="$index > 0"> {{role.name}} </span>
+                </div>
 
-          <div class="profile-roles-container"> -->
-            <!-- <h2 class="profile-roles-text-header">ROLES</h3> -->
-            <!-- <span class="span-head">Other Roles: </span>
-            <span class="profile-roles-text" ng-repeat="role in roles | limitTo:3" ng-if="$index > 0"> {{role.name}} </span>
-          </div>
+                <div class="profile-genres-container">
+                  <span class='span-head'>Genres: </span>
+                  <span class="profile-genres-text" ng-repeat="genre in genres | limitTo:3">{{genre.name}}</span>
+                </div>
+              </div> <!-- end profile info -->
 
-          <div class="profile-genres-container">
-            <span class='span-head'>Genres: </span>
-            <span class="profile-genres-text" ng-repeat="genre in genres | limitTo:3">{{genre.name}}</span>
-          </div> -->
+          </div> <!-- end content -->
 
-      <!-- </div> --> <!-- end profile info -->
-   <!--  </div> --> <!-- end content -->
+         <div class="profile-about">
+          <h3 class="profile-about-header">About Me:</h3>
+          <h3 class="profile-about-text">{{card.description}}</h3>
+         </div>
 
-     <!-- <div class="profile-about">
-      <h3 class="profile-about-header">About Me:</h3>
-      <h3 class="profile-about-text">{{card.description}}</h3>
-     </div> -->
 
-      <!-- <div class="profile-soundcloud-container"> -->
-        <!-- <div class="profile-soundcloud-player" > -->
-
-        <!-- </div>  -->
-      <!-- </div> -->
-   <!--  </div>
-    </div> -->
-  <!-- </div> --> <!-- end profile-bg -->
+         </div>  <!-- profile-text-->
+      </div> <!-- trans-bg -->
+    </div> <!-- end profile-bg -->
 
 
       </td-card>
