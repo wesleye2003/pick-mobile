@@ -178,11 +178,13 @@ hr{
     border-color: #99b898;
 }
  #home-login-btn{
-    color: white;
+    color: #fecea8;
+    background-color: black;
  }
 
 #home-register-btn{
-    color: white;
+    color:#99b898;
+    background-color: black;
  }
 
 
