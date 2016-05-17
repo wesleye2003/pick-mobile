@@ -106,7 +106,8 @@ angular.module('starter.controllers',[])
     var userId = window.localStorage['id'];
     $scope.user = User.get({id: userId});
     $scope.roles = ArtistRole.query({id: userId});
-    $scope.genres = Genre.query();
+    //in following line, changed to GenreSelection and added user id
+    $scope.genres = GenreSelection.query({id: userId});
     // console.log($scope.roles);
   });
 
