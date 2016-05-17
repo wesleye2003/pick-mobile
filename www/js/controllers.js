@@ -162,7 +162,7 @@ angular.module('starter.controllers',[])
           // console.log(response.status);
           $scope.responseMsg = response.status;
         }, function(error){
-            $scope.responseMsg = error;
+            $scope.responseMsg = error.status;
         });
 
       //when user leaves edit-profile view, reset form
@@ -188,7 +188,7 @@ angular.module('starter.controllers',[])
   // }
   $scope.$on('$ionicView.enter', function(e){
     var userId = window.localStorage['id'];
-    $scope.myRoles = ArtistRole.query({id: userId});
+    // $scope.myRoles = ArtistRole.query({id: userId});
     // console.log($scope.myRoles);
     $scope.roles = Role.query();
 
@@ -210,8 +210,7 @@ angular.module('starter.controllers',[])
           $http({url:`http://floating-tor-67033.herokuapp.com/users/${userId}/roles/${saveData['id']}`,
                  method: 'PUT'
                }).success(function(response){
-            // $state.go('app.edit-profile');
-            // $scope.closeRegister();
+            $state.go('app.edit-profile');
           }).error(function(errorData){
             // console.log(errorData);
           })
@@ -221,7 +220,7 @@ angular.module('starter.controllers',[])
   })
 })//
 
-.controller('editSearchRolesCtrl', function($scope, Role, SearchRole) { //, filterFilter) {
+.controller('editSearchRolesCtrl', function($state, $scope, $http, Role, SearchRole) { //, filterFilter) {
 
   // $scope.compare = function(role) {
   //   if (filterFilter($scope.searchRoles, {
@@ -230,6 +229,40 @@ angular.module('starter.controllers',[])
   //     return true
   //   }
   // }
+
+  $scope.$on('$ionicView.enter', function(e){
+    var userId = window.localStorage['id'];
+    // $scope.myRoles = SearchRole.query({id: userId});
+    // console.log($scope.myRoles);
+    $scope.roles = Role.query();
+
+    $scope.cancelSearchedRoles = function() {
+      $state.go('app.edit-profile');
+    }
+
+    $scope.saveSearchedRoles = function(form) {
+      $http({url:`http://floating-tor-67033.herokuapp.com/users/${userId}/searched_roles`,
+               method: 'delete'
+             })
+      var saveData = {};
+      for (var role of $scope.roles) {
+        if (role.checked === true) {
+          saveData['id'] = role.id;
+
+          console.log(saveData['id']);
+
+          $http({url:`http://floating-tor-67033.herokuapp.com/users/${userId}/searched_roles/${saveData['id']}`,
+                 method: 'PUT'
+               }).success(function(response){
+            $state.go('app.edit-profile');
+          }).error(function(errorData){
+            // console.log(errorData);
+          })
+        }
+      }
+    }
+  })
+  })
 
   var userId = window.localStorage['id'];
   $scope.searchRoles = SearchRole.query({id: userId});
