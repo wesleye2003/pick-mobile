@@ -79,6 +79,30 @@ angular.module('starter.routes', [])
       }
   })
 
+  // edit genres on profile
+  .state('app.edit-my-genres', {
+    // url: '/profile/:userId/edit/my-genres',
+    url: '/edit-my-genres',
+    views: {
+        'menuContent': {
+          templateUrl: 'templates/editMyGenres.html',
+          controller: 'editMyGenresCtrl'
+        }
+      }
+  })
+
+  // edit most frequent genres searched
+  .state('app.edit-search-genres', {
+    // url: '/profile/:userId/edit/search-genres',
+    url: '/edit-search-genres',
+    views: {
+        'menuContent': {
+          templateUrl: 'templates/editSearchGenres.html',
+          controller: 'editSearchGenresCtrl'
+        }
+      }
+  })
+
   // start picking with current user
   .state('app.start-picking', {
     // url: '/profile/:userId/start-picking',

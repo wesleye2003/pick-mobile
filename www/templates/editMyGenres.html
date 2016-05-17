@@ -1,0 +1,15 @@
+<ion-view title="Edit My Genres" id="edit-my-genres">
+  <ion-content padding="false" class=" manual-remove-top-padding has-header" scroll="true">
+    <div id="profile-Genres" style="color:blue;">
+      <form name="myGenresForm" ng-submit="saveMyGenres(myGenresForm)" novalidate>
+        <ion-checkbox ng-repeat="genre in genres"
+          name="{{genre.name}}"
+          ng-model="genre.checked"
+          ng-checked="genre.checked" >{{genre.name}}
+        </ion-checkbox>
+        <button id="save-my-genres" class="button button-positive" type="submit">Save Genres</button>
+      </form>
+      <button id="cancel-my-Genres" class="button" ng-click="cancelMyGenres()">Cancel</button>
+    </div>
+  </ion-content>
+</ion-view>
