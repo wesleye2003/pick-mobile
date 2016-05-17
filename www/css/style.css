@@ -1,3 +1,8 @@
+
+/*ion-content {
+  background: url("img/background-texture-green-blue.jpg");
+
+}*/
 /* Card styling */
 .pane{
   background-color:#f3f3f3;
@@ -148,10 +153,22 @@ td-card .buttondesc button{
         position: relative;
         margin-top: 150px;
         background-color: white;
+        /*background: inherit;*/
         box-shadow: 0px -1px 10px rgba(0,0,0,0.4);
         padding-top: 200px;
         height: 210px;
         /*border: red solid 2px;*/
+    }
+
+    #transparent-bg {
+    -khtml-opacity:.50;
+     -moz-opacity:.50;
+     -ms-filter:”alpha(opacity=50)”;
+      filter:alpha(opacity=50);
+      filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0.5);
+      opacity:.50;
+
+      /*background: rgba(200, 54, 54, 0.5);*/
     }
 
     #profile-info {
@@ -160,11 +177,14 @@ td-card .buttondesc button{
     width: 100%;
     z-index: 2;
     text-align: center;
+    /*background: inherit;*/
     }
+
     #profile-name {
     color: #444;
     font-size: 26px;
     }
+
     #profile-description {
     font-size: 15px;
     color: #888;
@@ -176,12 +196,13 @@ td-card .buttondesc button{
     #profile-image {
     display: block;
     border-radius: 100px;
-    border: 1px solid #fff;
+    border: 3px solid #fff;
     width: 128px;
     height: 128px;
     margin: 30px auto 0;
-    box-shadow: 0px 0px 4px rgba(0,0,0,0.7);
+    box-shadow: 0px 0px 4px gray;
     }
+    /**/
     #pick-image {
         display: inline;
         border-radius: 100px;
@@ -197,7 +218,7 @@ td-card .buttondesc button{
         right: 20px;
         bottom: 55px;
     }
-
+/**/
 #profile-roles-text{
     font-size: 14px;
 }
@@ -208,15 +229,15 @@ td-card .buttondesc button{
 #profile-roles-container{
     width: 50%;
     float: left;
-    /*height: 80px;*/
-    border: gray 2px solid;
+    height: 57px;
+    border: gray 1px solid;
 }
 
 #profile-genres-container{
     width: 50%;
     float: left;
-    /*height: 80px;*/
-    border: gray 2px solid;
+    height: 57px;
+    border: gray 1px solid;
 }
 
 #profile-roles-container h2{

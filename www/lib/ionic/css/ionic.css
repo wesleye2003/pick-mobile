@@ -2586,7 +2586,11 @@ body.grade-b, body.grade-c {
   padding-top: 1px;
   margin-bottom: -1px;
   width: auto;
-  height: auto; }
+  height: auto;
+  background-color: #2a363b;
+  /*background: url("../../../img/background-texture-green-blue.jpg");*/
+  /*background-repeat: no-repeat;*/
+   }
 
 .menu .scroll-content.scroll-content-false {
   z-index: 11; }
