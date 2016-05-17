@@ -105,6 +105,9 @@ td-card .buttondesc button{
 }
 
 /* Pick */
+#home-content{
+    background: none;
+}
 #home-pick-icon {
     margin: 0 auto;
 }
@@ -133,8 +136,51 @@ td-card .buttondesc button{
     height: 565px;
     width: 375px;
 }
+.home-pics {
+    margin: 0 auto;
+    height: 29%;
+    position: relative;
+    width: 100%;
+}
 
-/* Profile */
+.home-pics h2 {
+    position: absolute;
+    width: 100%;
+    color: white;
+    text-align: center;
+    font-size: 18px;
+    top:60px;
+}
+
+hr{
+    position: absolute;
+    top:100px;
+    margin: 5px 10%;
+    width: 80%;
+    border-color: #e84a5f;
+    text-align: center;
+
+}
+
+#mid{
+    border-color: #fecea8;
+}
+
+#bottom{
+    border-color: #99b898;
+}
+/*#home-pic-top-text {
+    top:60px;
+}
+
+#home-pic-mid-text {
+    top:60px;
+}
+
+#home-pic-bottom-text {
+    top:60px;
+}*/
+/******** Profile ********/
 #profile-bg {
     position: fixed;
     left: 0;
