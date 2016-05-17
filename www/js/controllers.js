@@ -43,7 +43,7 @@ angular.module('starter.controllers',[])
 
     console.log(data);
 
-    $http({url:"http://http://floating-tor-67033.herokuapp.com//users",
+    $http({url:"http://floating-tor-67033.herokuapp.com/users",
            method: 'POST',
            data: { zipcode: form.zip.$modelValue, username: form.username.$modelValue, password: form.password.$modelValue}}).success(function(response){
 
@@ -55,7 +55,7 @@ angular.module('starter.controllers',[])
     })
     // window.localStorage['user_id'] = "1"
     // console.log('an attempt was made.')
-    // $http.get(`http://http://floating-tor-67033.herokuapp.com//users/${window.localStorage['user_id']}`).then(function(response){
+    // $http.get(`http://floating-tor-67033.herokuapp.com/users/${window.localStorage['user_id']}`).then(function(response){
     //   console.log(response.data.id)
     // })
   };
@@ -82,7 +82,7 @@ angular.module('starter.controllers',[])
     var data = { username: form.username.$modelValue, password: form.password.$modelValue}
     console.log(data);
 
-    // $http.post("http://http://floating-tor-67033.herokuapp.com//login",
+    // $http.post("http://floating-tor-67033.herokuapp.com/login",
     //   { username: form.username.$modelValue, password: form.password.$modelValue}
     //   ).then( function(response) {
     //     console.log(response.id);
@@ -92,7 +92,7 @@ angular.module('starter.controllers',[])
     //   }, function(errorData) {
     //     console.log(errorData);
     //   })
-    $http({url:"http://http://floating-tor-67033.herokuapp.com//login",
+    $http({url:"http://floating-tor-67033.herokuapp.com/login",
            method: 'POST',
            data: { username: form.username.$modelValue, password: form.password.$modelValue}}).success(function(response){
       window.localStorage['id'] = response.id;
@@ -103,7 +103,7 @@ angular.module('starter.controllers',[])
     })
   //   window.localStorage['user_id'] =
   //   console.log('an attempt was made.')
-  //   $http.get(`http://http://floating-tor-67033.herokuapp.com//users/${window.localStorage['user_id']}`).then(function(response){
+  //   $http.get(`http://floating-tor-67033.herokuapp.com/users/${window.localStorage['user_id']}`).then(function(response){
   //     console.log(response.data.id)
   //   })
   };
@@ -131,7 +131,7 @@ angular.module('starter.controllers',[])
 
   $scope.doConnect = function() {
     var userId = window.localStorage['id'];
-    window.open(`https://http://floating-tor-67033.herokuapp.com//soundcloud/connect/${userId}`, '_system')
+    window.open(`hhttp://floating-tor-67033.herokuapp.com/soundcloud/connect/${userId}`, '_system')
   };
 
   $scope.doOpen = function(linkUrl) {
@@ -219,15 +219,15 @@ angular.module('starter.controllers',[])
     }
 
     $scope.saveMyRoles = function(form) {
-      // $http({url:`http://http://floating-tor-67033.herokuapp.com//users/${userId}/roles`,
+      // $http({url:`http://floating-tor-67033.herokuapp.com/users/${userId}/roles`,
       //          method: 'delete'
       //        })
-      $http.delete(`http://http://floating-tor-67033.herokuapp.com//users/${userId}/roles`);
+      $http.delete(`http://floating-tor-67033.herokuapp.com/users/${userId}/roles`);
       var saveData = {};
       for (var role of $scope.roles) {
         if (role.checked === true) {
 
-          $http.post(`http://http://floating-tor-67033.herokuapp.com//users/${userId}/roles/${role.id}`,
+          $http.post(`http://floating-tor-67033.herokuapp.com/users/${userId}/roles/${role.id}`,
             {id: role.id}
           ).then( function(response) {
               $state.go('app.edit-profile');
@@ -236,7 +236,7 @@ angular.module('starter.controllers',[])
           });
         }
 
-          // $http({url:`http://http://floating-tor-67033.herokuapp.com//users/${userId}/roles`,
+          // $http({url:`http://floating-tor-67033.herokuapp.com/users/${userId}/roles`,
           //        method: 'POST',
           //        data: role.id
           //      }).success(function(response){
@@ -271,15 +271,15 @@ angular.module('starter.controllers',[])
     }
 
     $scope.saveSearchedRoles = function(form) {
-      // $http({url:`http://http://floating-tor-67033.herokuapp.com//users/${userId}/searched_roles`,
+      // $http({url:`http://floating-tor-67033.herokuapp.com/users/${userId}/searched_roles`,
       //          method: 'delete'
       //        })
-      $http.delete(`http://http://floating-tor-67033.herokuapp.com//users/${userId}/searched_roles`);
+      $http.delete(`http://floating-tor-67033.herokuapp.com/users/${userId}/searched_roles`);
       var saveData = {};
       for (var role of $scope.roles) {
         if (role.checked === true) {
 
-          $http.post(`http://http://floating-tor-67033.herokuapp.com//users/${userId}/searched_roles/${role.id}`,
+          $http.post(`http://floating-tor-67033.herokuapp.com/users/${userId}/searched_roles/${role.id}`,
             {id: role.id}
           ).then( function(response) {
               $state.go('app.edit-profile')
@@ -287,7 +287,7 @@ angular.module('starter.controllers',[])
               console.log(response);
           });
         }
-          // $http({url:`http://http://floating-tor-67033.herokuapp.com//users/${userId}/searched_roles/${role.id}`,
+          // $http({url:`http://floating-tor-67033.herokuapp.com/users/${userId}/searched_roles/${role.id}`,
           //        method: 'POST',
           //        data: role.id
           //      }).success(function(response){
@@ -312,17 +312,17 @@ angular.module('starter.controllers',[])
     }
 
     $scope.saveMyGenres = function(form) {
-      // $http({url:`http://http://floating-tor-67033.herokuapp.com//users/${userId}/genres`,
+      // $http({url:`http://floating-tor-67033.herokuapp.com/users/${userId}/genres`,
       //          method: 'delete'
       //        })
-      $http.delete(`http://http://floating-tor-67033.herokuapp.com//users/${userId}/genres`);
+      $http.delete(`http://floating-tor-67033.herokuapp.com/users/${userId}/genres`);
       var saveData = {};
       for (var genre of $scope.genres) {
         console.log(genre);
         if (genre.checked === true) {
           console.log(genre);
           console.log(saveData);
-          $http.post(`http://http://floating-tor-67033.herokuapp.com//users/${userId}/genres/${genre.id}`,
+          $http.post(`http://floating-tor-67033.herokuapp.com/users/${userId}/genres/${genre.id}`,
             saveData
             ).then(function successCallBack(response) {
               $state.go('app.edit-profile');
@@ -330,7 +330,7 @@ angular.module('starter.controllers',[])
               console.log(response);
             });
 
-          // $http({url:`http://http://floating-tor-67033.herokuapp.com//users/${userId}/genres/${genre.id}`,
+          // $http({url:`http://floating-tor-67033.herokuapp.com/users/${userId}/genres/${genre.id}`,
           //        method: 'POST',
           //        data: genre.id
           //      }).success(function(response){
@@ -356,15 +356,15 @@ angular.module('starter.controllers',[])
     }
 
     $scope.saveSearchedGenres = function(form) {
-      // $http({url:`http://http://floating-tor-67033.herokuapp.com//users/${userId}/searched_genres`,
+      // $http({url:`http://floating-tor-67033.herokuapp.com/users/${userId}/searched_genres`,
       //          method: 'delete'
       //        })
-      $http.delete(`http://http://floating-tor-67033.herokuapp.com//users/${userId}/searched_genres`);
+      $http.delete(`http://floating-tor-67033.herokuapp.com/users/${userId}/searched_genres`);
       var saveData = {};
       for (var genre of $scope.genres) {
         if (genre.checked === true) {
 
-          $http.post(`http://http://floating-tor-67033.herokuapp.com//users/${userId}/searched_genres/${role.id}`,
+          $http.post(`http://floating-tor-67033.herokuapp.com/users/${userId}/searched_genres/${role.id}`,
             {id: role.id}
           ).then( function(response) {
               $state.go('app.edit-profile')
@@ -373,7 +373,7 @@ angular.module('starter.controllers',[])
           });
         }
 
-        //   $http({url:`http://http://floating-tor-67033.herokuapp.com//users/${userId}/searched_genres/${role.id}`,
+        //   $http({url:`http://floating-tor-67033.herokuapp.com/users/${userId}/searched_genres/${role.id}`,
         //          method: 'PUT'
         //        }).success(function(response){
         //     $state.go('app.edit-profile');
@@ -446,7 +446,7 @@ angular.module('starter.controllers',[])
       console.log('RIGHT SWIPE');
       console.log(index)
       console.log(userId)
-      $http({url:`http://http://floating-tor-67033.herokuapp.com//users/${userId}/pickings/${index}`,
+      $http({url:`http://floating-tor-67033.herokuapp.com/users/${userId}/pickings/${index}`,
          method: 'post'
        });
     };
