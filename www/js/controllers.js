@@ -406,14 +406,15 @@ angular.module('starter.controllers',[])
 
     SearchedRole.query({id: userId}).$promise.then(function(response){
       $scope.searchedRoles = response
+      console.log(response)
     }, function(response) {
-      $scope.message1 = response
+      $scope.message1 = response.status
     });
 
     SearchRole.query({id: userId}).$promise.then(function(response){
       $scope.cards = response
     }, function(response) {
-      $scope.message2 = response
+      $scope.message2 = response.status
     });
 
     setTimeout(function(){
