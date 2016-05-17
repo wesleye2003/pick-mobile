@@ -262,22 +262,6 @@ angular.module('starter.controllers',[])
       }
     }
   })
-  })
-
-  var userId = window.localStorage['id'];
-  $scope.searchRoles = SearchRole.query({id: userId});
-  $scope.roles = Role.query();
-
-    // $http({url:"http://floating-tor-67033.herokuapp.com/login",
-    //        method: 'POST',
-    //        data: { username: form.username.$modelValue, password: form.password.$modelValue}}).success(function(response){
-    //   window.localStorage['id'] = response.id;
-    //   $state.go('app.profile');
-    //   $scope.closeLogin();
-    // }).error(function(errorData){
-    //   console.log(errorData);
-    // })
-
 })//
 
 .controller('startPickingCtrl', function($scope) {
