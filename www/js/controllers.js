@@ -267,46 +267,49 @@ angular.module('starter.controllers',[])
 })//
 
 //Cards Controller - Start Picking
-.controller('CardsCtrl', function ($scope, $http, $ionicLoading, $ionicSideMenuDelegate, TDCardDelegate, SearchedRole) {
-  console.log('CARDS CTRL');
-  $ionicSideMenuDelegate.canDragContent(false);
-  // var cardTypes = [];
-  // $http.get('https://randomuser.me/api/?results=5').success(function (response) {
-  //     angular.forEach(response.results, function (famous) {
-  //       cardTypes.push(famous);
-  //       console.log(JSON.stringify(famous));
-  //     });
-  //     $ionicLoading.hide();
-  //   }).error(function (err) {
-  //     console.log(err);
-  //   });
+.controller('CardsCtrl', function ($scope, $http, $ionicLoading, $ionicSideMenuDelegate, TDCardDelegate, SearchRole) {
+  $scope.$on('$ionicView.enter', function(e){
+    debugger;
+    console.log('CARDS CTRL');
+    $ionicSideMenuDelegate.canDragContent(false);
+    // var cardTypes = [];
+    // $http.get('https://randomuser.me/api/?results=5').success(function (response) {
+    //     angular.forEach(response.results, function (famous) {
+    //       cardTypes.push(famous);
+    //       console.log(JSON.stringify(famous));
+    //     });
+    //     $ionicLoading.hide();
+    //   }).error(function (err) {
+    //     console.log(err);
+    //   });
 
-  //$scope.cards = Array.prototype.slice.call(cardTypes, 0);
-  var userId = window.localStorage['id'];
-  $scope.cards = SearchedRole.query({id: userId});
-  console.log($scope.cards)
-  $scope.cardDestroyed = function(index) {
-    $scope.cards.splice(index, 1);
-  };
+    //$scope.cards = Array.prototype.slice.call(cardTypes, 0);
+    var userId = window.localStorage['id'];
+    $scope.cards = SearchRole.query({id: userId});
+    console.log($scope.cards)
+    $scope.cardDestroyed = function(index) {
+      $scope.cards.splice(index, 1);
+    };
 
-  $scope.addCard = function() {
-    var newCard = cardTypes[Math.floor(Math.random() * cardTypes.length)];
-    newCard.id = Math.random();
-    $scope.cards.push(angular.extend({}, newCard));
-  }
+    $scope.addCard = function() {
+      var newCard = cardTypes[Math.floor(Math.random() * cardTypes.length)];
+      newCard.id = Math.random();
+      $scope.cards.push(angular.extend({}, newCard));
+    }
 
-  $scope.yesCard = function() {
-    console.log('YES');
-    $scope.addCard();
-  };
+    $scope.yesCard = function() {
+      console.log('YES');
+      $scope.addCard();
+    };
 
-  $scope.noCard = function() {
-    console.log('NO');
-    $scope.addCard();
-  };
-  $scope.toggleLeft = function() {
-  $ionicSideMenuDelegate.toggleLeft();
-  };
+    $scope.noCard = function() {
+      console.log('NO');
+      $scope.addCard();
+    };
+    $scope.toggleLeft = function() {
+    $ionicSideMenuDelegate.toggleLeft();
+    };
+  })
 })//
 
 
