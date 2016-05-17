@@ -394,14 +394,17 @@ angular.module('starter.controllers',[])
 })//
 
 //Cards Controller - Start Picking
-.controller('CardsCtrl', function ($scope, $http, $ionicLoading, $ionicSideMenuDelegate, TDCardDelegate, SearchRole) {
+.controller('CardsCtrl', function (SearchRole, $scope, $http, $ionicLoading, $ionicSideMenuDelegate, TDCardDelegate, SearchRole) {
   var userId = window.localStorage['id'];
   $scope.$on('$ionicView.enter', function(e){
     console.log('CARDS CTRL');
     $ionicSideMenuDelegate.canDragContent(false);
-
-
+    $ionicLoading.show();
     $scope.cards = SearchRole.query({id: userId});
+    setTimeout(function(){
+      $ionicLoading.hide();
+    }, 2000)
+
     console.log($scope.cards);
     // console.log($scope.cards["0"].username);
     // //get the 1st role for the user on the card
