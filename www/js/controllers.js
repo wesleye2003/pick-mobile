@@ -105,7 +105,6 @@ angular.module('starter.controllers',[])
   $scope.$on('$ionicView.enter', function(e){
     var userId = window.localStorage['id'];
     $scope.user = User.get({id: userId});
-    console.log($scope.user);
     $scope.roles = ArtistRole.query({id: userId});
     $scope.genres = Genre.query();
     // console.log($scope.roles);
@@ -127,7 +126,6 @@ angular.module('starter.controllers',[])
     $scope.responseMsg = "";
     var userId = window.localStorage['id'];
     $scope.user = User.get({id: userId});
-    console.log($scope.user);
     $scope.roles = Role.query();
     $scope.genres = Genre.query();
 
@@ -256,7 +254,7 @@ angular.module('starter.controllers',[])
   })
 })//
 
-.controller('editMyGenresCtrl', function($state, $scope, Genre, ArtistGenre) {
+.controller('editMyGenresCtrl', function($state, $scope, $http, Genre, ArtistGenre) {
   $scope.$on('$ionicView.enter', function(e){
     var userId = window.localStorage['id'];
     $scope.myGenres = ArtistGenre.query({id: userId});
@@ -266,7 +264,7 @@ angular.module('starter.controllers',[])
       $state.go('app.edit-profile');
     }
 
-    $scope.saveMyGoles = function(form) {
+    $scope.saveMyGenres = function(form) {
       $http({url:`http://floating-tor-67033.herokuapp.com/users/${userId}/genres`,
                method: 'delete'
              })
@@ -280,7 +278,7 @@ angular.module('starter.controllers',[])
           $http({url:`http://floating-tor-67033.herokuapp.com/users/${userId}/genres/${saveData['id']}`,
                  method: 'PUT'
                }).success(function(response){
-            // $state.go('app.edit-profile');
+            $state.go('app.edit-profile');
             // $scope.closeRegister();
           }).error(function(errorData){
             // console.log(errorData);
@@ -291,7 +289,7 @@ angular.module('starter.controllers',[])
   })
 })//
 
-.controller('editSearchGenresCtrl', function($state, $scope, Genre, SearchGenre) {
+.controller('editSearchGenresCtrl', function($state, $scope, $http, Genre, SearchGenre) {
   $scope.$on('$ionicView.enter', function(e){
     var userId = window.localStorage['id'];
     $scope.searchGenres = SearchGenre.query({id: userId});
@@ -301,7 +299,7 @@ angular.module('starter.controllers',[])
       $state.go('app.edit-profile');
     }
 
-    $scope.saveSearchGoles = function(form) {
+    $scope.saveSearchGenres = function(form) {
       $http({url:`http://floating-tor-67033.herokuapp.com/users/${userId}/genres`,
                method: 'delete'
              })
@@ -315,7 +313,7 @@ angular.module('starter.controllers',[])
           $http({url:`http://floating-tor-67033.herokuapp.com/users/${userId}/genres/${saveData['id']}`,
                  method: 'PUT'
                }).success(function(response){
-            // $state.go('app.edit-profile');
+            $state.go('app.edit-profile');
             // $scope.closeRegister();
           }).error(function(errorData){
             // console.log(errorData);
