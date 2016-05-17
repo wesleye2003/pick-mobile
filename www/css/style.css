@@ -424,7 +424,8 @@ font-family: 'Rock Salt', cursive;
 }
 
 #scplayerbtn{
-    background-color:#e84a5f;
+    border-color: #fd8f35;
+    background-color:#fd9d4e;
 }
 #sc-connect-btn{
     margin: 0 auto;
