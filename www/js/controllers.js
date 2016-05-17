@@ -12,6 +12,10 @@ angular.module('starter.controllers',[])
 })//
 
 .controller('homeCtrl', function($scope, $ionicModal, $http, $state) {
+
+  $scope.$on('$ionicView.enter', function(e){
+    window.localStorage['id'] = ""
+  });
   // Form data for the login modal
   $scope.registerData = {};
 
