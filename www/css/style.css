@@ -179,12 +179,14 @@ hr{
 }
  #home-login-btn{
     color: #fecea8;
-    background-color: black;
+    background-color: #262626;
+    font-size: 14px;
  }
 
 #home-register-btn{
     color:#99b898;
-    background-color: black;
+    background-color: #262626;
+    font-size: 14px;
  }
 
 
