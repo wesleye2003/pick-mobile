@@ -317,8 +317,10 @@ angular.module('starter.controllers',[])
       $http.delete(`http://floating-tor-67033.herokuapp.com/users/${userId}/genres`);
       var saveData = {};
       for (var genre of $scope.genres) {
+        console.log(genre);
         if (genre.checked === true) {
-
+          console.log(genre);
+          console.log(saveData);
           $http.post(`http://floating-tor-67033.herokuapp.com/users/${userId}/genres/${genre.id}`,
             saveData
             ).then(function successCallBack(response) {
@@ -326,16 +328,17 @@ angular.module('starter.controllers',[])
             }, function errorCallBack(response) {
               console.log(response);
             });
-        }
-          // $http({url:`http://floating-tor-67033.herokuapp.com/users/${userId}/genres/${role.id}`,
+
+          // $http({url:`http://floating-tor-67033.herokuapp.com/users/${userId}/genres/${genre.id}`,
           //        method: 'POST',
-          //        data: role.id
+          //        data: genre.id
           //      }).success(function(response){
           //   $state.go('app.edit-profile');
           //   // $scope.closeRegister();
           // }).error(function(errorData){
           //   // console.log(errorData);
           // })
+        }
       }
     }
   })
