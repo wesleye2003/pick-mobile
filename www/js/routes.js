@@ -120,11 +120,11 @@ angular.module('starter.routes', [])
     // url: '/profile/:userId/picks',
     url: '/picks',
     views: {
-        'menuContent': {
-          templateUrl: 'templates/picks.html',
-          controller: 'picksCtrl'
-        }
+      'menuContent': {
+        templateUrl: 'templates/picks.html',
+        controller: 'picksCtrl'
       }
+    }
   })
 
   // app settings page

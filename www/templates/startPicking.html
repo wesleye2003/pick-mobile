@@ -1,5 +1,10 @@
 <ion-view view-title="Pick">
   <ion-pane ng-controller="CardsCtrl">
+  <div id="searched-roles-error">{{message1.status}}</div>
+  <div>Looking for: <span ng-repeat="searchedRole in searchedRoles" class="searched-role">{{searchedRole.name}}</span></div>
+  <div id="searched-users-error">{{message2.status}}</div>
+
+
     <td-cards>
       <td-card id="td-card" ng-repeat="card in cards" on-destroy="cardDestroyed($index)"
             on-swipe-left="cardSwipedLeft(card.id)" on-swipe-right="cardSwipedRight(card.id)"

@@ -1,7 +1,12 @@
 angular.module('starter.services',['ngResource'])
 //factory example using resources
 .factory('User', function($resource, $http) {
-   return $resource('http://floating-tor-67033.herokuapp.com/users/:id', {id: "@id"});
+   var data = $resource('http://floating-tor-67033.herokuapp.com/users/:id', {id: "@id"},{
+    update: {
+      method: "PUT"
+    }
+   });
+   return data;
 })
 
 //send post to login route, which will return a user object
@@ -24,11 +29,22 @@ angular.module('starter.services',['ngResource'])
 .factory('ArtistRole', function($resource, $http) {
   return $resource('http://floating-tor-67033.herokuapp.com/users/:id/roles', {id: "@id"});
 })
+//added this code to match ArtistRole, we will need it for profile
+.factory('GenreSelection', function($resource, $http) {
+  return $resource('http://floating-tor-67033.herokuapp.com/users/:id/genres', {id: "@id"});
+})
 
-.factory('SearchedRole', function($resource, $http) {
+.factory('SearchRole', function($resource, $http) {
   return $resource('http://floating-tor-67033.herokuapp.com/users/:id/searched_roles', {id: "@id"});
 })
 
+.factory('ArtistGenre', function($resource, $http) {
+  return $resource('http://floating-tor-67033.herokuapp.com/users/:id/genres', {id: "@id"});
+})
+
+.factory('SearchGenre', function($resource, $http) {
+  return $resource('http://floating-tor-67033.herokuapp.com/users/:id/searched_genres', {id: "@id"});
+})
 
 .service('BlankService', [function(){
 }]);
