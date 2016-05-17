@@ -400,12 +400,13 @@ angular.module('starter.controllers',[])
     console.log('CARDS CTRL');
     $ionicSideMenuDelegate.canDragContent(false);
     $ionicLoading.show();
-    $scope.searchedRoles = SearchedRole.query({id: userId}).$promise.then(function(response){
-      $scope     
+    SearchedRole.query({id: userId}).$promise.then(function(response){
+      $scope.searchedRoles = response
     }, function(response) {
       $scope.message1 = response
     });
-    $scope.cards = SearchRole.query({id: userId}).$promise.then(function(response){     
+    SearchRole.query({id: userId}).$promise.then(function(response){
+      $scope.cards = response    
     }, function(response) {
       $scope.message2 = response
     });
