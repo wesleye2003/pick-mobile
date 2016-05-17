@@ -320,7 +320,7 @@ hr{
 #profile-roles-text-head{
     font-size: 18px;
     padding: 2px;
-    color: #ff847c;
+    color: #e84a5f;
 
 font-family: 'Rock Salt', cursive;
 
@@ -337,9 +337,13 @@ font-family: 'Rock Salt', cursive;
     /*width: 50%;
     float: left;*/
     height: 40px;
-    border: gray 1px solid;
+    /*border: gray 1px solid;*/
     position: relative;
-    top:10px;
+    top:-15px;
+     font-size: 14px;
+    color: white;
+    text-align: left;
+    padding-left: 15px;
 
 }
 
@@ -347,16 +351,21 @@ font-family: 'Rock Salt', cursive;
     /*width: 50%;
     float: left;*/
     height: 40px;
-    border: gray 1px solid;
+    border-bottom: gray 1px solid;
     position: relative;
-    top: 10px;
+    top: -30px;
     /*border-left: gray 1px solid;*/
+    font-size: 14px;
+    color: white;
+    text-align: left;
+    padding-left: 15px;
+    /*margin-top: 0;*/
 }
 
-#profile-roles-container h2{
-    font-size: 12px;
-}
 
+.span-head{
+    text-align: left;
+}
 
 
 #profile-location{
@@ -368,33 +377,43 @@ font-family: 'Rock Salt', cursive;
 #profile-about{
     position: relative;
     height: 80px;
+    overflow-y: auto;
     padding: 15px;
     /*border: green solid 2px;*/
     clear:both;
     color: white;
-    top: 80px;
+    top: 135px;
 
 }
 
 #profile-about-header{
     font-size: 14px;
-    color: #ff847c;
+    color: #e84a5f;
     font-family: 'Rock Salt', cursive;
 
 }
 
 #profile-about-text{
-    font-size: 18px;
-}
-#scplayer{
-    /*height: 250px;*/
-    border: solid gray 2px;
-    /*clear:both;*/
-    height: 114px;
-    position: relative;
-    top: 70px;
+    font-size: 14px;
 }
 
+#scplayer-cont{
+    position: relative;
+    /*bottom: 0px;
+    left: 0px;*/
+    background: inherit;
+    margin: 0 45px;
+    border: none;
+}
+
+#scwhite{
+    float: left;
+
+}
+
+#scplayicon{
+    float: left;
+}
 .edit-btn {
     width: 30px;
     margin: 0 auto;
@@ -404,6 +423,10 @@ font-family: 'Rock Salt', cursive;
     text-align: center;
 }
 
+#scplayerbtn{
+    background-color:#e84a5f;
+}
 #sc-connect-btn{
     margin: 0 auto;
+    background-color: #e84a5f;
 }
