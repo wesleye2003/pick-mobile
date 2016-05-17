@@ -14,16 +14,18 @@
       <div id="profile-info">
         <img id="profile-image" ng-src="{{user.avatar_url}}">
         <h3 id="profile-name">{{user.username}}</h3>
-         <p id="profile-location">Location: {{user.zipcode}}</p>
+         <h3 id="profile-roles-text-head" ng-repeat="role in roles | limitTo:1">{{role.name}}</h3>
+         <p id="profile-location">Chicago, IL</p>
 
           <div id="profile-roles-container">
             <!-- <h2 id="profile-roles-text-header">ROLES</h3> -->
-            <h3 id="profile-roles-text" ng-repeat="role in roles | limitTo:2">{{role.name}}</h3>
+            <span></span>
+            <span id="profile-roles-text" ng-repeat="role in roles | limitTo:2"> {{role.name}} </span>
           </div>
 
           <div id="profile-genres-container">
             <!-- <h2 id="profile-genres-text-header">GENRES</h3> -->
-            <h3 id="profile-genres-text" ng-repeat="genre in genres | limitTo:2">{{genre.name}}</h3></span>
+            <span id="profile-genres-text" ng-repeat="genre in genres | limitTo:2">{{genre.name}}</span>
           </div>
 
       </div> <!-- end profile info -->
@@ -37,7 +39,7 @@
       <!-- <div id="profile-soundcloud-container"> -->
         <!-- <div id="profile-soundcloud-player" > -->
           <!-- <ion-item class=""> -->
-            <button class="button button-block button-assertive" ng-click='doOpen(user.permalink)'>Soundcloud Player</button>
+            <button id="scplayer"class="button button-block button-assertive" ng-click='doOpen(user.permalink)'>Soundcloud Player</button>
           <!-- </ion-item> -->
         <!-- </div>  -->
       <!-- </div> -->
