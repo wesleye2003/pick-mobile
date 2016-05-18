@@ -429,6 +429,14 @@ font-family: 'Rock Salt', cursive;
     text-align: center;
 }
 
+#login-error {
+    text-align: center;
+    font-size: 12px;
+    background-color: white;
+    color: red
+}
+
+
 #scplayerbtn{
     border-color: #fd8f35;
     background-color:#fd9d4e;
