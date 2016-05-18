@@ -2591,7 +2591,6 @@ body.grade-b, body.grade-c {
   /*background: url("../../../img/subtle-black-geo.png");*/
   /*background-repeat: no-repeat;*/
 
-  background: url("../../../img/black-shadow.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
