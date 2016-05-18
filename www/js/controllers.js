@@ -187,7 +187,6 @@ angular.module('starter.controllers',[])
 .controller('editMyRolesCtrl', function($state, $scope, $http, Role, ArtistRole) {
 
   var userId = window.localStorage['id'];
-  var user_id = userId;
 
   $scope.$on('$ionicView.beforeEnter', function() {
     $scope.roles = Role.query();
@@ -196,12 +195,12 @@ angular.module('starter.controllers',[])
 
   $scope.$on('$ionicView.enter', function(e){
 
-    for (var role of $scope.roles) {
-      $scope.compare(role, $scope.myRoles);
-    }
-
     $scope.cancelMyRoles = function() {
       $state.go('app.edit-profile');
+    }
+
+    for (var role of $scope.roles) {
+      $scope.compare(role, $scope.myRoles);
     }
 
     $scope.saveMyRoles = function(form) {
@@ -214,7 +213,7 @@ angular.module('starter.controllers',[])
             .then( function(response) {
               $state.go('app.edit-profile');
             }, function(response) {
-                console.log(response);
+              console.log(response);
             });// $http.post
           }// if
         }// for
@@ -223,208 +222,83 @@ angular.module('starter.controllers',[])
   })// ionicView.enter
 })//
 
-.controller('editSearchRolesCtrl', function($state, $scope, $http, Role, SearchRole) { //, filterFilter) {
+.controller('editSearchRolesCtrl', function($state, $scope, $http, Role, SearchedRole) { //, filterFilter) {
 
-  // $scope.compare = function(role) {
-  //   if (filterFilter($scope.searchRoles, {
-  //     id: role.id
-  //   }).length > 0 ) {
-  //     return true
-  //   }
-  // }
+  var userId = window.localStorage['id'];
+
+  $scope.$on('$ionicView.beforeEnter', function() {
+    $scope.roles = Role.query();
+    $scope.searchedRoles = SearchedRole.query({id: userId});
+  });
 
   $scope.$on('$ionicView.enter', function(e){
-    var userId = window.localStorage['id'];
-    // $scope.myRoles = SearchRole.query({id: userId});
-    // console.log($scope.myRoles);
-    $scope.roles = Role.query();
 
     $scope.cancelSearchedRoles = function() {
       $state.go('app.edit-profile');
     }
 
-    $scope.saveSearchedRoles = function(form) {
-      // $http({url:`http://floating-tor-67033.herokuapp.com/users/${userId}/searched_roles`,
-      //          method: 'delete'
-      //        })
-      $http.delete(`http://floating-tor-67033.herokuapp.com/users/${userId}/searched_roles`);
-      var saveData = {};
-      for (var role of $scope.roles) {
-        if (role.checked === true) {
+    for (var role of $scope.roles) {
+      $scope.compare(role, $scope.searchedRoles);
+    }
 
-          $http.post(`http://floating-tor-67033.herokuapp.com/users/${userId}/searched_roles/${role.id}`,
-            {id: role.id}
-          ).then( function(response) {
+    $scope.saveSearchedRoles = function(form) {
+      $http.delete(`http://floating-tor-67033.herokuapp.com/users/${userId}/searched_roles`)
+      .then( function() {
+        for (var role of $scope.roles) {
+          if (role.checked === true) {
+            $http.post(`http://floating-tor-67033.herokuapp.com/users/${userId}/searched_roles/${role.id}`,
+              {id: role.id} )
+            .then( function(response) {
               $state.go('app.edit-profile')
             }, function(response) {
               console.log(response);
-          });
-        }
-          // $http({url:`http://floating-tor-67033.herokuapp.com/users/${userId}/searched_roles/${role.id}`,
-          //        method: 'POST',
-          //        data: role.id
-          //      }).success(function(response){
-          //   $state.go('app.edit-profile');
-          // }).error(function(errorData){
-          //   // console.log(errorData);
-          // })
-        // }
-      }
-    }
-  })
+            });// $http.post
+          }// if
+        }// for
+      });// $http.delete
+    }// $scope.saveSearchedRoles
+  })// ionicView.enter
 })//
 
 .controller('editMyGenresCtrl', function($state, $scope, $http, Genre, ArtistGenre) {
-  $scope.$on('$ionicView.enter', function(e){
-    var userId = window.localStorage['id'];
+
+  var userId = window.localStorage['id'];
+
+  $scope.$on('$ionicView.beforeEnter', function(e){
     $scope.myGenres = ArtistGenre.query({id: userId});
     $scope.genres = Genre.query();
+  });
+
+  $scope.$on('$ionicView.enter', function(e){
 
     $scope.cancelMyGenres = function() {
       $state.go('app.edit-profile');
     }
 
+    for (var genre of $scope.genres) {
+      $scope.compare(genre, $scope.myGenres);
+    }
+
     $scope.saveMyGenres = function(form) {
-      // $http({url:`http://floating-tor-67033.herokuapp.com/users/${userId}/genres`,
-      //          method: 'delete'
-      //        })
-      $http.delete(`http://floating-tor-67033.herokuapp.com/users/${userId}/genres`);
-      var saveData = {};
-      for (var genre of $scope.genres) {
-        console.log(genre);
-        if (genre.checked === true) {
-          console.log(genre);
-          console.log(saveData);
-          $http.post(`http://floating-tor-67033.herokuapp.com/users/${userId}/genres/${genre.id}`,
-            saveData
-            ).then(function successCallBack(response) {
+      $http.delete(`http://floating-tor-67033.herokuapp.com/users/${userId}/genres`)
+      .then( function() {
+        for (var genre of $scope.genres) {
+          if (genre.checked === true) {
+            $http.post(`http://floating-tor-67033.herokuapp.com/users/${userId}/genres/${genre.id}`,
+              {id: genre.id} )
+            .then(function successCallBack(response) {
               $state.go('app.edit-profile');
             }, function errorCallBack(response) {
               console.log(response);
-            });
-
-          // $http({url:`http://floating-tor-67033.herokuapp.com/users/${userId}/genres/${genre.id}`,
-          //        method: 'POST',
-          //        data: genre.id
-          //      }).success(function(response){
-          //   $state.go('app.edit-profile');
-          //   // $scope.closeRegister();
-          // }).error(function(errorData){
-          //   // console.log(errorData);
-          // })
-        }
-      }
-    }
-  })
+            });// $http.post
+          }// if
+        }// for
+      });// $http.delete
+    }// $scope.saveMyGenres
+  })// ionicView.enter
 })//
 
-.controller('editSearchGenresCtrl', function($state, $scope, $http, Genre, SearchGenre) {
-  $scope.$on('$ionicView.enter', function(e){
-    var userId = window.localStorage['id'];
-    $scope.searchGenres = SearchGenre.query({id: userId});
-    $scope.genres = Genre.query();
 
-    $scope.cancelSearchedGenres = function() {
-      $state.go('app.edit-profile');
-    }
-
-    $scope.saveSearchedGenres = function(form) {
-      // $http({url:`http://floating-tor-67033.herokuapp.com/users/${userId}/searched_genres`,
-      //          method: 'delete'
-      //        })
-      $http.delete(`http://floating-tor-67033.herokuapp.com/users/${userId}/searched_genres`);
-      var saveData = {};
-      for (var genre of $scope.genres) {
-        if (genre.checked === true) {
-
-          $http.post(`http://floating-tor-67033.herokuapp.com/users/${userId}/searched_genres/${role.id}`,
-            {id: role.id}
-          ).then( function(response) {
-              $state.go('app.edit-profile')
-            }, function(response) {
-              console.log(response);
-          });
-        }
-
-        //   $http({url:`http://floating-tor-67033.herokuapp.com/users/${userId}/searched_genres/${role.id}`,
-        //          method: 'PUT'
-        //        }).success(function(response){
-        //     $state.go('app.edit-profile');
-        //     // $scope.closeRegister();
-        //   }).error(function(errorData){
-        //     // console.log(errorData);
-        //   })
-        // }
-      }
-    }
-  })
-})//
-
-.controller('startPickingCtrl', function($scope) {
-
-})//
-
-//factory example using resources
-.controller('rolesCtrl', function($scope, Role) {
-
-})//
-
-//Cards Controller - Start Picking
-// .controller('CardsCtrl', function (SearchedRole, $scope, $http, $ionicLoading, $ionicSideMenuDelegate, TDCardDelegate, SearchRole) {
-//   var userId = window.localStorage['id'];
-//   $scope.$on('$ionicView.enter', function(e){
-//     console.log('CARDS CTRL');
-//     $ionicSideMenuDelegate.canDragContent(false);
-//     $ionicLoading.show();
-
-//     SearchedRole.query({id: userId}).$promise.then(function(response){
-//       $scope.searchedRoles = response;
-//       $scope.message1 = 'Success!';
-//     }, function(response) {
-//       console.log(response);
-//     });
-
-//     SearchRole.query({id: userId}).$promise.then(function(response){
-//       $scope.cards = response
-//     }, function(response) {
-//       $scope.message2 = response
-//     });
-
-//     setTimeout(function(){
-//       $ionicLoading.hide();
-//     }, 2000)
-
-//     console.log($scope.cards);
-//     // console.log($scope.cards["0"].username);
-//     // //get the 1st role for the user on the card
-//     // $scope.roles = ArtistRole.query({id: userId});
-//     // //get the users genres
-//     // $scope.genres = GenreSelection.query({id: userId});
-
-
-//     $scope.cardDestroyed = function(index) {
-//       $scope.cards.splice(index, 1);
-//     };
-
-//     $scope.toggleLeft = function() {
-//     $ionicSideMenuDelegate.toggleLeft();
-//     };
-
-//     })
-//     $scope.cardSwipedLeft = function(index) {
-//       console.log('LEFT SWIPE');
-//       console.log(index)
-//       console.log(userId)
-//     };
-//     $scope.cardSwipedRight = function(index) {
-//       console.log('RIGHT SWIPE');
-//       console.log(index)
-//       console.log(userId)
-//       $http({url:`http://floating-tor-67033.herokuapp.com/users/${userId}/pickings/${index}`,
-//          method: 'post'
-//        });
-//     };
-// })//
 
 .controller('CardsCtrl', function($state, $scope, $http, $ionicLoading, $ionicSideMenuDelegate, TDCardDelegate, SearchRole, $timeout) {
   var userId = window.localStorage['id'];
