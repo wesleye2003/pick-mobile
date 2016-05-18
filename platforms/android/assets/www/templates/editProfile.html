@@ -1,0 +1,53 @@
+<ion-view cache-view="false" title="Edit Profile" id="edit-profile">
+  <ion-content padding="false" class=" manual-remove-top-padding has-header" scroll="true">
+
+  <form ng-model="editProf" name="editProfileForm" class="list" ng-submit="doEditProfile(editProfileForm)" novalidate>
+    <img id="profile-image" ng-src="{{user.avatar_url}}">
+
+    <label class="item item-input">
+      <span class="input-label">Username</span>
+      <input class="edit-form-input" type="text" ng-model="username" name="username" placeholder="{{user.username}}">
+    </label>
+    <!-- <label class="item item-input">
+      <span class="input-label">Username</span>
+      <input class="edit-form-input" type="text" ng-model="username" name="username" >{{user.username}}</input>
+    </label> -->
+
+    <label class="item item-input">
+      <span class="input-label">Zipcode</span>
+      <input class="edit-form-input" type="text" ng-model="zipcode" name="zipcode" placeholder="{{user.zipcode}}">
+    </label>
+
+    <label class="item item-input">
+      <span class="input-label">About Me</span>
+      <textarea class="edit-form-input" type="text" ng-model="description" name="description" placeholder="{{user.description}}"></textarea>
+    </label>
+
+
+    <ion-item class="">
+      <!-- Edit My Roles Button -->
+      <button class="edit-btn button button-block button-positive button-assertive" type="submit" ng-disabled="editProfileForm.$invalid" >Save Profile Changes</button>
+
+    <button id="edit-my-role-btn" class="edit-btn button button-block button-positive button-balanced" ng-click="getEditMyRolesForm()" type="button">Edit My Roles</button>
+
+    <!-- Edit Searched Roles Button -->
+    <button id="edit-search-role-btn" class="button button-block button-positive button-balanced" ng-click="getEditSearchedRolesForm()" type="button">Edit Roles I'm Searching For</button>
+
+
+
+      <!-- Edit My Genres Button -->
+      <button id="edit-my-genre-btn" class="edit-btn button button-block button-positive button-energized" ng-click="getEditMyGenresForm()" type="button">Edit My Genres</button>
+
+
+      <!-- Edit Searched Genres Button -->
+     <!--  <button id="edit-search-genre-btn" class="button button-block button-positive button-energized" ng-click="getEditSearchedGenresForm()" type="button">Edit Genres I'm Searching For</button> -->
+
+
+    </ion-item>
+    <div id="edit-success-error">{{responseMsg}}</div>
+  </form> <!--  END form -->
+
+  <!-- <div id="edit-success-error">{{responseMsg}}</div> -->
+
+ </ion-content>
+</ion-view>

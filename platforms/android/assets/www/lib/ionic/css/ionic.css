@@ -2586,7 +2586,16 @@ body.grade-b, body.grade-c {
   padding-top: 1px;
   margin-bottom: -1px;
   width: auto;
-  height: auto; }
+  height: auto;
+  /*background-color: #2a363b;*/
+  /*background: url("../../../img/subtle-black-geo.png");*/
+  /*background-repeat: no-repeat;*/
+
+  background: url("../../../img/black-shadow.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+   }
 
 .menu .scroll-content.scroll-content-false {
   z-index: 11; }
@@ -6697,7 +6706,7 @@ progress {
         color: #fff; }
   .button.button-assertive {
     border-color: #e42012;
-    background-color: #ef473a;
+    background-color: #e84a5f;
     color: #fff; }
     .button.button-assertive:hover {
       color: #fff;
@@ -6723,8 +6732,8 @@ progress {
         box-shadow: none;
         color: #fff; }
   .button.button-balanced {
-    border-color: #28a54c;
-    background-color: #33cd5f;
+    border-color: #4a6949;
+    background-color: #5f875e;
     color: #fff; }
     .button.button-balanced:hover {
       color: #fff;
@@ -6750,15 +6759,15 @@ progress {
         box-shadow: none;
         color: #fff; }
   .button.button-energized {
-    border-color: #e6b400;
-    background-color: #ffc900;
+    border-color:  #ff584d;
+    background-color: #ff847c;
     color: #fff; }
     .button.button-energized:hover {
       color: #fff;
       text-decoration: none; }
     .button.button-energized.active, .button.button-energized.activated {
       border-color: #e6b400;
-      background-color: #e6b400;
+      background-color: #ff847c;
       box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1); }
     .button.button-energized.button-clear {
       border-color: transparent;

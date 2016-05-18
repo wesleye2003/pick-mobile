@@ -33,7 +33,7 @@ td-card {
     height: 80%;
     width: 80%;
     font-size: 100px;
-    background: url("../../../img/subtle-black-geo.png");
+    background-image: url("../../../img/subtle-black-geo.png");
     border: 1px solid #999;
     box-shadow: 0px 1px 10px rgba(0,0,0,0.5);
     border-radius: 10px;
@@ -888,5 +888,5 @@ td-card#end-card {
     text-align: center;
     margin: 0 0 0 0;
     padding: 0 0 0 0;
-
+    
 }

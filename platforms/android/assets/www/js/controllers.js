@@ -12,6 +12,10 @@ angular.module('starter.controllers',[])
 })//
 
 .controller('homeCtrl', function($scope, $ionicModal, $http, $state) {
+
+  $scope.$on('$ionicView.enter', function(e){
+    window.localStorage['id'] = "";
+  });
   // Form data for the login modal
   $scope.registerData = {};
 
@@ -34,21 +38,24 @@ angular.module('starter.controllers',[])
 
   // Perform the login action when the user submits the login form
   $scope.doRegister = function(form){
-    var data = { username: form.username.$modelValue, password: form.password.$modelValue}
+
+    var data = { zipcode: form.zip.$modelValue, username: form.username.$modelValue, password: form.password.$modelValue}
+
     console.log(data);
 
     $http({url:"http://floating-tor-67033.herokuapp.com/users",
            method: 'POST',
-           data: { username: form.username.$modelValue, password: form.password.$modelValue}}).success(function(response){
+           data: { zipcode: form.zip.$modelValue, username: form.username.$modelValue, password: form.password.$modelValue}}).success(function(response){
+
       window.localStorage['id'] = response.id;
       $state.go('app.profile');
       $scope.closeRegister();
-    }).error(function(errorData){
-      console.log(errorData);
+    }).error(function(error){
+      $scope.registrationErrorMsg = "All fields are required";
     })
     // window.localStorage['user_id'] = "1"
     // console.log('an attempt was made.')
-    // $http.get(`http://localhost:3000/users/${window.localStorage['user_id']}`).then(function(response){
+    // $http.get(`http://floating-tor-67033.herokuapp.com/users/${window.localStorage['user_id']}`).then(function(response){
     //   console.log(response.data.id)
     // })
   };
@@ -75,20 +82,30 @@ angular.module('starter.controllers',[])
     var data = { username: form.username.$modelValue, password: form.password.$modelValue}
     console.log(data);
 
+    // $http.post("http://floating-tor-67033.herokuapp.com/login",
+    //   { username: form.username.$modelValue, password: form.password.$modelValue}
+    //   ).then( function(response) {
+    //     console.log(response.id);
+    //     window.localStorage['id'] = response.id;
+    //     $state.go('app.profile');
+    //     $scope.closeLogin();
+    //   }, function(errorData) {
+    //     console.log(errorData);
+    //   })
     $http({url:"http://floating-tor-67033.herokuapp.com/login",
            method: 'POST',
            data: { username: form.username.$modelValue, password: form.password.$modelValue}}).success(function(response){
       window.localStorage['id'] = response.id;
       $state.go('app.profile');
       $scope.closeLogin();
-    }).error(function(errorData){
-      console.log(errorData);
+    }).error(function(error){
+      $scope.loginErrorMsg = "Invalid Username / Password Combination";
     })
-    // window.localStorage['user_id'] = "1"
-    // console.log('an attempt was made.')
-    // $http.get(`http://localhost:3000/users/${window.localStorage['user_id']}`).then(function(response){
-    //   console.log(response.data.id)
-    // })
+  //   window.localStorage['user_id'] =
+  //   console.log('an attempt was made.')
+  //   $http.get(`http://floating-tor-67033.herokuapp.com/users/${window.localStorage['user_id']}`).then(function(response){
+  //     console.log(response.data.id)
+  //   })
   };
 
 })
@@ -100,131 +117,435 @@ angular.module('starter.controllers',[])
   });
 })//
 
-.controller('registerCtrl', function($scope, $ionicModal, $http, $state) {
-
-})//
-
-.controller('loginCtrl', function($scope, $ionicModal, $http, $state) {
-
-})//
-
-.controller('profileCtrl', function($scope, $resource, $http, ArtistRole, Genre, User, LoggedInUser) {
+.controller('profileCtrl', function($scope, $resource, $http, ArtistRole, GenreSelection, User, LoggedInUser) {
   //TO DO: Put in correct variables to get user data from form
   $scope.$on('$ionicView.enter', function(e){
+    console.log(window.localStorage['id'])
     var userId = window.localStorage['id'];
     $scope.user = User.get({id: userId});
-    console.log($scope.user);
     $scope.roles = ArtistRole.query({id: userId});
-    $scope.genres = Genre.query();
+    //in following line, changed to GenreSelection and added user id
+    $scope.genres = GenreSelection.query({id: userId});
     // console.log($scope.roles);
   });
 
   $scope.doConnect = function() {
     var userId = window.localStorage['id'];
-    window.open(`https://floating-tor-67033.herokuapp.com/soundcloud/connect/${userId}`)
+    window.open(`http://floating-tor-67033.herokuapp.com/soundcloud/connect/${userId}`, '_system')
   };
 
   $scope.doOpen = function(linkUrl) {
-    window.open(linkUrl)
+    window.open(linkUrl, '_system')
   };
 })//
 
 
-.controller('editProfileCtrl', function($scope) {
+.controller('editProfileCtrl', function($timeout, $state, $scope, $http, Role, Genre, User, LoggedInUser) {
+  $scope.$on('$ionicView.enter', function(e){
 
+    $scope.responseMsg = "";
+    var userId = window.localStorage['id'];
+    $scope.user = User.get({id: userId});
+    $scope.roles = Role.query();
+    $scope.genres = Genre.query();
+
+    //When "edit my role" or "edit my searched roles" is clicked
+    //route to those forms
+    $scope.getEditMyRolesForm = function(){
+      // window.localStorage['id'] = response.id;
+      $state.go('app.edit-my-roles');
+    };//edit
+
+    $scope.getEditSearchedRolesForm = function(){
+      // window.localStorage['id'] = response.id;
+      $state.go('app.edit-search-roles');
+    };//edit searched
+
+    //When "edit my genres" or "edit search genres" is clicked
+    //route to those forms
+    $scope.getEditMyGenresForm = function(){
+      // window.localStorage['id'] = response.id;
+      $state.go('app.edit-my-genres');
+    };//edit
+
+    $scope.getEditSearchedGenresForm = function(){
+      // window.localStorage['id'] = response.id;
+      $state.go('app.edit-search-genres');
+    };//edit searched
+
+    $scope.doEditProfile = function(form){
+      var userId = window.localStorage['id'];
+      var edits = { username: form.username.$modelValue, zipcode: form.zipcode.$modelValue, description: form.description.$modelValue}
+      console.log(edits);
+
+      $scope.isEmpty = function(obj) {
+        for(var prop in obj) {
+          if (obj[prop] != null) {
+            return false;
+          }
+        }
+        return true;
+      };
+
+      //only update user if params from form is not empty
+      if (!$scope.isEmpty(edits)){
+       User.update({id: userId}, edits)
+          .$promise.then(function(response){
+            $scope.responseMsg = response.status;
+
+            $timeout(function() {
+
+            }, 2000).then(function() {
+              $state.go("app.profile");
+            });
+
+
+          }, function(error){
+              $scope.responseMsg = "Something went wrong. Please retry your changes.";
+          });
+      }
+      //when user leaves edit-profile view, reset form
+      //  $scope.$on("$destroy", function(){
+      //   // $state.go("app.edit-profile", {}, {reload:true});
+      //   $ionicHistory.clearCache();
+      //   $scope.responseMsg = "";
+      //   // .then(function(){ $state.go('app.fooState') });
+      // });
+    };//doEditProfile()
+  });//scope.on
 })//
 
 
-.controller('editMyRolesCtrl', function($scope, Role, User, ArtistRole) {
-  var userId = window.localStorage['id'];
-  // var user = User.get({id: userId});
-  // $scope.user = user;
-  $scope.roles = ArtistRole.query({id: userId});
-  // $scope.roles = Role.query();
+.controller('editMyRolesCtrl', function($state, $scope, $http, Role, ArtistRole) { //, filterFilter) {
+
+  // $scope.compare = function(role) {
+  //   if (filterFilter($scope.myRoles, {
+  //     id: role.id
+  //   }).length > 0 ) {
+  //     return true;
+  //   }
+  // }
+  $scope.$on('$ionicView.enter', function(e){
+    var userId = window.localStorage['id'];
+    // $scope.myRoles = ArtistRole.query({id: userId});
+    // console.log($scope.myRoles);
+    $scope.roles = Role.query();
+    console.log($scope.roles);
+
+    $scope.cancelMyRoles = function() {
+      $state.go('app.edit-profile');
+    }
+
+    $scope.saveMyRoles = function(form) {
+      // $http({url:`http://floating-tor-67033.herokuapp.com/users/${userId}/roles`,
+      //          method: 'delete'
+      //        })
+      $http.delete(`http://floating-tor-67033.herokuapp.com/users/${userId}/roles`);
+      var saveData = {};
+      for (var role of $scope.roles) {
+        if (role.checked === true) {
+
+          $http.post(`http://floating-tor-67033.herokuapp.com/users/${userId}/roles/${role.id}`,
+            {id: role.id}
+          ).then( function(response) {
+              $state.go('app.edit-profile');
+            }, function(response) {
+              console.log(response);
+          });
+        }
+
+          // $http({url:`http://floating-tor-67033.herokuapp.com/users/${userId}/roles`,
+          //        method: 'POST',
+          //        data: role.id
+          //      }).success(function(response){
+          //   $state.go('app.edit-profile');
+          // }).error(function(errorData){
+          //   // console.log(errorData);
+          // })
+        // }
+      }
+    }
+  })
 })//
 
-.controller('editSearchRolesCtrl', function($scope, Role) {
-  $scope.roles = Role.query();
-})
+.controller('editSearchRolesCtrl', function($state, $scope, $http, Role, SearchRole) { //, filterFilter) {
+
+  // $scope.compare = function(role) {
+  //   if (filterFilter($scope.searchRoles, {
+  //     id: role.id
+  //   }).length > 0 ) {
+  //     return true
+  //   }
+  // }
+
+  $scope.$on('$ionicView.enter', function(e){
+    var userId = window.localStorage['id'];
+    // $scope.myRoles = SearchRole.query({id: userId});
+    // console.log($scope.myRoles);
+    $scope.roles = Role.query();
+
+    $scope.cancelSearchedRoles = function() {
+      $state.go('app.edit-profile');
+    }
+
+    $scope.saveSearchedRoles = function(form) {
+      // $http({url:`http://floating-tor-67033.herokuapp.com/users/${userId}/searched_roles`,
+      //          method: 'delete'
+      //        })
+      $http.delete(`http://floating-tor-67033.herokuapp.com/users/${userId}/searched_roles`);
+      var saveData = {};
+      for (var role of $scope.roles) {
+        if (role.checked === true) {
+
+          $http.post(`http://floating-tor-67033.herokuapp.com/users/${userId}/searched_roles/${role.id}`,
+            {id: role.id}
+          ).then( function(response) {
+              $state.go('app.edit-profile')
+            }, function(response) {
+              console.log(response);
+          });
+        }
+          // $http({url:`http://floating-tor-67033.herokuapp.com/users/${userId}/searched_roles/${role.id}`,
+          //        method: 'POST',
+          //        data: role.id
+          //      }).success(function(response){
+          //   $state.go('app.edit-profile');
+          // }).error(function(errorData){
+          //   // console.log(errorData);
+          // })
+        // }
+      }
+    }
+  })
+})//
+
+.controller('editMyGenresCtrl', function($state, $scope, $http, Genre, ArtistGenre) {
+  $scope.$on('$ionicView.enter', function(e){
+    var userId = window.localStorage['id'];
+    $scope.myGenres = ArtistGenre.query({id: userId});
+    $scope.genres = Genre.query();
+
+    $scope.cancelMyGenres = function() {
+      $state.go('app.edit-profile');
+    }
+
+    $scope.saveMyGenres = function(form) {
+      // $http({url:`http://floating-tor-67033.herokuapp.com/users/${userId}/genres`,
+      //          method: 'delete'
+      //        })
+      $http.delete(`http://floating-tor-67033.herokuapp.com/users/${userId}/genres`);
+      var saveData = {};
+      for (var genre of $scope.genres) {
+        console.log(genre);
+        if (genre.checked === true) {
+          console.log(genre);
+          console.log(saveData);
+          $http.post(`http://floating-tor-67033.herokuapp.com/users/${userId}/genres/${genre.id}`,
+            saveData
+            ).then(function successCallBack(response) {
+              $state.go('app.edit-profile');
+            }, function errorCallBack(response) {
+              console.log(response);
+            });
+
+          // $http({url:`http://floating-tor-67033.herokuapp.com/users/${userId}/genres/${genre.id}`,
+          //        method: 'POST',
+          //        data: genre.id
+          //      }).success(function(response){
+          //   $state.go('app.edit-profile');
+          //   // $scope.closeRegister();
+          // }).error(function(errorData){
+          //   // console.log(errorData);
+          // })
+        }
+      }
+    }
+  })
+})//
+
+.controller('editSearchGenresCtrl', function($state, $scope, $http, Genre, SearchGenre) {
+  $scope.$on('$ionicView.enter', function(e){
+    var userId = window.localStorage['id'];
+    $scope.searchGenres = SearchGenre.query({id: userId});
+    $scope.genres = Genre.query();
+
+    $scope.cancelSearchedGenres = function() {
+      $state.go('app.edit-profile');
+    }
+
+    $scope.saveSearchedGenres = function(form) {
+      // $http({url:`http://floating-tor-67033.herokuapp.com/users/${userId}/searched_genres`,
+      //          method: 'delete'
+      //        })
+      $http.delete(`http://floating-tor-67033.herokuapp.com/users/${userId}/searched_genres`);
+      var saveData = {};
+      for (var genre of $scope.genres) {
+        if (genre.checked === true) {
+
+          $http.post(`http://floating-tor-67033.herokuapp.com/users/${userId}/searched_genres/${role.id}`,
+            {id: role.id}
+          ).then( function(response) {
+              $state.go('app.edit-profile')
+            }, function(response) {
+              console.log(response);
+          });
+        }
+
+        //   $http({url:`http://floating-tor-67033.herokuapp.com/users/${userId}/searched_genres/${role.id}`,
+        //          method: 'PUT'
+        //        }).success(function(response){
+        //     $state.go('app.edit-profile');
+        //     // $scope.closeRegister();
+        //   }).error(function(errorData){
+        //     // console.log(errorData);
+        //   })
+        // }
+      }
+    }
+  })
+})//
 
 .controller('startPickingCtrl', function($scope) {
-  $scope.$on("$ionicSlides.sliderInitialized", function(event, data){
-    // data.slider is the instance of Swiper
-    $scope.slider = data.slider;
-  });
 
-  $scope.$on("$ionicSlides.slideChangeStart", function(event, data){
-    console.log('Slide change is beginning');
-  });
-
-  $scope.$on("$ionicSlides.slideChangeEnd", function(event, data){
-    // note: the indexes are 0-based
-    $scope.activeIndex = data.activeIndex;
-    $scope.previousIndex = data.previousIndex;
-  });
 })//
 
 //factory example using resources
 .controller('rolesCtrl', function($scope, Role) {
-  //get all roles
-  // $scope.roles = Role.query();
-  // console.log($scope.roles);
-  // //get one roll
-  // $scope.role = Role.query({id: 1});
-  // console.log($scope.role);
+
 })//
 
 //Cards Controller - Start Picking
-.controller('CardsCtrl', function ($scope, $http, $ionicLoading, $ionicSideMenuDelegate, TDCardDelegate, SearchedRole) {
-  console.log('CARDS CTRL');
-  $ionicSideMenuDelegate.canDragContent(false);
-  // var cardTypes = [];
-  // $http.get('https://randomuser.me/api/?results=5').success(function (response) {
-  //     angular.forEach(response.results, function (famous) {
-  //       cardTypes.push(famous);
-  //       console.log(JSON.stringify(famous));
-  //     });
-  //     $ionicLoading.hide();
-  //   }).error(function (err) {
-  //     console.log(err);
-  //   });
+// .controller('CardsCtrl', function (SearchedRole, $scope, $http, $ionicLoading, $ionicSideMenuDelegate, TDCardDelegate, SearchRole) {
+//   var userId = window.localStorage['id'];
+//   $scope.$on('$ionicView.enter', function(e){
+//     console.log('CARDS CTRL');
+//     $ionicSideMenuDelegate.canDragContent(false);
+//     $ionicLoading.show();
 
-  //$scope.cards = Array.prototype.slice.call(cardTypes, 0);
+//     SearchedRole.query({id: userId}).$promise.then(function(response){
+//       $scope.searchedRoles = response;
+//       $scope.message1 = 'Success!';
+//     }, function(response) {
+//       console.log(response);
+//     });
+
+//     SearchRole.query({id: userId}).$promise.then(function(response){
+//       $scope.cards = response
+//     }, function(response) {
+//       $scope.message2 = response
+//     });
+
+//     setTimeout(function(){
+//       $ionicLoading.hide();
+//     }, 2000)
+
+//     console.log($scope.cards);
+//     // console.log($scope.cards["0"].username);
+//     // //get the 1st role for the user on the card
+//     // $scope.roles = ArtistRole.query({id: userId});
+//     // //get the users genres
+//     // $scope.genres = GenreSelection.query({id: userId});
+
+
+//     $scope.cardDestroyed = function(index) {
+//       $scope.cards.splice(index, 1);
+//     };
+
+//     $scope.toggleLeft = function() {
+//     $ionicSideMenuDelegate.toggleLeft();
+//     };
+
+//     })
+//     $scope.cardSwipedLeft = function(index) {
+//       console.log('LEFT SWIPE');
+//       console.log(index)
+//       console.log(userId)
+//     };
+//     $scope.cardSwipedRight = function(index) {
+//       console.log('RIGHT SWIPE');
+//       console.log(index)
+//       console.log(userId)
+//       $http({url:`http://floating-tor-67033.herokuapp.com/users/${userId}/pickings/${index}`,
+//          method: 'post'
+//        });
+//     };
+// })//
+
+.controller('CardsCtrl', function($state, $scope, $http, $ionicLoading, $ionicSideMenuDelegate, TDCardDelegate, SearchRole, $timeout) {
   var userId = window.localStorage['id'];
-  $scope.cards = SearchedRole.query({id: userId});
-  console.log($scope.cards)
-  $scope.cardDestroyed = function(index) {
-    $scope.cards.splice(index, 1);
-  };
+  var cardTypes = {}
+  $scope.$on('$ionicView.enter', function(e){
+    console.log('CARDS CTRL');
+    $ionicSideMenuDelegate.canDragContent(false);
+    $ionicLoading.show();
 
-  $scope.addCard = function() {
-    var newCard = cardTypes[Math.floor(Math.random() * cardTypes.length)];
-    newCard.id = Math.random();
-    $scope.cards.push(angular.extend({}, newCard));
-  }
+    SearchRole.query({id: userId}).$promise.then(function(response){
+      cardTypes = response;
+      console.log(cardTypes);
+    }, function(response) {
+      console.log(response);
+      console.log(response.status);
+    });
 
-  $scope.yesCard = function() {
-    console.log('YES');
-    $scope.addCard();
-  };
+    $timeout(function(){
+      $ionicLoading.hide();
+    }, 2000)
+// 
+    $scope.cards = {
+      master: cardTypes,
+      active: cardTypes,
+      discards: [],
+      liked: [],
+      disliked: []
+    };
 
-  $scope.noCard = function() {
-    console.log('NO');
-    $scope.addCard();
-  };
-  $scope.toggleLeft = function() {
-  $ionicSideMenuDelegate.toggleLeft();
-  };
-})//
+    $scope.cardDestroyed = function(index) {
+      $scope.cards.active.splice(index, 1);
+    }
 
+    $scope.addCard = function() {
+      var newCard = cardTypes[0];
+      $scope.cards.active.push(angular.extend({}, newCard));
+    }
+
+    $scope.refreshCards = function() {
+      // Set $scope.cards to null so that directive reloads
+      $scope.cards.active = null;
+      $timeout(function() {
+        $scope.cards.active = cardTypes;
+      });
+      $state.go($state.current, {}, {reload: true});
+    }
+
+    $scope.$on('removeCard', function(event, element, card) {
+      var discarded = $scope.cards.master.splice($scope.cards.master.indexOf(card), 1);
+      $scope.cards.discards.push(discarded);
+    });
+
+    $scope.cardSwipedLeft = function(id, index) {
+      console.log('LEFT SWIPE');
+      console.log(id);
+      var card = $scope.cards.active[index];
+      $scope.cards.disliked.push(card);
+    }
+
+    $scope.cardSwipedRight = function(id, index) {
+      console.log('RIGHT SWIPE');
+      console.log(id);
+      console.log(userId);
+      var card = $scope.cards.active[index];
+      $scope.cards.liked.push(card);
+      $http({url:`http://floating-tor-67033.herokuapp.com/users/${userId}/pickings/${id}`,
+         method: 'post'
+      });
+    }
+
+    $scope.doOpen = function(linkUrl) {
+      window.open(linkUrl, '_system')
+    }
+  })
+})
 
 .controller('CardCtrl', function($scope, TDCardDelegate) {
-  $scope.cardSwipedLeft = function(index) {
-    console.log('LEFT SWIPE');
-    $scope.addCard();
-  };
-  $scope.cardSwipedRight = function(index) {
-    console.log('RIGHT SWIPE');
-    $scope.addCard();
-  };
-})//
+
+});
