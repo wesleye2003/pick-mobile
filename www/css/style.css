@@ -400,8 +400,8 @@ font-family: 'Rock Salt', cursive;
 }
 
 #profile-about-header{
-    font-size: 20px;
-    color: #fd9d4e;
+    font-size: 14px;
+    color: white;
     /*font-family: 'Nothing You Could Do', cursive;*/
 
 }
@@ -409,6 +409,7 @@ font-family: 'Rock Salt', cursive;
 #profile-about-text{
     font-size: 16px;
     font-weight: bold;
+    color: #e84a5f;
     font-family: 'Nothing You Could Do', cursive;
 }
 
