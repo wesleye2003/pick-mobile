@@ -14,7 +14,7 @@ angular.module('starter.controllers',[])
 .controller('homeCtrl', function($scope, $ionicModal, $http, $state) {
 
   $scope.$on('$ionicView.enter', function(e){
-    window.localStorage['id'] = ""
+    window.localStorage['id'] = "";
   });
   // Form data for the login modal
   $scope.registerData = {};
@@ -50,12 +50,12 @@ angular.module('starter.controllers',[])
       window.localStorage['id'] = response.id;
       $state.go('app.profile');
       $scope.closeRegister();
-    }).error(function(errorData){
-      console.log(errorData);
+    }).error(function(error){
+      $scope.registrationErrorMsg = "All fields are required";
     })
     // window.localStorage['user_id'] = "1"
     // console.log('an attempt was made.')
-    // $http.get(`http://localhost:3000/users/${window.localStorage['user_id']}`).then(function(response){
+    // $http.get(`http://floating-tor-67033.herokuapp.com/users/${window.localStorage['user_id']}`).then(function(response){
     //   console.log(response.data.id)
     // })
   };
@@ -82,20 +82,30 @@ angular.module('starter.controllers',[])
     var data = { username: form.username.$modelValue, password: form.password.$modelValue}
     console.log(data);
 
+    // $http.post("http://floating-tor-67033.herokuapp.com/login",
+    //   { username: form.username.$modelValue, password: form.password.$modelValue}
+    //   ).then( function(response) {
+    //     console.log(response.id);
+    //     window.localStorage['id'] = response.id;
+    //     $state.go('app.profile');
+    //     $scope.closeLogin();
+    //   }, function(errorData) {
+    //     console.log(errorData);
+    //   })
     $http({url:"http://floating-tor-67033.herokuapp.com/login",
            method: 'POST',
            data: { username: form.username.$modelValue, password: form.password.$modelValue}}).success(function(response){
       window.localStorage['id'] = response.id;
       $state.go('app.profile');
       $scope.closeLogin();
-    }).error(function(errorData){
-      console.log(errorData);
+    }).error(function(error){
+      $scope.loginErrorMsg = "Invalid Username / Password Combination";
     })
-    // window.localStorage['user_id'] = "1"
-    // console.log('an attempt was made.')
-    // $http.get(`http://localhost:3000/users/${window.localStorage['user_id']}`).then(function(response){
-    //   console.log(response.data.id)
-    // })
+  //   window.localStorage['user_id'] =
+  //   console.log('an attempt was made.')
+  //   $http.get(`http://floating-tor-67033.herokuapp.com/users/${window.localStorage['user_id']}`).then(function(response){
+  //     console.log(response.data.id)
+  //   })
   };
 
 })
@@ -110,6 +120,7 @@ angular.module('starter.controllers',[])
 .controller('profileCtrl', function($scope, $resource, $http, ArtistRole, GenreSelection, User, LoggedInUser) {
   //TO DO: Put in correct variables to get user data from form
   $scope.$on('$ionicView.enter', function(e){
+    console.log(window.localStorage['id'])
     var userId = window.localStorage['id'];
     $scope.user = User.get({id: userId});
     $scope.roles = ArtistRole.query({id: userId});
@@ -120,7 +131,7 @@ angular.module('starter.controllers',[])
 
   $scope.doConnect = function() {
     var userId = window.localStorage['id'];
-    window.open(`https://floating-tor-67033.herokuapp.com/soundcloud/connect/${userId}`, '_system')
+    window.open(`http://floating-tor-67033.herokuapp.com/soundcloud/connect/${userId}`, '_system')
   };
 
   $scope.doOpen = function(linkUrl) {
@@ -129,8 +140,9 @@ angular.module('starter.controllers',[])
 })//
 
 
-.controller('editProfileCtrl', function($state, $scope, $http, Role, Genre, User, LoggedInUser) {
+.controller('editProfileCtrl', function($timeout, $state, $scope, $http, Role, Genre, User, LoggedInUser) {
   $scope.$on('$ionicView.enter', function(e){
+
     $scope.responseMsg = "";
     var userId = window.localStorage['id'];
     $scope.user = User.get({id: userId});
@@ -162,19 +174,36 @@ angular.module('starter.controllers',[])
     };//edit searched
 
     $scope.doEditProfile = function(form){
+      var userId = window.localStorage['id'];
       var edits = { username: form.username.$modelValue, zipcode: form.zipcode.$modelValue, description: form.description.$modelValue}
       console.log(edits);
 
-      var userId = window.localStorage['id'];
+      $scope.isEmpty = function(obj) {
+        for(var prop in obj) {
+          if (obj[prop] != null) {
+            return false;
+          }
+        }
+        return true;
+      };
 
-     User.update({id: userId}, edits)
-        .$promise.then(function(response){
-          // console.log(response.status);
-          $scope.responseMsg = response.status;
-        }, function(error){
-            $scope.responseMsg = error.status;
-        });
+      //only update user if params from form is not empty
+      if (!$scope.isEmpty(edits)){
+       User.update({id: userId}, edits)
+          .$promise.then(function(response){
+            $scope.responseMsg = response.status;
 
+            $timeout(function() {
+
+            }, 2000).then(function() {
+              $state.go("app.profile");
+            });
+
+
+          }, function(error){
+              $scope.responseMsg = "Something went wrong. Please retry your changes.";
+          });
+      }
       //when user leaves edit-profile view, reset form
       //  $scope.$on("$destroy", function(){
       //   // $state.go("app.edit-profile", {}, {reload:true});
@@ -201,30 +230,39 @@ angular.module('starter.controllers',[])
     // $scope.myRoles = ArtistRole.query({id: userId});
     // console.log($scope.myRoles);
     $scope.roles = Role.query();
+    console.log($scope.roles);
 
     $scope.cancelMyRoles = function() {
       $state.go('app.edit-profile');
     }
 
     $scope.saveMyRoles = function(form) {
-      $http({url:`http://floating-tor-67033.herokuapp.com/users/${userId}/roles`,
-               method: 'delete'
-             })
+      // $http({url:`http://floating-tor-67033.herokuapp.com/users/${userId}/roles`,
+      //          method: 'delete'
+      //        })
+      $http.delete(`http://floating-tor-67033.herokuapp.com/users/${userId}/roles`);
       var saveData = {};
       for (var role of $scope.roles) {
         if (role.checked === true) {
-          saveData['id'] = role.id;
 
-          console.log(saveData['id']);
-
-          $http({url:`http://floating-tor-67033.herokuapp.com/users/${userId}/roles/${saveData['id']}`,
-                 method: 'PUT'
-               }).success(function(response){
-            $state.go('app.edit-profile');
-          }).error(function(errorData){
-            // console.log(errorData);
-          })
+          $http.post(`http://floating-tor-67033.herokuapp.com/users/${userId}/roles/${role.id}`,
+            {id: role.id}
+          ).then( function(response) {
+              $state.go('app.edit-profile');
+            }, function(response) {
+              console.log(response);
+          });
         }
+
+          // $http({url:`http://floating-tor-67033.herokuapp.com/users/${userId}/roles`,
+          //        method: 'POST',
+          //        data: role.id
+          //      }).success(function(response){
+          //   $state.go('app.edit-profile');
+          // }).error(function(errorData){
+          //   // console.log(errorData);
+          // })
+        // }
       }
     }
   })
@@ -251,24 +289,31 @@ angular.module('starter.controllers',[])
     }
 
     $scope.saveSearchedRoles = function(form) {
-      $http({url:`http://floating-tor-67033.herokuapp.com/users/${userId}/searched_roles`,
-               method: 'delete'
-             })
+      // $http({url:`http://floating-tor-67033.herokuapp.com/users/${userId}/searched_roles`,
+      //          method: 'delete'
+      //        })
+      $http.delete(`http://floating-tor-67033.herokuapp.com/users/${userId}/searched_roles`);
       var saveData = {};
       for (var role of $scope.roles) {
         if (role.checked === true) {
-          saveData['id'] = role.id;
 
-          console.log(saveData['id']);
-
-          $http({url:`http://floating-tor-67033.herokuapp.com/users/${userId}/searched_roles/${saveData['id']}`,
-                 method: 'PUT'
-               }).success(function(response){
-            $state.go('app.edit-profile');
-          }).error(function(errorData){
-            // console.log(errorData);
-          })
+          $http.post(`http://floating-tor-67033.herokuapp.com/users/${userId}/searched_roles/${role.id}`,
+            {id: role.id}
+          ).then( function(response) {
+              $state.go('app.edit-profile')
+            }, function(response) {
+              console.log(response);
+          });
         }
+          // $http({url:`http://floating-tor-67033.herokuapp.com/users/${userId}/searched_roles/${role.id}`,
+          //        method: 'POST',
+          //        data: role.id
+          //      }).success(function(response){
+          //   $state.go('app.edit-profile');
+          // }).error(function(errorData){
+          //   // console.log(errorData);
+          // })
+        // }
       }
     }
   })
@@ -285,24 +330,33 @@ angular.module('starter.controllers',[])
     }
 
     $scope.saveMyGenres = function(form) {
-      $http({url:`http://floating-tor-67033.herokuapp.com/users/${userId}/genres`,
-               method: 'delete'
-             })
+      // $http({url:`http://floating-tor-67033.herokuapp.com/users/${userId}/genres`,
+      //          method: 'delete'
+      //        })
+      $http.delete(`http://floating-tor-67033.herokuapp.com/users/${userId}/genres`);
       var saveData = {};
       for (var genre of $scope.genres) {
+        console.log(genre);
         if (genre.checked === true) {
-          saveData['id'] = genre.id;
+          console.log(genre);
+          console.log(saveData);
+          $http.post(`http://floating-tor-67033.herokuapp.com/users/${userId}/genres/${genre.id}`,
+            saveData
+            ).then(function successCallBack(response) {
+              $state.go('app.edit-profile');
+            }, function errorCallBack(response) {
+              console.log(response);
+            });
 
-          console.log(saveData['id']);
-
-          $http({url:`http://floating-tor-67033.herokuapp.com/users/${userId}/genres/${saveData['id']}`,
-                 method: 'PUT'
-               }).success(function(response){
-            $state.go('app.edit-profile');
-            // $scope.closeRegister();
-          }).error(function(errorData){
-            // console.log(errorData);
-          })
+          // $http({url:`http://floating-tor-67033.herokuapp.com/users/${userId}/genres/${genre.id}`,
+          //        method: 'POST',
+          //        data: genre.id
+          //      }).success(function(response){
+          //   $state.go('app.edit-profile');
+          //   // $scope.closeRegister();
+          // }).error(function(errorData){
+          //   // console.log(errorData);
+          // })
         }
       }
     }
@@ -320,25 +374,32 @@ angular.module('starter.controllers',[])
     }
 
     $scope.saveSearchedGenres = function(form) {
-      $http({url:`http://floating-tor-67033.herokuapp.com/users/${userId}/genres`,
-               method: 'delete'
-             })
+      // $http({url:`http://floating-tor-67033.herokuapp.com/users/${userId}/searched_genres`,
+      //          method: 'delete'
+      //        })
+      $http.delete(`http://floating-tor-67033.herokuapp.com/users/${userId}/searched_genres`);
       var saveData = {};
       for (var genre of $scope.genres) {
         if (genre.checked === true) {
-          saveData['id'] = genre.id;
 
-          console.log(saveData['id']);
-
-          $http({url:`http://floating-tor-67033.herokuapp.com/users/${userId}/genres/${saveData['id']}`,
-                 method: 'PUT'
-               }).success(function(response){
-            $state.go('app.edit-profile');
-            // $scope.closeRegister();
-          }).error(function(errorData){
-            // console.log(errorData);
-          })
+          $http.post(`http://floating-tor-67033.herokuapp.com/users/${userId}/searched_genres/${role.id}`,
+            {id: role.id}
+          ).then( function(response) {
+              $state.go('app.edit-profile')
+            }, function(response) {
+              console.log(response);
+          });
         }
+
+        //   $http({url:`http://floating-tor-67033.herokuapp.com/users/${userId}/searched_genres/${role.id}`,
+        //          method: 'PUT'
+        //        }).success(function(response){
+        //     $state.go('app.edit-profile');
+        //     // $scope.closeRegister();
+        //   }).error(function(errorData){
+        //     // console.log(errorData);
+        //   })
+        // }
       }
     }
   })
@@ -354,14 +415,30 @@ angular.module('starter.controllers',[])
 })//
 
 //Cards Controller - Start Picking
-.controller('CardsCtrl', function ($scope, $http, $ionicLoading, $ionicSideMenuDelegate, TDCardDelegate, SearchRole) {
+.controller('CardsCtrl', function (SearchedRole, $scope, $http, $ionicLoading, $ionicSideMenuDelegate, TDCardDelegate, SearchRole) {
   var userId = window.localStorage['id'];
   $scope.$on('$ionicView.enter', function(e){
     console.log('CARDS CTRL');
     $ionicSideMenuDelegate.canDragContent(false);
+    $ionicLoading.show();
 
+    SearchedRole.query({id: userId}).$promise.then(function(response){
+      $scope.searchedRoles = response;
+      $scope.message1 = 'Success!';
+    }, function(response) {
+      console.log(response);
+    });
 
-    $scope.cards = SearchRole.query({id: userId});
+    SearchRole.query({id: userId}).$promise.then(function(response){
+      $scope.cards = response
+    }, function(response) {
+      $scope.message2 = response
+    });
+
+    setTimeout(function(){
+      $ionicLoading.hide();
+    }, 2000)
+
     console.log($scope.cards);
     // console.log($scope.cards["0"].username);
     // //get the 1st role for the user on the card

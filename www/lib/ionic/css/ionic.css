@@ -2588,8 +2588,13 @@ body.grade-b, body.grade-c {
   width: auto;
   height: auto;
   /*background-color: #2a363b;*/
-  background: url("../../../img/subtle-black-geo.png");
+  /*background: url("../../../img/subtle-black-geo.png");*/
   /*background-repeat: no-repeat;*/
+
+  background: url("../../../img/black-shadow.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
    }
 
 .menu .scroll-content.scroll-content-false {
