@@ -98,10 +98,10 @@ angular.module('starter.controllers',[])
       window.localStorage['id'] = response.id;
       $state.go('app.profile');
       $scope.closeLogin();
-    }).error(function(errorData){
-      console.log(errorData);
+    }).error(function(error){
+      $scope.loginErrorMsg = "Invalid Username / Password Combination";
     })
-  //   window.localStorage['user_id'] = 
+  //   window.localStorage['user_id'] =
   //   console.log('an attempt was made.')
   //   $http.get(`http://floating-tor-67033.herokuapp.com/users/${window.localStorage['user_id']}`).then(function(response){
   //     console.log(response.data.id)
@@ -409,7 +409,7 @@ angular.module('starter.controllers',[])
       $scope.message1 = response
     });
     SearchRole.query({id: userId}).$promise.then(function(response){
-      $scope.cards = response    
+      $scope.cards = response
     }, function(response) {
       $scope.message2 = response
     });
