@@ -2,7 +2,7 @@
 <ion-view view-title="Home" id="home">
 <ion-header-bar class="bar-stable">
     <div class="padding home-header">
-      <img id='home-pick-icon' height="30px" src="img/icon.png">
+      <img id='home-pick-icon' src="img/icon.png">
     </div>
     </ion-header-bar>
 
@@ -10,7 +10,18 @@
 
     <ion-slides  options="options" slider="data.slider">
       <ion-slide-page>
+         <ion-item id="yellow-transparent">
+         </ion-item>
+         <ion-item id="red-transparent">
+         </ion-item>
+         <ion-item id="green-transparent">
 
+          <div class="bottom-nav">
+            <a class="register-link" href="" ng-click="register()"><h2 id="home-pic-bottom-subtext">REGISTER NOW <span id="arrow"></span></h2></a>
+            <button id="home-login-btn" class="button button-balanced button-block" ng-click="login()">Login</button>
+          </div>
+
+         </ion-item>
         <div class="home-pics box blue">
           <img id="home-pic-top" ng-src="img/blackviolinists.jpg">
           <h2 id="home-pic-top-text">PICK YOUR NEXT BAND MATE</h2>
@@ -19,17 +30,15 @@
 
         <div class="home-pics box blue">
           <img id="home-pic-mid" ng-src="img/group_flag.jpg">
-           <h2 id="home-pic-mid-text">LISTEN TO SAMPLES VIA SOUNDCLOUD</h2>
-           <hr id="mid">
+          <h2 id="home-pic-mid-text">DISCOVER THEIR MUSIC </h2>
+          <hr id="mid">
+          <h2 id="home-pic-mid-bottom-text">VIA SOUNDCLOUD</h2>
         </div>
-
-        <div class="home-pics box blue">
-          <a href="" ng-click="register()">
+ 
+        <div class="home-pics box blue"> 
           <img id="home-pic-bottom" ng-src="img/Jamming-at-Ile-St-Louis.jpg">
-           <h2 id="home-pic-bottom-text">LINK UP AND MAKE MUSIC</h2>
-           <hr id="bottom">
-           <h2 id="home-pic-bottom-subtext">REGISTER NOW <span id="arrow">></span></h2>
-         </a>
+            <h2 id="home-pic-bottom-text">LINK UP AND MAKE MUSIC</h2>
+            <hr id="bottom">   
         </div>
 
       </ion-slide-page>
@@ -50,8 +59,7 @@
 
   </ion-content>
    <!-- <button id="home-register-btn" class="button button-block button-balanced" ng-click="register()">Register</button> -->
-
-  <button id="home-login-btn" class="button button-balanced button-block" ng-click="login()">Login</button>
+ 
 
 
 </ion-view>
