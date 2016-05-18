@@ -423,11 +423,10 @@ angular.module('starter.controllers',[])
     $ionicLoading.show();
 
     SearchedRole.query({id: userId}).$promise.then(function(response){
-      $scope.searchedRoles = response
-      $scope.message1 = 'Success!'
+      $scope.searchedRoles = response;
+      $scope.message1 = 'Success!';
     }, function(response) {
-      $scope.message1 = response // <<< this is the problem
-      console.log(response)
+      console.log(response);
     });
 
     SearchRole.query({id: userId}).$promise.then(function(response){

@@ -30,6 +30,12 @@ td-card {
     padding: 0 20px;
 }
 
+.searched-role {
+    position: relative;
+    display: inline-block;
+    top: 3em;
+    font-size: 1.5em;
+}
 /*td-card .image {
     top: 20px;
     width: 100%;
