@@ -15,23 +15,26 @@
       <div id="profile-info">
         <img id="profile-image" ng-src="{{user.avatar_url}}">
         <h3 id="profile-name">{{user.username}}</h3>
-         <h3 id="profile-roles-text-head" ng-repeat="role in roles | limitTo:1">{{role.name}}</h3>
          <p id="profile-location">{{user.city}}</p>
 
 
          <ion-item id="scplayer-cont" class="">
-            <button id="scplayerbtn"class="button button-block button-assertive" ng-click='doOpen(user.permalink)'>
-            Hear Me On SoundCloud<img id="scplayicon" ng-src="img/scw (1).png"></button>
-    </ion-item>
+
+         <img id="sc-image" ng-src="/img/play-button-overlay-8.png" ng-click='doOpen(user.permalink)'><span id="sc-btn-text">
+            Hear Me On SoundCloud</span></img></a>
+
+            <!-- <button id="scplayerbtn"class="button button-block button-assertive" ng-click='doOpen(user.permalink)'><span id="sc-btn-text"><img id="sc-image" ng-src="/img/play-button-overlay-8.png">
+            Hear Me On SoundCloud</span></button> -->
+        </ion-item>
 
           <div id="profile-roles-container">
             <!-- <h2 id="profile-roles-text-header">ROLES</h3> -->
-            <span class="span-head">Other Roles: </span>
-            <span id="profile-roles-text" ng-repeat="role in roles | limitTo:3" ng-if="$index > 0"> {{role.name}} </span>
+            <span class="span-head">ROLES</span>
+            <span id="profile-roles-text" ng-repeat="role in roles | limitTo:3"> {{role.name}} </span>
           </div>
 
           <div id="profile-genres-container">
-            <span class='span-head'>Genres: </span>
+            <span class='span-head'>GENRES   </span>
             <span id="profile-genres-text" ng-repeat="genre in genres | limitTo:3">{{genre.name}}</span>
           </div>
 
@@ -39,7 +42,7 @@
     </div> <!-- end content -->
 
      <div id="profile-about">
-      <h3 id="profile-about-header">About Me:</h3>
+      <h3 id="profile-about-header">About Me</h3>
       <p id="profile-about-text">{{user.description}}</p>
      </div>
 
