@@ -1,10 +1,13 @@
 <ion-view view-title="Pick">
-  <ion-nav-title>
-    <div class="padding">
-      <img height="30px" src="img/icon.png">
-    </div>
-  </ion-nav-title>
   <ion-pane ng-controller="CardsCtrl">
+  <div id="searched-roles-error">LOOKING FOR:
+    <span ng-repeat="searchedRole in searchedRoles" >
+      <div class="searched-role">"{{searchedRole.name}}"</div>
+    </span>
+  </div>
+  <div id="searched-users-error">{{message2}}</div>
+
+
     <td-cards>
       <td-card id="td-card" ng-repeat="card in cards" on-destroy="cardDestroyed($index)"
             on-swipe-left="cardSwipedLeft(card.id)" on-swipe-right="cardSwipedRight(card.id)"

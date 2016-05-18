@@ -113,7 +113,10 @@ td-card .buttondesc button{
     background: none;
 }
 #home-pick-icon {
+    width: 40px;
     margin: 0 auto;
+    height: 40px;
+    margin-top: -30%;
 }
 
 .home-header {
@@ -130,12 +133,12 @@ td-card .buttondesc button{
 /*}*/
 
 #home-login-btn {
-    position: absolute;
-    bottom: 10px;
-    width: 90%;
-    margin: -2px 20px;
-    text-align: center;
-    font-size: 16px;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    margin: 0 0 0 0;
+    font-size: 20px;
+    font-weight: bold;
     /*font-weight: bold;*/
     /*text-shadow: 0.5px 0.5px gray;*/
     border-color: #99B898;
@@ -163,9 +166,9 @@ background-image: linear-gradient(to top, #2A3C2A 6%, #99B898 100%);
 
 .home-pics {
     margin: 0 auto;
-    height: 29%;
+    max-height: 30%;
     position: relative;
-    width: 100%;
+    max-width: 100%;
     /*background: rgb(244, 255, 255, 0.1);
     background: rgba(44, 255, 255, 0.4);
     color: #fff;*/
@@ -173,6 +176,16 @@ background-image: linear-gradient(to top, #2A3C2A 6%, #99B898 100%);
     /*color: white;*/
         /*background: inherit;*/
     box-shadow: 0px -1px 10px rgba(0,0,0,0.4);
+}
+
+.home-pics img{
+    margin: 0 auto;
+    height: 100%;
+    position: relative;
+    width: 100%;
+    /*z-index: 2;*/
+    /*color: white;*/
+        /*background: inherit;*/
 }
 
 .home-pics h2 {
@@ -454,11 +467,27 @@ font-family: 'Rock Salt', cursive;
      color: #fd9d4e;
 }
 
+
 #sc-btn-text{
     margin-left: 0%;
     color: white;
     text-shadow: 0.5px 0.5px gray;
 }
+
+#login-error {
+    text-align: center;
+    font-size: 12px;
+    background-color: white;
+    color: red
+}
+
+#registration-error {
+    text-align: center;
+    font-size: 12px;
+    background-color: white;
+    color: red
+}
+
 #scplayerbtn{
     border-color: #fd8f35;
     background-color:#fd9d4e;
@@ -744,5 +773,68 @@ font-family: 'Rock Salt', cursive;
     background-color:#fd9d4e;
 }
 
+#home-pic-bottom-subtext{
+    text-decoration: none;
+    position: relative;
+    text-align: center;
+    text-shadow: 0px 0px 5px rgba(145, 150, 150, 1);
+    font-weight: bolder;
+    font-style: 1.5em;
+}
 
+
+#red-transparent{
+    top: 30%;
+    height: 30%;
+    position: absolute;
+    width: 100%;
+    background-color: rgba(255, 54, 83, 0.05);
+    color: rgba(255, 54, 83, 0.05);
+}
+
+#green-transparent{
+    padding:0;
+    top: 60%;
+    height: 40%;
+    position: absolute;
+    width: 100%;
+    background-color: rgba(33, 105, 59, 0.1);
+    color: rgba(85, 233, 138, 0.1);
+}
+
+#yellow-transparent{
+    position: absolute;
+    height: 30%;
+    width: 100%;
+    background-color: rgba(210, 233, 138, 0.1);
+    color: rgba(80, 88, 55, 0.1);
+}
+
+#home-pic-top-text{
+    font-weight: bolder;
+    text-shadow: 0px 0px 5px white;
+    text-shadow: 0px 0px 5px rgba(145, 150, 150, 1);
+    color: white;
+}
+
+#home-pic-mid-text{
+    font-weight: bolder;
+    text-shadow: 0px 0px 5px white;
+    text-shadow: 0px 0px 5px rgba(145, 150, 150, 1);
+    color: white;
+}
+#home-pic-mid-bottom-text{
+    font-weight: bolder;
+    text-shadow: 0px 0px 5px white;
+    text-shadow: 0px 0px 5px rgba(145, 150, 150, 1);
+    padding-top: 1.8em;
+    color: white;
+}
+
+#home-pic-bottom-text{
+    font-weight: bolder;
+
+    text-shadow: 0px 0px 7px white;
+    color: white;
+}
 

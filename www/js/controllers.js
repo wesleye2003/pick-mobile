@@ -50,8 +50,8 @@ angular.module('starter.controllers',[])
       window.localStorage['id'] = response.id;
       $state.go('app.profile');
       $scope.closeRegister();
-    }).error(function(errorData){
-      console.log(errorData);
+    }).error(function(error){
+      $scope.registrationErrorMsg = "All fields are required";
     })
     // window.localStorage['user_id'] = "1"
     // console.log('an attempt was made.')
@@ -98,14 +98,14 @@ angular.module('starter.controllers',[])
       window.localStorage['id'] = response.id;
       $state.go('app.profile');
       $scope.closeLogin();
-    }).error(function(errorData){
-      console.log(errorData);
+    }).error(function(error){
+      $scope.loginErrorMsg = "Invalid Username / Password Combination";
     })
-    window.localStorage['user_id'] = "1"
-    console.log('an attempt was made.')
-    $http.get(`http://floating-tor-67033.herokuapp.com/users/${window.localStorage['user_id']}`).then(function(response){
-      console.log(response.data.id)
-    })
+  //   window.localStorage['user_id'] =
+  //   console.log('an attempt was made.')
+  //   $http.get(`http://floating-tor-67033.herokuapp.com/users/${window.localStorage['user_id']}`).then(function(response){
+  //     console.log(response.data.id)
+  //   })
   };
 
 })
@@ -120,6 +120,7 @@ angular.module('starter.controllers',[])
 .controller('profileCtrl', function($scope, $resource, $http, ArtistRole, GenreSelection, User, LoggedInUser) {
   //TO DO: Put in correct variables to get user data from form
   $scope.$on('$ionicView.enter', function(e){
+    console.log(window.localStorage['id'])
     var userId = window.localStorage['id'];
     $scope.user = User.get({id: userId});
     $scope.roles = ArtistRole.query({id: userId});
@@ -130,7 +131,7 @@ angular.module('starter.controllers',[])
 
   $scope.doConnect = function() {
     var userId = window.localStorage['id'];
-    window.open(`https://floating-tor-67033.herokuapp.com/soundcloud/connect/${userId}`, '_system')
+    window.open(`http://floating-tor-67033.herokuapp.com/soundcloud/connect/${userId}`, '_system')
   };
 
   $scope.doOpen = function(linkUrl) {
@@ -335,8 +336,10 @@ angular.module('starter.controllers',[])
       $http.delete(`http://floating-tor-67033.herokuapp.com/users/${userId}/genres`);
       var saveData = {};
       for (var genre of $scope.genres) {
+        console.log(genre);
         if (genre.checked === true) {
-
+          console.log(genre);
+          console.log(saveData);
           $http.post(`http://floating-tor-67033.herokuapp.com/users/${userId}/genres/${genre.id}`,
             saveData
             ).then(function successCallBack(response) {
@@ -344,16 +347,17 @@ angular.module('starter.controllers',[])
             }, function errorCallBack(response) {
               console.log(response);
             });
-        }
-          // $http({url:`http://floating-tor-67033.herokuapp.com/users/${userId}/genres/${role.id}`,
+
+          // $http({url:`http://floating-tor-67033.herokuapp.com/users/${userId}/genres/${genre.id}`,
           //        method: 'POST',
-          //        data: role.id
+          //        data: genre.id
           //      }).success(function(response){
           //   $state.go('app.edit-profile');
           //   // $scope.closeRegister();
           // }).error(function(errorData){
           //   // console.log(errorData);
           // })
+        }
       }
     }
   })
@@ -411,14 +415,31 @@ angular.module('starter.controllers',[])
 })//
 
 //Cards Controller - Start Picking
-.controller('CardsCtrl', function ($scope, $http, $ionicLoading, $ionicSideMenuDelegate, TDCardDelegate, SearchRole) {
+.controller('CardsCtrl', function (SearchedRole, $scope, $http, $ionicLoading, $ionicSideMenuDelegate, TDCardDelegate, SearchRole) {
   var userId = window.localStorage['id'];
   $scope.$on('$ionicView.enter', function(e){
     console.log('CARDS CTRL');
     $ionicSideMenuDelegate.canDragContent(false);
+    $ionicLoading.show();
 
+    SearchedRole.query({id: userId}).$promise.then(function(response){
+      $scope.searchedRoles = response
+      $scope.message1 = 'Success!'
+    }, function(response) {
+      $scope.message1 = response // <<< this is the problem
+      console.log(response)
+    });
 
-    $scope.cards = SearchRole.query({id: userId});
+    SearchRole.query({id: userId}).$promise.then(function(response){
+      $scope.cards = response
+    }, function(response) {
+      $scope.message2 = response
+    });
+
+    setTimeout(function(){
+      $ionicLoading.hide();
+    }, 2000)
+
     console.log($scope.cards);
     // console.log($scope.cards["0"].username);
     // //get the 1st role for the user on the card
