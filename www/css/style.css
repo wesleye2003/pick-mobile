@@ -1,8 +1,10 @@
 
-/*ion-content {
-  background: url("img/background-texture-green-blue.jpg");
 
-}*/
+
+
+
+
+
 /* Card styling */
 .pane{
   background-color:#f3f3f3;
@@ -895,3 +897,27 @@ td-card#end-card {
 .no-padding {
     padding: 0px !important;
 }
+
+/* Edit Profile Form Input*/
+.ng-untouched::-webkit-input-placeholder {
+   color: black;
+   opacity: 1;
+   font-size: 16px;
+
+}
+
+.ng-untouched:-moz-placeholder { /* Firefox 18- */
+   color: black;
+   opacity: 1;
+}
+
+.ng-untouched::-moz-placeholder {  /* Firefox 19+ */
+   color: black;
+   opacity: 1;
+}
+
+.ng-untouched:-ms-input-placeholder {
+   color: black;
+   opacity: 1;
+}
+
