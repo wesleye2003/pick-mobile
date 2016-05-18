@@ -33,7 +33,7 @@ td-card {
     height: 80%;
     width: 80%;
     font-size: 100px;
-    background-image: url("../../../img/subtle-black-geo.png");
+    background-image: url("./../img/subtle-black-geo.png");
     border: 1px solid #999;
     box-shadow: 0px 1px 10px rgba(0,0,0,0.5);
     border-radius: 10px;
@@ -509,6 +509,8 @@ font-family: 'Rock Salt', cursive;
 .scplayerbtn{
     border-color: #fd8f35;
     background-color:#fd9d4e;
+    width: 20%;
+    height: 20%;
     /*background-image: url("/img/Blog_PlayButton.png");*/ /* 16px x 16px */
     /*background-color: transparent;  make the button transparent */
     background-repeat: no-repeat;  /* make the background image appear only once */
@@ -516,7 +518,6 @@ font-family: 'Rock Salt', cursive;
     border: none;           /* assuming we don't want any borders */
     cursor: pointer;        /* make the cursor like hovering over an <a> element */
              /* make this the size of your image */
-    padding-left: 16px;     /* make text start to the right of the image */
     vertical-align: middle; /* align the text vertically centered */
     border-radius: 1em;
 }
@@ -757,8 +758,8 @@ font-family: 'Rock Salt', cursive;
 }
 
 .scplayicon{
-    margin: 0 -3em 0 -3em;
-    max-width: 60%;
+    margin: 0 -5em 0 -5em;
+    max-width: 50%;
 }
 .edit-btn {
     width: 30px;
@@ -888,5 +889,9 @@ td-card#end-card {
     text-align: center;
     margin: 0 0 0 0;
     padding: 0 0 0 0;
-    
+}
+
+
+.no-padding {
+    padding: 0px !important;
 }
