@@ -101,7 +101,7 @@ angular.module('starter.controllers',[])
     }).error(function(errorData){
       console.log(errorData);
     })
-  //   window.localStorage['user_id'] = 
+  //   window.localStorage['user_id'] =
   //   console.log('an attempt was made.')
   //   $http.get(`http://floating-tor-67033.herokuapp.com/users/${window.localStorage['user_id']}`).then(function(response){
   //     console.log(response.data.id)
@@ -131,7 +131,7 @@ angular.module('starter.controllers',[])
 
   $scope.doConnect = function() {
     var userId = window.localStorage['id'];
-    window.open(`https://floating-tor-67033.herokuapp.com/soundcloud/connect/${userId}`, '_system')
+    window.open(`http://floating-tor-67033.herokuapp.com/soundcloud/connect/${userId}`, '_system')
   };
 
   $scope.doOpen = function(linkUrl) {
@@ -403,16 +403,17 @@ angular.module('starter.controllers',[])
     console.log('CARDS CTRL');
     $ionicSideMenuDelegate.canDragContent(false);
     $ionicLoading.show();
+
     SearchedRole.query({id: userId}).$promise.then(function(response){
       $scope.searchedRoles = response
-      console.log(response)
     }, function(response) {
-      $scope.message1 = response.status
+      $scope.message1 = response
     });
+
     SearchRole.query({id: userId}).$promise.then(function(response){
-      $scope.cards = response    
+      $scope.cards = response
     }, function(response) {
-      $scope.message2 = response.status
+      $scope.message2 = response
     });
 
     setTimeout(function(){
