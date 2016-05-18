@@ -50,8 +50,8 @@ angular.module('starter.controllers',[])
       window.localStorage['id'] = response.id;
       $state.go('app.profile');
       $scope.closeRegister();
-    }).error(function(errorData){
-      console.log(errorData);
+    }).error(function(error){
+      $scope.registrationErrorMsg = "All fields are required";
     })
     // window.localStorage['user_id'] = "1"
     // console.log('an attempt was made.')
