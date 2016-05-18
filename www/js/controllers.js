@@ -139,8 +139,9 @@ angular.module('starter.controllers',[])
 })//
 
 
-.controller('editProfileCtrl', function($state, $scope, $http, Role, Genre, User, LoggedInUser) {
+.controller('editProfileCtrl', function($timeout, $state, $scope, $http, Role, Genre, User, LoggedInUser) {
   $scope.$on('$ionicView.enter', function(e){
+
     $scope.responseMsg = "";
     var userId = window.localStorage['id'];
     $scope.user = User.get({id: userId});
@@ -172,19 +173,36 @@ angular.module('starter.controllers',[])
     };//edit searched
 
     $scope.doEditProfile = function(form){
+      var userId = window.localStorage['id'];
       var edits = { username: form.username.$modelValue, zipcode: form.zipcode.$modelValue, description: form.description.$modelValue}
       console.log(edits);
 
-      var userId = window.localStorage['id'];
+      $scope.isEmpty = function(obj) {
+        for(var prop in obj) {
+          if (obj[prop] != null) {
+            return false;
+          }
+        }
+        return true;
+      };
 
-     User.update({id: userId}, edits)
-        .$promise.then(function(response){
-          // console.log(response.status);
-          $scope.responseMsg = response.status;
-        }, function(error){
-            $scope.responseMsg = error.status;
-        });
+      //only update user if params from form is not empty
+      if (!$scope.isEmpty(edits)){
+       User.update({id: userId}, edits)
+          .$promise.then(function(response){
+            $scope.responseMsg = response.status;
 
+            $timeout(function() {
+
+            }, 2000).then(function() {
+              $state.go("app.profile");
+            });
+
+
+          }, function(error){
+              $scope.responseMsg = "Something went wrong. Please retry your changes.";
+          });
+      }
       //when user leaves edit-profile view, reset form
       //  $scope.$on("$destroy", function(){
       //   // $state.go("app.edit-profile", {}, {reload:true});

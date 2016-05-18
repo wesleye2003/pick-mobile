@@ -427,6 +427,7 @@ font-family: 'Rock Salt', cursive;
 
 #edit-success-error{
     text-align: center;
+     color: #fd9d4e;
 }
 
 #scplayerbtn{
@@ -464,7 +465,11 @@ font-family: 'Rock Salt', cursive;
     background-color:#fd9d4e;
 }
 
-
+.edit-form-input{
+display: inline-block;
+  float: left;
+  text-align: left;
+}
 
 
 
@@ -668,6 +673,7 @@ font-family: 'Rock Salt', cursive;
 
 .edit-success-error{
     text-align: center;
+
 }
 
 .scplayerbtn{
