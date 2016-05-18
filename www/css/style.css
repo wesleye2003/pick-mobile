@@ -436,6 +436,14 @@ font-family: 'Rock Salt', cursive;
     color: red
 }
 
+#registration-error {
+    text-align: center;
+    font-size: 12px;
+    background-color: white;
+    color: red
+}
+
+
 
 #scplayerbtn{
     border-color: #fd8f35;
