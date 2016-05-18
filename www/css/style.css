@@ -1,8 +1,10 @@
 
-/*ion-content {
-  background: url("img/background-texture-green-blue.jpg");
 
-}*/
+
+
+
+
+
 /* Card styling */
 .pane{
   background-color:#f3f3f3;
@@ -605,7 +607,7 @@ display: inline-block;
         color: #E84A5F;
     }
     .profile-description a {
-        
+
     }
 
     .profile-image {
@@ -866,6 +868,7 @@ td-card#end-card {
 .no-padding {
     border: 0px solid black;
     padding: 0px !important;
+
     background-color: black !important;
 }
 
@@ -909,4 +912,5 @@ td-card#end-card {
     position:relative;
     top:1px;
 }
+
 
