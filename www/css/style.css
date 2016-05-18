@@ -898,20 +898,22 @@ td-card#end-card {
     padding: 0px !important;
 }
 
-/* Edit Profile Form Input*/
+/*  Edit Profile Form Inputs  */
+/*input, .edit-form-input, .ng-pristine, .ng-untouched, .ng-valid, .ng-touched{
+    color: black;
+    opacity: 1;
+}
 .ng-untouched::-webkit-input-placeholder {
    color: black;
    opacity: 1;
-   font-size: 16px;
-
 }
 
-.ng-untouched:-moz-placeholder { /* Firefox 18- */
+.ng-untouched:-moz-placeholder {
    color: black;
    opacity: 1;
 }
 
-.ng-untouched::-moz-placeholder {  /* Firefox 19+ */
+.ng-untouched::-moz-placeholder {
    color: black;
    opacity: 1;
 }
@@ -921,3 +923,4 @@ td-card#end-card {
    opacity: 1;
 }
 
+*/
