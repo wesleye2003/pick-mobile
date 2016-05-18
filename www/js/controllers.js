@@ -98,8 +98,8 @@ angular.module('starter.controllers',[])
       window.localStorage['id'] = response.id;
       $state.go('app.profile');
       $scope.closeLogin();
-    }).error(function(errorData){
-      console.log(errorData);
+    }).error(function(error){
+      $scope.loginErrorMsg = "Invalid Username / Password Combination";
     })
   //   window.localStorage['user_id'] =
   //   console.log('an attempt was made.')
