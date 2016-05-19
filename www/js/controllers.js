@@ -96,6 +96,9 @@ angular.module('starter.controllers',[])
     var userId = window.localStorage['id'];
     $scope.picks = Pick.query({id: userId});
   });
+  $scope.doOpen = function(linkUrl) {
+    window.open(linkUrl, '_blank')
+  }
 })//
 
 .controller('profileCtrl', function($state, $scope, $resource, $http, ArtistRole, GenreSelection, User, LoggedInUser) {
