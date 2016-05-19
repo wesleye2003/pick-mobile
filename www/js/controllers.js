@@ -108,11 +108,11 @@ angular.module('starter.controllers',[])
 
   $scope.doConnect = function() {
     var userId = window.localStorage['id'];
-    window.open(`https://floating-tor-67033.herokuapp.com/soundcloud/connect/${userId}`, '_system')
+    window.open(`https://floating-tor-67033.herokuapp.com/soundcloud/connect/${userId}`, '_blank')
   };
 
   $scope.doOpen = function(linkUrl) {
-    window.open(linkUrl, '_system')
+    window.open(linkUrl, '_blank')
   };
 })//
 
@@ -300,33 +300,43 @@ angular.module('starter.controllers',[])
 
 
 
-.controller('CardsCtrl', function($state, $scope, $http, $ionicLoading, $ionicSideMenuDelegate, TDCardDelegate, SearchRole, $timeout) {
+.controller('CardsCtrl', function($state, $scope, $http, $ionicLoading, $ionicSideMenuDelegate, TDCardDelegate, SearchRole, ArtistRole, $timeout) {
+
+
   var userId = window.localStorage['id'];
-  var cardTypes = {}
+
   $scope.$on('$ionicView.enter', function(e){
+
     console.log('CARDS CTRL');
     $ionicSideMenuDelegate.canDragContent(false);
     $ionicLoading.show();
 
-    SearchRole.query({id: userId}).$promise.then(function(response){
-      cardTypes = response;
-      console.log(cardTypes);
-    }, function(response) {
-      console.log(response);
-      console.log(response.status);
+
+    $timeout(function(){
+      SearchRole.query({id: userId}).$promise.then(function(response){
+        cardTypes = response;
+      }, function(response) {
+        console.log(response);
+        console.log(response.status);
+      });
     });
 
     $timeout(function(){
       $ionicLoading.hide();
-    }, 2000)
+      $scope.cards = {
+        master: cardTypes,
+        active: cardTypes,
+        discards: [],
+        liked: [],
+        disliked: []
+      };
+      console.log($scope.cards)
+    }, 2000);
 //
-    $scope.cards = {
-      master: cardTypes,
-      active: cardTypes,
-      discards: [],
-      liked: [],
-      disliked: []
-    };
+
+    // $scope.usersMatch = function(roleUser, cardUser){
+    //   return roleUser === cardUser
+    // }
 
     $scope.cardDestroyed = function(index) {
       $scope.cards.active.splice(index, 1);
@@ -340,9 +350,6 @@ angular.module('starter.controllers',[])
     $scope.refreshCards = function() {
       // Set $scope.cards to null so that directive reloads
       $scope.cards.active = null;
-      $timeout(function() {
-        $scope.cards.active = cardTypes;
-      });
       $state.go($state.current, {}, {reload: true});
     }
 
@@ -370,7 +377,7 @@ angular.module('starter.controllers',[])
     }
 
     $scope.doOpen = function(linkUrl) {
-      window.open(linkUrl, '_system')
+      window.open(linkUrl, '_blank')
     }
   })
 })
