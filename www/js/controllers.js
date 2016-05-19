@@ -108,11 +108,11 @@ angular.module('starter.controllers',[])
 
   $scope.doConnect = function() {
     var userId = window.localStorage['id'];
-    window.open(`https://floating-tor-67033.herokuapp.com/soundcloud/connect/${userId}`, '_system')
+    window.open(`https://floating-tor-67033.herokuapp.com/soundcloud/connect/${userId}`, '_blank')
   };
 
   $scope.doOpen = function(linkUrl) {
-    window.open(linkUrl, '_system')
+    window.open(linkUrl, '_blank')
   };
 })//
 
@@ -302,18 +302,11 @@ angular.module('starter.controllers',[])
 
 .controller('CardsCtrl', function($state, $scope, $http, $ionicLoading, $ionicSideMenuDelegate, TDCardDelegate, SearchRole, ArtistRole, $timeout) {
 
-  // function CardUser(user, roles) {
-  //   this.user = user;
-  //   this.roles = roles;
-  // };
 
   var userId = window.localStorage['id'];
-  // var cardTypes = {};
-  // var i;
-  // var cardUsers = [];
-  // $scope.cardRoles = cardUsers;
+
   $scope.$on('$ionicView.enter', function(e){
-    // i = 0;
+
     console.log('CARDS CTRL');
     $ionicSideMenuDelegate.canDragContent(false);
     $ionicLoading.show();
@@ -322,26 +315,11 @@ angular.module('starter.controllers',[])
     $timeout(function(){
       SearchRole.query({id: userId}).$promise.then(function(response){
         cardTypes = response;
-        // console.log(cardTypes);
       }, function(response) {
         console.log(response);
         console.log(response.status);
       });
     });
-
-    // $timeout(function(){
-    //   // assign roles to each card
-    //   $timeout(function(){
-    //     for(i; i < cardTypes.length-2; i++){
-    //       ArtistRole.query({id: cardTypes[i].id}).$promise.then(function(response){
-    //         cardUsers.push(new CardUser(cardTypes[i].username, response));
-    //         console.log(response);
-    //       }, function(response){
-    //         console.log(response);
-    //       });
-    //     };
-    //   }, 100);
-    // }, 2000);
 
     $timeout(function(){
       $ionicLoading.hide();
@@ -399,7 +377,7 @@ angular.module('starter.controllers',[])
     }
 
     $scope.doOpen = function(linkUrl) {
-      window.open(linkUrl, '_system')
+      window.open(linkUrl, '_blank')
     }
   })
 })
