@@ -141,8 +141,8 @@ td-card .buttondesc button{
 
 #home-login-btn {
     color: #444444;
-    position: fixed;
-    bottom: 0px;
+    float: all;
+    clear: all;
     width: 100%;
     margin: 0 0 0 0;
     font-size: 20px;
@@ -196,9 +196,10 @@ td-card .buttondesc button{
 #home-register-btn{
     width: 100%;
     margin: 0 0 0 0;
-    position: absolute;
-    bottom: 16%;
     font-size: 18px;
+    float: all;
+    display: block;
+    clear: all;
     margin-top: 40px;
     color: #444444;
     background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffd68f), color-stop(1, #f59905));
@@ -771,6 +772,8 @@ font-family: 'Rock Salt', cursive;
 }
 
 .bottom-nav{
+    position: absolute;
+    bottom: 0;
     width: 100%;
     margin: 0;
     padding: 0;
