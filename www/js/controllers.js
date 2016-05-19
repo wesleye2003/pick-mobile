@@ -302,11 +302,19 @@ angular.module('starter.controllers',[])
 
 .controller('CardsCtrl', function($state, $scope, $http, $ionicLoading, $ionicSideMenuDelegate, TDCardDelegate, SearchRole, ArtistRole, $timeout) {
 
-
+  var cardTypes = [];
   var userId = window.localStorage['id'];
 
-  $scope.$on('$ionicView.enter', function(e){
+  $scope.$on('$ionicView.beforeEnter', function() {
+    $scope.cards = {};
+  });
 
+  $scope.$on('$ionicView.leave', function() {
+    $scope.cards = {};
+    cardTypes = [];
+  });
+
+  $scope.$on('$ionicView.enter', function(e){
     console.log('CARDS CTRL');
     $ionicSideMenuDelegate.canDragContent(false);
     $ionicLoading.show();
