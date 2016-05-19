@@ -22,12 +22,12 @@ td-cards {
 
 td-card {
     position: absolute;
-    margin: 18% 10% 2% 10%;
+    margin-top: 10%;
     /*margin: 80px 0 40px -150px;*/
   /*  width: 300px;
     height: 500px;*/
-    height: 90%;
-    width: 80%;
+    height: 95%;
+    width: 100%;
     font-size: 100px;
     background-image: url("./../img/subtle-black-geo.png");
     border: 1px solid #999;
@@ -140,6 +140,7 @@ td-card .buttondesc button{
 
 
 #home-login-btn {
+    color: #444444;
     position: fixed;
     bottom: 0px;
     width: 100%;
@@ -928,4 +929,8 @@ td-card#end-card {
     border-top: 1px solid rgba(239, 139, 58, 0.6);
     width: 100%;
 
+}
+
+form {
+    background-image: url("./../img/subtle-black-geo.png");
 }
