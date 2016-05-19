@@ -7,9 +7,13 @@
             <img class="profile-image" ng-src="{{card.avatar_url}}">
             <h3 class="profile-name">{{card.username}}</h3>
             <h3 class="profile-location">Chicago, IL</h3>
-            <button class="scplayerbtn myButton" ng-click='doOpen(card.permalink)'><img class="scplayicon" ng-src="../img/soundcloud.png"></button>
-            <h3 class="profile-about-header">About Me:</h3>
-            <h3 class="profile-about-text">{{card.description}}</h3>
+            <button class="scplayerbtn myButton" ng-click='doOpen(card.permalink)'><img class="scplayicon" ng-src="/img/soundcloud.png"></button>
+            <div class="profile-about-header">About Me:</div>
+            <span class="profile-about-text">{{card.description}}</span>
+            <div class="profile-about-header">ROLES</div>
+            <span class="profile-location" ng-repeat="role in card.roles"> {{role.name}} </span>
+            <div class="profile-about-header">GENRES</div>
+            <span class="profile-location" ng-repeat="genre in card.genres | limitTo:3">{{genre.name}}</span>
           </div>
         </td-card>
         <!-- *************************

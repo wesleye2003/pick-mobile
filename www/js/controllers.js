@@ -300,33 +300,65 @@ angular.module('starter.controllers',[])
 
 
 
-.controller('CardsCtrl', function($state, $scope, $http, $ionicLoading, $ionicSideMenuDelegate, TDCardDelegate, SearchRole, $timeout) {
+.controller('CardsCtrl', function($state, $scope, $http, $ionicLoading, $ionicSideMenuDelegate, TDCardDelegate, SearchRole, ArtistRole, $timeout) {
+
+  // function CardUser(user, roles) {
+  //   this.user = user;
+  //   this.roles = roles;
+  // };
+
   var userId = window.localStorage['id'];
-  var cardTypes = {}
+  // var cardTypes = {};
+  // var i;
+  // var cardUsers = [];
+  // $scope.cardRoles = cardUsers;
   $scope.$on('$ionicView.enter', function(e){
+    // i = 0;
     console.log('CARDS CTRL');
     $ionicSideMenuDelegate.canDragContent(false);
     $ionicLoading.show();
 
-    SearchRole.query({id: userId}).$promise.then(function(response){
-      cardTypes = response;
-      console.log(cardTypes);
-    }, function(response) {
-      console.log(response);
-      console.log(response.status);
+
+    $timeout(function(){
+      SearchRole.query({id: userId}).$promise.then(function(response){
+        cardTypes = response;
+        // console.log(cardTypes);
+      }, function(response) {
+        console.log(response);
+        console.log(response.status);
+      });
     });
+
+    // $timeout(function(){
+    //   // assign roles to each card
+    //   $timeout(function(){
+    //     for(i; i < cardTypes.length-2; i++){
+    //       ArtistRole.query({id: cardTypes[i].id}).$promise.then(function(response){
+    //         cardUsers.push(new CardUser(cardTypes[i].username, response));
+    //         console.log(response);
+    //       }, function(response){
+    //         console.log(response);
+    //       });
+    //     };
+    //   }, 100);
+    // }, 2000);
 
     $timeout(function(){
       $ionicLoading.hide();
-    }, 2000)
+      $scope.cards = {
+        master: cardTypes,
+        active: cardTypes,
+        discards: [],
+        liked: [],
+        disliked: []
+      };
+      console.log($scope.cards)
+    }, 2000);
 //
-    $scope.cards = {
-      master: cardTypes,
-      active: cardTypes,
-      discards: [],
-      liked: [],
-      disliked: []
-    };
+
+    // $scope.usersMatch = function(roleUser, cardUser){
+    //   return roleUser === cardUser
+    // }
 
     $scope.cardDestroyed = function(index) {
       $scope.cards.active.splice(index, 1);
@@ -340,9 +372,6 @@ angular.module('starter.controllers',[])
     $scope.refreshCards = function() {
       // Set $scope.cards to null so that directive reloads
       $scope.cards.active = null;
-      $timeout(function() {
-        $scope.cards.active = cardTypes;
-      });
       $state.go($state.current, {}, {reload: true});
     }
 
