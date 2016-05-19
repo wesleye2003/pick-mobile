@@ -1,4 +1,4 @@
-angular.module('starter.directives', ['ionic', 'ionic.contrib.ui.tinderCards'])
+angular.module('starter.directives', ['ionic', 'ionic.contrib.ui.tinderCards2'])
 .directive('noScroll', function($document) {
 
   return {

@@ -1,11 +1,11 @@
-<ion-view title="Edit Searched Roles" id="edit-search-roles">
+<ion-view title="I'm looking for a..." id="edit-search-roles">
   <ion-content padding="false" class=" manual-remove-top-padding has-header" scroll="false">
     <div id="profile-roles" style="color:blue;">
       <form name="searchedRolesForm" ng-submit="saveSearchedRoles(searchedRolesForm)" novalidate>
         <ion-checkbox ng-repeat="role in roles"
           name="{{role.name}}"
           ng-model="role.checked"
-          ng-checked="role.checked" >{{role.name}}
+          ng-checked="role.checked">{{role.name}}
         </ion-checkbox>
         <button id="save-searched-roles" class="button button-positive edit-btn button-block button-assertive" type="submit">Save Changes</button>
       </form>

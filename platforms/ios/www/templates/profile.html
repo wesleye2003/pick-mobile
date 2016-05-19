@@ -1,56 +1,36 @@
 <ion-view title="Profile" id="profile">
-  <ion-content padding="false" class=" manual-remove-top-padding has-header" scroll="false">
+  <ion-content padding="false" class=" manual-remove-top-padding has-header" scroll="true">
 
-  <ion-item class="">
-    <button id="sc-connect-btn" class="button button-block button-energized" ng-click="doConnect()"><span>Connect with SoundCloud</span></button>
+  <ion-item class="no-padding">
+    <button id="sc-connect-btn" class=" button myButton button-full" ng-click="doConnect()">Connect with SoundCloud</button>
   </ion-item>
 
-  <div id="profile-bg">
     <div id="transparent-bg">
       <div id='profile-text'>
-
-      <div id="profile-content">
-
-      <div id="profile-info">
-        <img id="profile-image" ng-src="{{user.avatar_url}}">
-        <h3 id="profile-name">{{user.username}}</h3>
-         <p id="profile-location">{{user.city}}</p>
-
-
-         <ion-item id="scplayer-cont" class="">
-
-         <img id="sc-image" ng-src="/img/play-button-overlay-8.png" ng-click='doOpen(user.permalink)'><span id="sc-btn-text">
-            Hear Me On SoundCloud</span></img></a>
-
-            <!-- <button id="scplayerbtn"class="button button-block button-assertive" ng-click='doOpen(user.permalink)'><span id="sc-btn-text"><img id="sc-image" ng-src="/img/play-button-overlay-8.png">
-            Hear Me On SoundCloud</span></button> -->
-        </ion-item>
-
-          <div id="profile-roles-container">
-            <!-- <h2 id="profile-roles-text-header">ROLES</h3> -->
-            <span class="span-head">ROLES</span>
-            <span id="profile-roles-text" ng-repeat="role in roles | limitTo:3"> {{role.name}} </span>
+        <div id="profile-content">
+          <div id="profile-info">
+            <img id="profile-image" ng-src="{{user.avatar_url}}">
+            <h3 id="profile-name">{{user.username}}</h3>
+            <p id="profile-location">{{user.city}}</p>
           </div>
 
-          <div id="profile-genres-container">
-            <span class='span-head'>GENRES   </span>
-            <span id="profile-genres-text" ng-repeat="genre in genres | limitTo:3">{{genre.name}}</span>
+          <div>
+            <div class="profile-title">ROLES</div>
+            <span class="profile-text" ng-repeat="role in roles | limitTo:3"> {{role.name}} </span>
           </div>
 
+          <div>
+            <div class="profile-title">GENRES</div>
+            <span class="profile-text" ng-repeat="genre in genres | limitTo:3">{{genre.name}}</span>
+          </div>
 
-          </div> <!-- end profile info -->
-        </div> <!-- end content -->
-
-
-     <div id="profile-about">
-      <h3 id="profile-about-header">ABOUT ME</h3>
-      <p id="profile-about-text">{{user.description}}</p>
-     </div>
-
-      </div>
+          <div class="profile-about">
+            <div class="profile-title">ABOUT ME</div>
+            <p class="profile-text">{{user.description}}</p>
+          </div>
+        </div> <!-- end profile info -->
+      </div> <!-- end content -->
     </div>
-  </div> <!-- end profile-bg -->
-
-
   </ion-content>
+  <button class="scplayerbtn myButton"  ng-click='doOpen(user.permalink)'>VIEW SOUNDCLOUD PROFILE</button>
 </ion-view>

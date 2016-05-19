@@ -25,6 +25,15 @@ module.exports = [
         ]
     },
     {
+        "file": "plugins/cordova-plugin-inappbrowser/www/inappbrowser.js",
+        "id": "cordova-plugin-inappbrowser.inappbrowser",
+        "pluginId": "cordova-plugin-inappbrowser",
+        "clobbers": [
+            "cordova.InAppBrowser.open",
+            "window.open"
+        ]
+    },
+    {
         "file": "plugins/cordova-plugin-splashscreen/www/splashscreen.js",
         "id": "cordova-plugin-splashscreen.SplashScreen",
         "pluginId": "cordova-plugin-splashscreen",
@@ -41,6 +50,14 @@ module.exports = [
         ]
     },
     {
+        "file": "plugins/ionic-plugin-deploy/www/ionicdeploy.js",
+        "id": "ionic-plugin-deploy.IonicDeploy",
+        "pluginId": "ionic-plugin-deploy",
+        "clobbers": [
+            "IonicDeploy"
+        ]
+    },
+    {
         "file": "plugins/ionic-plugin-keyboard/www/ios/keyboard.js",
         "id": "ionic-plugin-keyboard.keyboard",
         "pluginId": "ionic-plugin-keyboard",
@@ -48,23 +65,6 @@ module.exports = [
             "cordova.plugins.Keyboard"
         ],
         "runs": true
-    },
-    {
-        "file": "plugins/cordova-plugin-inappbrowser/www/inappbrowser.js",
-        "id": "cordova-plugin-inappbrowser.inappbrowser",
-        "pluginId": "cordova-plugin-inappbrowser",
-        "clobbers": [
-            "cordova.InAppBrowser.open",
-            "window.open"
-        ]
-    },
-    {
-        "file": "plugins/ionic-plugin-deploy/www/ionicdeploy.js",
-        "id": "ionic-plugin-deploy.IonicDeploy",
-        "pluginId": "ionic-plugin-deploy",
-        "clobbers": [
-            "IonicDeploy"
-        ]
     }
 ];
 module.exports.metadata = 
@@ -72,12 +72,12 @@ module.exports.metadata =
 {
     "cordova-plugin-console": "1.0.3",
     "cordova-plugin-device": "1.1.2",
+    "cordova-plugin-inappbrowser": "1.4.0",
     "cordova-plugin-splashscreen": "3.2.2",
     "cordova-plugin-statusbar": "2.1.3",
     "cordova-plugin-whitelist": "1.2.2",
-    "ionic-plugin-keyboard": "2.2.0",
-    "cordova-plugin-inappbrowser": "1.4.0",
-    "ionic-plugin-deploy": "0.5.4"
+    "ionic-plugin-deploy": "0.5.4",
+    "ionic-plugin-keyboard": "2.2.0"
 }
 // BOTTOM OF METADATA
 });
