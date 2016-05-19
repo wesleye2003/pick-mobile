@@ -2,8 +2,8 @@
   <ion-pane ng-controller="CardsCtrl">
     <div ng-if="cards.active">
       <td-cards>
-        <td-card ng-repeat="card in cards.active" on-destroy="cardDestroyed($index)" on-swipe-left="cardSwipedLeft(card.id, $index)" on-swipe-right="cardSwipedRight(card.id, $index)">
-          <div class="card-content" ng-controller="CardCtrl">    
+        <td-card drag="true" ng-repeat="card in cards.active" on-destroy="cardDestroyed($index)" on-swipe-left="cardSwipedLeft(card.id, $index)" on-swipe-right="cardSwipedRight(card.id, $index)">
+          <div class="card-content" ng-controller="CardCtrl">
             <img class="profile-image" ng-src="{{card.avatar_url}}">
             <h3 class="profile-name">{{card.username}}</h3>
             <h3 class="profile-location">Chicago, IL</h3>
