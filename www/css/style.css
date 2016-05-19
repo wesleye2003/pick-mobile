@@ -144,13 +144,7 @@ td-card .buttondesc button{
     text-align: center;
 }
 
-/*#home-register-btn {
-    position: absolute;
-    bottom: 10px;
 
- /*   left: 80px;
-    width: 100px;*/
-/*}*/
 
 #home-login-btn {
     position: fixed;
@@ -159,23 +153,11 @@ td-card .buttondesc button{
     margin: 0 0 0 0;
     font-size: 20px;
     font-weight: bold;
-    /*font-weight: bold;*/
-    /*text-shadow: 0.5px 0.5px gray;*/
-    border-color: #99B898;
-    box-shadow: 0px -1px 5px rgba(0,0,0,0.4);
-
-    background-image: -webkit-gradient(
-    linear,
-    left bottom,
-    left top,
-    color-stop(0.06, #2A3C2A),
-    color-stop(1, #99B898)
-);
-background-image: -o-linear-gradient(top, rgb(204, 46, 60) 6%, #D8C8BA 100%);
-background-image: -moz-linear-gradient(top, rgb(204, 46, 60) 6%, #D8C8BA 100%);
-background-image: -webkit-linear-gradient(top, rgb(204, 46, 60) 6%, #D8C8BA 100%);
-background-image: -ms-linear-gradient(top, rgb(204, 46, 60) 6%, #D8C8BA 100%);
-background-image: linear-gradient(to top, rgb(204, 46, 60) 6%, #D8C8BA 100%);
+    background-image: -o-linear-gradient(top, rgb(236, 71, 93) 6%, #F9A243 100%);
+    background-image: -moz-linear-gradient(top, rgb(236, 71, 93) 6%, #F9A243 100%);
+    background-image: -webkit-linear-gradient(top, rgb(236, 71, 93) 6%, #F9A243 100%);
+    background-image: -ms-linear-gradient(top, rgb(236, 71, 93) 6%, #F9A243 100%);
+    background-image: linear-gradient(to top, rgb(236, 71, 93) 6%, #F9A243 100%);
 }
 
 /*#home-img-center {
@@ -217,11 +199,20 @@ background-image: linear-gradient(to top, rgb(204, 46, 60) 6%, #D8C8BA 100%);
     top:60px;
 }
 
-#home-pic-bottom-subtext{
-    top:90px;
+#home-register-btn{
+    width: 100%;
+    margin: 0 0 0 0;
+    position: absolute;
+    bottom: 16%;
     font-size: 18px;
     margin-top: 40px;
-    color: #fecea8;
+    color: #444444;
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffd68f), color-stop(1, #f59905));
+    background:-moz-linear-gradient(to bottom, #ece473 5%, #f59905 100%);
+    background:-webkit-linear-gradient(to bottom, #ece473 5%, #f59905 100%);
+    background:-o-linear-gradient(to bottom, #ece473 5%, #f59905 100%);
+    background:-ms-linear-gradient(to bottom, #ece473 5%, #f59905 100%);
+    background: linear-gradient(to bottom, #ece473 5%, #f59905 100%);
 }
 
 #arrow{
@@ -229,18 +220,6 @@ background-image: linear-gradient(to top, rgb(204, 46, 60) 6%, #D8C8BA 100%);
     font-weight: bold;
     color: #fecea8;
 }
-/* #home-login-btn{
-    color: #fecea8;
-    background-color: white;
-    border-color: white;
-    font-size: 14px;
- }
-
-#home-register-btn{
-    color:#99b898;
-    background-color: #262626;
-    font-size: 14px;
- }*/
 
 hr{
     position: absolute;
@@ -251,16 +230,33 @@ hr{
     text-align: center;
 
 }
+/*
+#e1fsc4
+#ece473
+#f9d423
+#f6903d
+#f05053
+
+*/
 #top{
-    border-color: #fecea8;
+    z-index: 2;
+    border: 3px solid #ece473;
+    border-radius: 10px;
+    /*border-color: #fecea8;*/
 }
 
 #mid{
-    border-color: #e84a5f;
+    z-index: 2;
+    border: 3px solid #e84a5f;
+    border-radius: 10px;
+    /*border-color: #e84a5f;*/
 }
 
 #bottom{
-    border-color: #99b898;
+    z-index: 2;
+    border: 3px solid #f6903d;
+    border-radius: 10px;
+    /*border-color: #99b898;*/
 }
 
 
@@ -773,63 +769,83 @@ font-family: 'Rock Salt', cursive;
     text-shadow: 0px 0px 7px white, 0 -1px 0 #000, 0 1px 0 #000;
     font-weight: bolder;
     font-style: 1.5em;
+    z-index: 2;
 }
 
 .register-link{
     text-decoration: none;
 }
 
+.bottom-nav{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
 
 #red-transparent{
-    top: 30%;
+    padding: 0;
+    margin: 0;
     height: 30%;
     position: absolute;
+    z-index: 1;
     width: 100%;
-    background-color: rgba(255, 54, 83, 0.05);
+    background-color: rgba(255, 54, 83, 0.15);
     color: rgba(255, 54, 83, 0.05);
 }
 
 #green-transparent{
-    padding:0;
-    top: 60%;
-    height: 40%;
+    padding: 0;
+    margin: 0;
+    top: 30%;
+    height: 30%;
     position: absolute;
+    z-index: 1;
     width: 100%;
-    background-color: rgba(33, 105, 59, 0.1);
+    /*background-color: #f6903d;*/
+    background-color: rgba(132, 90, 0, 0.4);
+    /*background-color: rgba(33, 105, 59, 0.1);*/
     color: rgba(85, 233, 138, 0.1);
 }
 
 #yellow-transparent{
+    padding: 0;
+    margin: 0;
+    top: 60%;
     position: absolute;
-    height: 30%;
+    z-index: 1;
+    height: 40%;
     width: 100%;
-    background-color: rgba(210, 233, 138, 0.1);
+    background-color: rgba(105, 98, 0, 0.4);
     color: rgba(80, 88, 55, 0.1);
 }
 
 #home-pic-top-text{
+    z-index: 2;
     font-weight: bolder;
-    text-shadow: 0px 0px 7px white, 0 -1px 0 #000, 0 1px 0 #000;
+    text-shadow: 0px 0px 3px white, 0 -1px 0 #000, 0 1px 0 #000;
     color: white;
 }
 
 #home-pic-mid-text{
+    z-index: 2;
     font-weight: bolder;
-    text-shadow: 0px 0px 7px white, 0 -1px 0 #000, 0 1px 0 #000;
+    text-shadow: 0px 0px 3px white, 0 -1px 0 #000, 0 1px 0 #000;
     color: white;
 }
 #home-pic-mid-bottom-text{
+    z-index: 2;
     font-weight: bolder;
-    text-shadow: 0px 0px 7px white, 0 -1px 0 #000, 0 1px 0 #000;
+    text-shadow: 0px 0px 3px white, 0 -1px 0 #000, 0 1px 0 #000;
     padding-top: 1.8em;
     color: white;
 }
 
 #home-pic-bottom-text{
+    z-index: 2;
     font-weight: bolder;
 
     color: #fff;
-    text-shadow: 0px 0px 7px white, 0 -1px 0 #000, 0 1px 0 #000;
+    text-shadow: 0px 0px 3px white, 0 -1px 0 #000, 0 1px 0 #000;
 }
 
 
