@@ -14,6 +14,7 @@ angular.module('starter.controllers',[])
 
 .controller('homeCtrl', function($scope, $ionicModal, $http, $state) {
 
+
   $scope.$on('$ionicView.enter', function(e){
     window.localStorage['id'] = "";
   });
@@ -97,8 +98,9 @@ angular.module('starter.controllers',[])
   });
 })//
 
-.controller('profileCtrl', function($scope, $resource, $http, ArtistRole, GenreSelection, User, LoggedInUser) {
+.controller('profileCtrl', function($state, $scope, $resource, $http, ArtistRole, GenreSelection, User, LoggedInUser) {
   //TO DO: Put in correct variables to get user data from form
+
   $scope.$on('$ionicView.enter', function(e){
     var userId = window.localStorage['id'];
     $scope.user = User.get({id: userId});
@@ -108,12 +110,19 @@ angular.module('starter.controllers',[])
 
   $scope.doConnect = function() {
     var userId = window.localStorage['id'];
-    window.open(`https://floating-tor-67033.herokuapp.com/soundcloud/connect/${userId}`, '_blank')
+    $scope.scConnect = window.open(`https://floating-tor-67033.herokuapp.com/soundcloud/connect/${userId}`, '_blank')
   };
 
   $scope.doOpen = function(linkUrl) {
-    window.open(linkUrl, '_blank')
-  };
+    $scope.scConnect = window.open(linkUrl, '_blank')
+    // do{
+    //   if($scope.scConnect.closed === true){
+    //     console.log('a thing was done');
+    //     $state.go('app.profile');
+    //   }
+    // }while($scope.scConnect.closed === false);
+  }
+
 })//
 
 
