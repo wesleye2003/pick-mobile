@@ -314,10 +314,6 @@ angular.module('starter.controllers',[])
   var cardTypes = [];
   var userId = window.localStorage['id'];
 
-  $scope.$on('$ionicView.beforeEnter', function() {
-    $scope.cards = {};
-  });
-
   $scope.$on('$ionicView.leave', function() {
     $scope.cards = {};
     cardTypes = [];
