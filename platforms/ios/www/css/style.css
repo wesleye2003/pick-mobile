@@ -1,31 +1,38 @@
-
-/*ion-content {
-  background: url("img/background-texture-green-blue.jpg");
-
-}*/
 /* Card styling */
 .pane{
   background-color:#f3f3f3;
 }
 
+.td-title {
+  position: absolute;
+  top: 70px;
+  width: 100%;
+  text-align: center;
+}
+
+.td-title span {
+  font-weight: bold;
+}
+
+
 td-cards {
+    font-family: 'Nothing You Could Do', cursive;
     display: block;
 }
 
 td-card {
     position: absolute;
-    left: 50%;
+    margin-top: 10%;
     /*margin: 80px 0 40px -150px;*/
   /*  width: 300px;
     height: 500px;*/
-    margin: 80px 0 40px -180px;
-    width: 365px;
-    height: 580px;
-    background: url("../../../img/subtle-black-geo.png");
+    height: 95%;
+    width: 100%;
+    font-size: 100px;
+    background-image: url("./../img/subtle-black-geo.png");
     border: 1px solid #999;
-    box-shadow: 0px 1px 3px rgba(0,0,0,0.2);
+    box-shadow: 0px 1px 10px rgba(0,0,0,0.5);
     border-radius: 10px;
-    background-color: rgb(255,255,255);
     color: #fff;
     padding: 0 20px;
 }
@@ -130,38 +137,21 @@ td-card .buttondesc button{
     text-align: center;
 }
 
-/*#home-register-btn {
-    position: absolute;
-    bottom: 10px;
 
- /*   left: 80px;
-    width: 100px;*/
-/*}*/
 
 #home-login-btn {
+    color: #444444;
     position: fixed;
     bottom: 0px;
     width: 100%;
     margin: 0 0 0 0;
     font-size: 20px;
     font-weight: bold;
-    /*font-weight: bold;*/
-    /*text-shadow: 0.5px 0.5px gray;*/
-    border-color: #99B898;
-    box-shadow: 0px -1px 5px rgba(0,0,0,0.4);
-
-    background-image: -webkit-gradient(
-    linear,
-    left bottom,
-    left top,
-    color-stop(0.06, #2A3C2A),
-    color-stop(1, #99B898)
-);
-background-image: -o-linear-gradient(top, #2A3C2A 6%, #99B898 100%);
-background-image: -moz-linear-gradient(top, #2A3C2A 6%, #99B898 100%);
-background-image: -webkit-linear-gradient(top, #2A3C2A 6%, #99B898 100%);
-background-image: -ms-linear-gradient(top, #2A3C2A 6%, #99B898 100%);
-background-image: linear-gradient(to top, #2A3C2A 6%, #99B898 100%);
+    background-image: -o-linear-gradient(top, rgb(236, 71, 93) 6%, #F9A243 100%);
+    background-image: -moz-linear-gradient(top, rgb(236, 71, 93) 6%, #F9A243 100%);
+    background-image: -webkit-linear-gradient(top, rgb(236, 71, 93) 6%, #F9A243 100%);
+    background-image: -ms-linear-gradient(top, rgb(236, 71, 93) 6%, #F9A243 100%);
+    background-image: linear-gradient(to top, rgb(236, 71, 93) 6%, #F9A243 100%);
 }
 
 /*#home-img-center {
@@ -203,11 +193,20 @@ background-image: linear-gradient(to top, #2A3C2A 6%, #99B898 100%);
     top:60px;
 }
 
-#home-pic-bottom-subtext{
-    top:90px;
+#home-register-btn{
+    width: 100%;
+    margin: 0 0 0 0;
+    position: absolute;
+    bottom: 16%;
     font-size: 18px;
     margin-top: 40px;
-    color: #fecea8;
+    color: #444444;
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffd68f), color-stop(1, #f59905));
+    background:-moz-linear-gradient(to bottom, #ece473 5%, #f59905 100%);
+    background:-webkit-linear-gradient(to bottom, #ece473 5%, #f59905 100%);
+    background:-o-linear-gradient(to bottom, #ece473 5%, #f59905 100%);
+    background:-ms-linear-gradient(to bottom, #ece473 5%, #f59905 100%);
+    background: linear-gradient(to bottom, #ece473 5%, #f59905 100%);
 }
 
 #arrow{
@@ -215,18 +214,6 @@ background-image: linear-gradient(to top, #2A3C2A 6%, #99B898 100%);
     font-weight: bold;
     color: #fecea8;
 }
-/* #home-login-btn{
-    color: #fecea8;
-    background-color: white;
-    border-color: white;
-    font-size: 14px;
- }
-
-#home-register-btn{
-    color:#99b898;
-    background-color: #262626;
-    font-size: 14px;
- }*/
 
 hr{
     position: absolute;
@@ -237,51 +224,55 @@ hr{
     text-align: center;
 
 }
+/*
+#e1fsc4
+#ece473
+#f9d423
+#f6903d
+#f05053
+
+*/
 #top{
-    border-color: #fecea8;
+    z-index: 2;
+    border: 3px solid #ece473;
+    border-radius: 10px;
+    /*border-color: #fecea8;*/
 }
 
 #mid{
-    border-color: #e84a5f;
+    z-index: 2;
+    border: 3px solid #e84a5f;
+    border-radius: 10px;
+    /*border-color: #e84a5f;*/
 }
 
 #bottom{
-    border-color: #99b898;
+    z-index: 2;
+    border: 3px solid #f6903d;
+    border-radius: 10px;
+    /*border-color: #99b898;*/
 }
 
 
 
 
 /******** Profile ********/
-#profile-bg {
-    position: fixed;
-    left: 0;
-    top: 44px;
-    width: 100%;
-    height: 150px;
-
-    /*     background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/94311/bg.jpg') no-repeat transparent;*/
-    background-size: 100%;
-    background-position: 50% 20%;
-
+#profile {
+    background-image: url('./../img/subtle-black-geo.png');
     text-align: center;
     }
 
     #profile-content {
         position: relative;
-        margin-top: 150px;
+        height: 100%;
+        margin-top: 30%;
         border-radius: 10px;
-        /*background-color: #2a363b;*/
-        /*background-color: white;*/
         color: white;
-        /*background: inherit;*/
         box-shadow: 0px -1px 10px rgba(0,0,0,0.4);
-        padding-top: 200px;
-/*        height: 20px;
-*/      background: rgba(255, 195, 77, .3);
-    /*background: black;*/
-        /*border: red solid 2px;*/
-    }
+        padding-top: 10em;
+        background: rgba(255, 195, 77, .3);
+        margin-bottom: 20%;
+}
 
     #profile-info {
         position: absolute;
@@ -293,19 +284,20 @@ hr{
     }
 
     #profile-name {
-    color: white;
+    color: #FF5500;
     font-size: 35px;
     margin: 0 auto;
     font-weight: bold;
     font-family: 'Nothing You Could Do', cursive;
+    text-shadow: 2px 2px 2px rgba(149, 74, 0, 1);
     }
 
     #profile-description {
     font-size: 15px;
-    color: #888;
+    color: #F6903D;
     }
     #profile-description a {
-    color: #888;
+    color: #F6903D;
     }
 
     #profile-image {
@@ -335,16 +327,25 @@ hr{
         bottom: 55px;
     }
 /**/
-#profile-roles-text{
-    font-size: 18px;
+span.profile-roles-text{
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    padding-top: 0.5em;
+    font-size: 16px;
     font-weight: bold;
-    margin-left: 3%;
-    padding: 2px;
-    color: #e84a5f;
-
+    color: #FFDD55;
+    text-shadow: 1px 1px 2px rgba(255, 110, 23, 1);
     font-family: 'Nothing You Could Do', cursive;
 }
 
+.profile-roles-title{
+    font-weight: bolder;
+    padding-top: 1em;
+    font-size: 20px;
+    font-family: 'Nothing You Could Do', cursive;
+    color: #FF5500;
+    text-shadow: 2px 2px 2px rgba(149, 74, 0, 1);
+}
 /*#profile-roles-text-head{
     font-size: 18px;
     padding: 2px;
@@ -354,107 +355,83 @@ font-family: 'Rock Salt', cursive;
 
 }*/
 
-#profile-genres-text{
-    font-size: 16px;
+.profile-title{
+    width: 100%;
+    border-top: 2px solid rgba(255, 110, 23, 0.2);
+    text-shadow: 2px 2px 2px rgba(149, 74, 0, 1);
+    font-weight: bolder;
+    padding-top: 0.3em;
+    font-size: 20px;
+    font-family: 'Varela Round', serif;
+    color: #333333;
+    margin-bottom: 0.5em;
+}
+
+.profile-text{
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    font-size: 20px;
     font-weight: bold;
-    padding: 2px;
-    margin-left: 3%;
-    color: #e84a5f;
+    color: #FFDD55;
+    text-shadow: 1px 1px 2px rgba(255, 110, 23, 1);
     font-family: 'Nothing You Could Do', cursive;
+    margin-bottom: 0.5em;
 }
 
 #profile-roles-container{
-    /*width: 50%;
-    float: left;*/
-    height: 40px;
-    /*border: gray 1px solid;*/
     position: relative;
     top: 30px;
-     font-size: 14px;
-    color: white;
-    text-align: left;
-    padding-left: 15px;
-
+    font-size: 14px;
 }
 
 #profile-genres-container{
     /*width: 50%;
     float: left;*/
     height: 40px;
-    border-bottom: gray 1px solid;
-    position: relative;
-    top: 20px;
     /*border-left: gray 1px solid;*/
     font-size: 14px;
-    color: white;
-    text-align: left;
-    padding-left: 15px;
+    color: #F6903D;
+    text-align: center;
     /*margin-top: 0;*/
 }
 
 
-.span-head{
-    text-align: left;
-}
 
 
 #profile-location{
-    font-size: 14px;
+
+    font-size: 18px;
     margin: 0 auto;
-    /*font-family: 'Rock Salt', cursive;*/
-
-    /*font-family: 'Nothing You Could Do', cursive;*/
-
+    color: #FFDD55;
+    font-size: 25px;
+    margin-bottom: 0.5em;
+    font-family: 'Nothing You Could Do', cursive;
+    font-weight: bolder;
+    text-shadow: 1px 1px 2px rgba(255, 110, 23, 1);
 }
 
 #profile-about{
-    position: relative;
-    height: 80px;
-    overflow-y: auto;
-    /*padding: 15px;*/
-    /*border: green solid 2px;*/
-    clear:both;
-    color: white;
-    top: 90px;
+    color: #F05053;
 }
 
 #profile-about-header{
-    font-size: 14px;
-    color: white;
-    /*font-family: 'Nothing You Could Do', cursive;*/
-
+    font-size: 20px;
+    color: #FF5500;
+    font-weight: bolder;
+    font-family: 'Nothing You Could Do', cursive;
+    text-shadow: 2px 2px 2px rgba(149, 74, 0, 1);
 }
 
 #profile-about-text{
     font-size: 16px;
     font-weight: bold;
-    color: #e84a5f;
+    color: #FFDD55;
+    text-shadow: 1px 1px 2px rgba(255, 110, 23, 1);
     font-family: 'Nothing You Could Do', cursive;
 }
 
-#scplayer-cont{
-    width: 250px;
 
-    height: 40px;
-    position: relative;
-    padding: 0;
-    /*bottom: 0px;
-    left: 0px;*/
-    background: black;
-    margin: 2% auto;
-    border:none;
-    border-radius: 2px;
-    /*border-color: #fd8f35;*/
-    -webkit-box-shadow:0 0 10px #fd9d4e;
-    -moz-box-shadow: 0 0 10px #fd9d4e;
-    box-shadow:0 0 10px #fd9d4e;
 
-}
-
-#scwhite{
-    float: left;
-
-}
 
 /*#scplayicon{
     float: left;
@@ -476,7 +453,7 @@ font-family: 'Rock Salt', cursive;
 
 #sc-btn-text{
     margin-left: 0%;
-    color: white;
+    color: #fd8f35;
     text-shadow: 0.5px 0.5px gray;
 }
 
@@ -494,9 +471,15 @@ font-family: 'Rock Salt', cursive;
     color: red
 }
 
-#scplayerbtn{
-    border-color: #fd8f35;
+.scplayerbtn{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    border-color: #fd9d4e;
     background-color:#fd9d4e;
+    height: 10%;
+    padding: 0 0 0 0;
     /*background-image: url("/img/Blog_PlayButton.png");*/ /* 16px x 16px */
     /*background-color: transparent;  make the button transparent */
     background-repeat: no-repeat;  /* make the background image appear only once */
@@ -504,21 +487,17 @@ font-family: 'Rock Salt', cursive;
     border: none;           /* assuming we don't want any borders */
     cursor: pointer;        /* make the cursor like hovering over an <a> element */
              /* make this the size of your image */
-    padding-left: 16px;     /* make text start to the right of the image */
     vertical-align: middle; /* align the text vertically centered */
+    border-radius: 1em;
 }
 #sc-image{
     position: relative;
     float: left;
-    width: 270px;
     top: -93px;
     margin: 2% -2%;
 
 }
-#sc-connect-btn{
-    margin: 0 auto;
-    background-color: #e84a5f;
-}
+
 /* edit profile*/
 #edit-my-role-btn{
     border-color: #fd8f35;
@@ -568,7 +547,7 @@ display: inline-block;
     width: 100%;
     height: 150px;
 
-    background: url("../../../img/subtle-black-geo.png");
+    background: url("./../img/subtle-black-geo.png");
     background-size: 100%;
     background-position: 50% 20%;
 
@@ -593,7 +572,7 @@ display: inline-block;
 
     .profile-info {
         position: absolute;
-        top: -95px;
+        top: ;
         width: 100%;
         z-index: 2;
         text-align: center;
@@ -601,16 +580,24 @@ display: inline-block;
     }
 
     .profile-name {
-    color: white;
-    font-size: 26px;
+        font-size: 35px;
+        margin: 0 auto;
+        font-weight: bold;
+        font-family: 'Nothing You Could Do', cursive;
+        text-shadow: 2px 2px 2px rgb(107, 58, 64);
+        color: #E84A5F;
     }
 
     .profile-description {
-    font-size: 15px;
-    color: #888;
+        font-size: 15px;
+        margin: 0 auto;
+        font-weight: bold;
+        font-family: 'Nothing You Could Do', cursive;
+        text-shadow: 2px 2px 2px rgb(107, 58, 64);
+        color: #E84A5F;
     }
     .profile-description a {
-    color: #888;
+
     }
 
     .profile-image {
@@ -644,7 +631,6 @@ display: inline-block;
     font-size: 18px;
     padding: 2px;
     color: white;
-
     font-family: 'Nothing You Could Do', cursive;
 }
 
@@ -657,12 +643,6 @@ font-family: 'Rock Salt', cursive;
 
 }
 
-.profile-genres-text{
-    font-size: 16px;
-    padding: 2px;
-    color: white;
-    font-family: 'Nothing You Could Do', cursive;
-}
 
 .profile-roles-container{
     /*width: 50%;
@@ -694,40 +674,37 @@ font-family: 'Rock Salt', cursive;
 }
 
 
-.span-head{
-    text-align: left;
-}
-
 
 .profile-location{
-    font-size: 14px;
-    color: white;
-
-    /*font-family: 'Nothing You Could Do', cursive;*/
-
+    font-size: 25px;
+    margin: 0 auto;
+    font-weight: bold;
+    font-family: 'Nothing You Could Do', cursive;
+    text-shadow: 2px 2px 2px #A75513;
+    color: #F6903D;
 }
 
-.profile-about{
-    position: relative;
-    height: 80px;
-    overflow-y: auto;
-    padding: 15px;
-    /*border: green solid 2px;*/
-    clear:both;
-    color: white;
-    top: 135px;
 
-}
 
 .profile-about-header{
-    font-size: 14px;
-    color: #e84a5f;
-    font-family: 'Rock Salt', cursive;
+    padding-top: 1em;
+    font-size: 20px;
+    margin: 0 auto;
+    font-weight: bold;
+    font-family: 'Varela Round', serif;
+    text-shadow: 2px 2px 2px rgb(107, 58, 64);
+    color: #E84A5F;
 
 }
 
 .profile-about-text{
-    font-size: 14px;
+    padding-top: 1em;
+    font-size: 20px;
+    margin: 0 auto;
+    font-weight: bold;
+    font-family: 'Nothing You Could Do', cursive;
+    text-shadow: 2px 2px 2px #A75513;
+    color: #F6903D;
 }
 
 .scplayer-cont{
@@ -745,7 +722,9 @@ font-family: 'Rock Salt', cursive;
 }
 
 .scplayicon{
-    float: left;
+    margin: 0 -5em 0 -5em;
+    height: 80%;
+    max-width: 100%;
 }
 .edit-btn {
     width: 30px;
@@ -757,13 +736,10 @@ font-family: 'Rock Salt', cursive;
 
 }
 
-.scplayerbtn{
-    border-color: #fd8f35;
-    background-color:#fd9d4e;
-}
-.sc-connect-btn{
+
+#sc-connect-btn{
+    color: #FF5500;
     margin: 0 auto;
-    background-color: #e84a5f;
 }
 /* edit profile*/
 .edit-my-role-btn{
@@ -782,65 +758,179 @@ font-family: 'Rock Salt', cursive;
 #home-pic-bottom-subtext{
     text-decoration: none;
     position: relative;
+    top: 3.8em;
     text-align: center;
-    text-shadow: 0px 0px 5px rgba(145, 150, 150, 1);
+    text-shadow: 0px 0px 7px white, 0 -1px 0 #000, 0 1px 0 #000;
     font-weight: bolder;
     font-style: 1.5em;
+    z-index: 2;
 }
 
+.register-link{
+    text-decoration: none;
+}
+
+.bottom-nav{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
 
 #red-transparent{
-    top: 30%;
+    padding: 0;
+    margin: 0;
     height: 30%;
     position: absolute;
+    z-index: 1;
     width: 100%;
-    background-color: rgba(255, 54, 83, 0.05);
+    background-color: rgba(255, 54, 83, 0.15);
     color: rgba(255, 54, 83, 0.05);
 }
 
 #green-transparent{
-    padding:0;
-    top: 60%;
-    height: 40%;
+    padding: 0;
+    margin: 0;
+    top: 30%;
+    height: 30%;
     position: absolute;
+    z-index: 1;
     width: 100%;
-    background-color: rgba(33, 105, 59, 0.1);
+    /*background-color: #f6903d;*/
+    background-color: rgba(132, 90, 0, 0.4);
+    /*background-color: rgba(33, 105, 59, 0.1);*/
     color: rgba(85, 233, 138, 0.1);
 }
 
 #yellow-transparent{
+    padding: 0;
+    margin: 0;
+    top: 60%;
     position: absolute;
-    height: 30%;
+    z-index: 1;
+    height: 40%;
     width: 100%;
-    background-color: rgba(210, 233, 138, 0.1);
+    background-color: rgba(105, 98, 0, 0.4);
     color: rgba(80, 88, 55, 0.1);
 }
 
 #home-pic-top-text{
+    z-index: 2;
     font-weight: bolder;
-    text-shadow: 0px 0px 5px white;
-    text-shadow: 0px 0px 5px rgba(145, 150, 150, 1);
+    text-shadow: 0px 0px 3px white, 0 -1px 0 #000, 0 1px 0 #000;
     color: white;
 }
 
 #home-pic-mid-text{
+    z-index: 2;
     font-weight: bolder;
-    text-shadow: 0px 0px 5px white;
-    text-shadow: 0px 0px 5px rgba(145, 150, 150, 1);
+    text-shadow: 0px 0px 3px white, 0 -1px 0 #000, 0 1px 0 #000;
     color: white;
 }
 #home-pic-mid-bottom-text{
+    z-index: 2;
     font-weight: bolder;
-    text-shadow: 0px 0px 5px white;
-    text-shadow: 0px 0px 5px rgba(145, 150, 150, 1);
+    text-shadow: 0px 0px 3px white, 0 -1px 0 #000, 0 1px 0 #000;
     padding-top: 1.8em;
     color: white;
 }
 
 #home-pic-bottom-text{
+    z-index: 2;
     font-weight: bolder;
 
-    text-shadow: 0px 0px 7px white;
-    color: white;
+    color: #fff;
+    text-shadow: 0px 0px 3px white, 0 -1px 0 #000, 0 1px 0 #000;
 }
 
+
+
+
+
+
+
+td-card#end-card {
+  background-color: none;
+  box-shadow: none;
+  border-radius: none;
+}
+
+#end-card i {
+  position: absolute;
+  top: calc(50% - 55px);
+  left: calc(50% - 40px);
+  font-size: 100px;
+}
+
+
+.fade {
+  -webkit-transition: 0.2s opacity linear;
+  transition: 0.2s opacity linear;
+  opacity: 0;
+}
+
+.card-content{
+    text-align: center;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+}
+
+
+.no-padding {
+    border: 0px solid black;
+    padding: 0px !important;
+
+    background-color: black !important;
+}
+
+.myButton {
+    -moz-box-shadow: 0px 1px 0px 0px #fff6af;
+    -webkit-box-shadow: 0px 1px 0px 0px #fff6af;
+    box-shadow: 0px 1px 0px 0px #fff6af;
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffd68f), color-stop(1, #f59905));
+    background:-moz-linear-gradient(top, #ffd68f 5%, #f59905 100%);
+    background:-webkit-linear-gradient(top, #ffd68f 5%, #f59905 100%);
+    background:-o-linear-gradient(top, #ffd68f 5%, #f59905 100%);
+    background:-ms-linear-gradient(top, #ffd68f 5%, #f59905 100%);
+    background:linear-gradient(to bottom, #ffd68f 5%, #f59905 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffd68f', endColorstr='#f59905',GradientType=0);
+    background-color:#ffd68f;
+    -moz-border-radius:6px;
+    -webkit-border-radius:6px;
+    border-radius:10px;
+    border:1px solid #d6be9f;
+    display:inline-block;
+    cursor:pointer;
+    color:#FF5500;
+    font-family: 'Varela Round', serif;
+    font-weight: bold;
+    font-size:15px;
+    font-weight:bold;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #d99c00;
+}
+.myButton:hover {
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #f59905), color-stop(1, #ffd68f));
+    background:-moz-linear-gradient(top, #f59905 5%, #ffd68f 100%);
+    background:-webkit-linear-gradient(top, #f59905 5%, #ffd68f 100%);
+    background:-o-linear-gradient(top, #f59905 5%, #ffd68f 100%);
+    background:-ms-linear-gradient(top, #f59905 5%, #ffd68f 100%);
+    background:linear-gradient(to bottom, #f59905 5%, #ffd68f 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f59905', endColorstr='#ffd68f',GradientType=0);
+    background-color:#f59905;
+}
+
+.card-content div, .card-content span{
+    font-size: 0.2em;
+    padding-top: 5%;
+
+}
+
+.card-content div {
+    border-top: 1px solid rgba(239, 139, 58, 0.6);
+    width: 100%;
+
+}
+
+form {
+    background-image: url("./../img/subtle-black-geo.png");
+}
