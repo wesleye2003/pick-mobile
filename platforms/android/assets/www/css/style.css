@@ -141,8 +141,8 @@ td-card .buttondesc button{
 
 #home-login-btn {
     color: #444444;
-    position: fixed;
-    bottom: 0px;
+    float: all;
+    clear: all;
     width: 100%;
     margin: 0 0 0 0;
     font-size: 20px;
@@ -196,9 +196,10 @@ td-card .buttondesc button{
 #home-register-btn{
     width: 100%;
     margin: 0 0 0 0;
-    position: absolute;
-    bottom: 16%;
     font-size: 18px;
+    float: all;
+    display: block;
+    clear: all;
     margin-top: 40px;
     color: #444444;
     background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffd68f), color-stop(1, #f59905));
@@ -311,20 +312,47 @@ hr{
     }
 
     /**/
-    #pick-image {
-        display: inline;
+    .picks-content {
+
+    }
+    .picks-info {
+        background-image: url('./../img/subtle-black-geo.png');
+        display: inline-block;
+        position: relative;
+        text-align: left;
+        border: 1px solid #444444;
+        height: 20%;
+        width: 100%;
+        font-family: 'Nothing You Could Do', cursive;
+        color: #FF5500;
+        font-size: 25px;
+        font-weight: bold;
+        margin: 0;
+        padding: 0;
+    }
+    .picks-image {
+        float: left;
         border-radius: 100px;
         border: 1px solid #fff;
-        width: 64px;
-        height: 64px;
-        margin: 30px 20px 0;
         box-shadow: 0px 0px 4px rgba(0,0,0,0.7);
+        width: 40%;
     }
-    #picks-info {
-        text-align: right;
-        position: relative;
-        right: 20px;
-        bottom: 55px;
+    .picks-info button.picks-link {
+        position: absolute;
+        bottom: 5%;
+        right: 5%;
+        width: 40%;
+        font-size: 14px;
+    }
+    .picks-name {
+        position: absolute;
+        right: 5%;
+        top: 5%;
+    }
+    .picks-city {
+        position: absolute;
+        right: 5%;
+        top: 25%;
     }
 /**/
 span.profile-roles-text{
@@ -611,21 +639,7 @@ display: inline-block;
     }
 
     /**/
-    .pick-image {
-        display: inline;
-        border-radius: 100px;
-        border: 1px solid #fff;
-        width: 64px;
-        height: 64px;
-        margin: 30px 20px 0;
-        box-shadow: 0px 0px 4px rgba(0,0,0,0.7);
-    }
-    .picks-info {
-        text-align: right;
-        position: relative;
-        right: 20px;
-        bottom: 55px;
-    }
+
 /**/
 .profile-roles-text{
     font-size: 18px;
@@ -771,6 +785,8 @@ font-family: 'Rock Salt', cursive;
 }
 
 .bottom-nav{
+    position: absolute;
+    bottom: 0;
     width: 100%;
     margin: 0;
     padding: 0;

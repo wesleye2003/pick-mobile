@@ -1,18 +1,13 @@
 <ion-view title="Picks" id="picks">
-  <ion-content padding="false" class=" manual-remove-top-padding has-header" scroll="false">
+  <ion-content padding="false" class=" manual-remove-top-padding has-header" scroll="true">
 
-  <div id="content">
-    <img ng-repeat="pick in picks" id="pick-image" ng-src='{{pick.avatar_url}}'>
-    <div ng-repeat="pick in picks"id="picks-info">
-      <div id="picks-names">
-        <span>{{pick.username}}</span></span>
-      </div>
-      <div id="picks-link">
-        <a ng-href="{{pick.permalink}}" ng-click="window.open(this.href, '_system')">Open in SoundCloud</a></span>
-      </div>
-      <div id="picks-zipcode">
-        <span>{{pick.zipcode}}</span></span>
-      </div>
+  <div id="picks-content">
+    <div class="picks-info"
+    ng-repeat="pick in picks">
+      <img class="picks-image" ng-src='{{pick.avatar_url}}'>
+      <div class="picks-name">{{pick.username}}</div>
+        <button class="myButton picks-link" ng-click='doOpen(pick.permalink)'>SOUNDCLOUD</button>
+      <div class="picks-city">{{pick.city}}</div>
     </div>
   </div>
 

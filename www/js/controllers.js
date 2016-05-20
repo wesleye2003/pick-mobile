@@ -97,7 +97,7 @@ angular.module('starter.controllers',[])
     $scope.picks = Pick.query({id: userId});
   });
   $scope.doOpen = function(linkUrl) {
-    window.open(linkUrl, '_blank')
+    window.open(linkUrl, '_system')
   }
 })//
 
@@ -113,11 +113,11 @@ angular.module('starter.controllers',[])
 
   $scope.doConnect = function() {
     var userId = window.localStorage['id'];
-    $scope.scConnect = window.open(`https://floating-tor-67033.herokuapp.com/soundcloud/connect/${userId}`, '_blank')
+    $scope.scConnect = window.open(`https://floating-tor-67033.herokuapp.com/soundcloud/connect/${userId}`, '_system')
   };
 
   $scope.doOpen = function(linkUrl) {
-    $scope.scConnect = window.open(linkUrl, '_blank')
+    $scope.scConnect = window.open(linkUrl, '_system')
     // do{
     //   if($scope.scConnect.closed === true){
     //     console.log('a thing was done');
@@ -393,7 +393,7 @@ angular.module('starter.controllers',[])
     }
 
     $scope.doOpen = function(linkUrl) {
-      window.open(linkUrl, '_blank')
+      window.open(linkUrl, '_system')
     }
   })
 })
