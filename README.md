@@ -1,10 +1,16 @@
 # pick-mobile
 
-The  app allows local musicians to connect with one another.
+This is the front-end of our mobile app, Pick. It was built in AngularJS and Ionic, and it provides an Android and iOS compatible user interface. The back end is built in Rails 4, and uses a zipcode API and Soundcloud's API for location filtering and user profile information. The back-end was tested with RSpec.
 
-This is the front-end of our mobile app, Pick. It was build in AngularJS and Ionic, and it provides an Android and iOS compatible user interface.
+The app allows local musicians to connect with one another based on musical talents, preferred genre, and location.
 
-The app is not currently deployed to the Google Play Store or IOS App Store.
+Users are shown a shuffled deck of user profile 'cards' based on their search criteria. Profile cards have users' genres, musical talents, and Soundcloud info on them. 
+
+If a user swipes right on a card, the app records that as a sign of interest. If they swipe left, the app places the card back in the deck in case the user changes their mind later on.
+
+When two users swipe right on each other, they can see each others' profiles in the 'Picks' tab. From here, users can view the Soundcloud profiles of their 'Picks' and send messages to each other using Soundcloud.
+
+The app is not currently deployed to the Google Play Store or IOS App Store, but will be in the near future!
 
 
 ![Launch](./resources/readme-images/Launch-Optimized.png)
